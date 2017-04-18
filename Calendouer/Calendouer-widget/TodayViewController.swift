@@ -9,26 +9,34 @@
 import UIKit
 import NotificationCenter
 
+let groupIdentifier: String = "group.desgard.calendouer"
+
 class TodayViewController: UIViewController, NCWidgetProviding {
-        
+    
+    @IBOutlet weak var weatherImageView: UIImageView!
+    
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var degreeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        initialData()
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
         completionHandler(NCUpdateResult.newData)
     }
     
+    private func initialData() {
+        let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
+        let status = shared.value(forKey: "status") as? String
+        let degree = shared.value(forKey: "degree") as? String
+        let city = shared.value(forKey: "city") as? String
+        
+        self.cityLabel.text = city ?? ""
+        self.degreeLabel.text = degree ?? ""
+        self.statusLabel.text = status ?? ""
+        
+    }
 }

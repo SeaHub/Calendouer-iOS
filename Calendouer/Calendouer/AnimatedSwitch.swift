@@ -37,7 +37,7 @@ enum AnimatedSwitchShapeType {
 extension AnimatedSwitchShapeType {
     
     fileprivate func polygon(inCircleOfRadius radius: Double, vertices: Int, offset: Double = 0) -> [CGPoint] {
-        let step = M_PI * 2 / Double(vertices)
+        let step = .pi * 2 / Double(vertices)
         let x: Double = 0
         let y: Double = 0
         var points = [CGPoint]()
@@ -90,7 +90,7 @@ extension AnimatedSwitchShapeType {
         switch self {
         case .diamond:
             let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: size, height: size));
-            path.apply(CGAffineTransform(rotationAngle: CGFloat(M_PI_4)).concatenating(CGAffineTransform(translationX: centerX, y: rect.origin.y)))
+            path.apply(CGAffineTransform(rotationAngle: CGFloat(Double.pi / 4)).concatenating(CGAffineTransform(translationX: centerX, y: rect.origin.y)))
             return path
         case .star:
             let path = starShape(Double(50), vertices: 5)

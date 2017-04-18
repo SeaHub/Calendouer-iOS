@@ -11,13 +11,13 @@ import SnapKit
 import Lottie
 
 class LaunchAnimationView: UIView {
-    let bakView: UIView = {
+    private let bakView: UIView = {
         let bakView: UIView = UIView(frame: UIScreen.main.bounds)
         bakView.backgroundColor = .white
         return bakView
     }()
     
-    let title_ch: UILabel = {
+    private let title_ch: UILabel = {
         let label = UILabel()
         label.text = "豆瓣日历"
         label.font = UIFont(name: "BodoniSvtyTwoITCTT-Bold", size: 18)
@@ -25,13 +25,13 @@ class LaunchAnimationView: UIView {
         return label
     }()
     
-    let title_en: UIImageView = {
+    private let title_en: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "launch-text"))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let animationView: LOTAnimationView = {
+    private let animationView: LOTAnimationView = {
         let animation = LOTAnimationView.animationNamed("refresh-cal.json")
         return animation!
     }()

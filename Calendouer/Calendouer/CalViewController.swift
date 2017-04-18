@@ -290,6 +290,14 @@ extension CalViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cardData.count
     }
+    
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+            print("favorite button tapped")
+        }
+        
+        return [favorite]
+    }
 }
 
 extension CalViewController: UITableViewDataSource {
@@ -379,6 +387,12 @@ extension CalViewController: CLLocationManagerDelegate {
                             self.userInfo.timestamp = now
                             self.userInfo.weatherMsg = weatherMsgs
                             self.Preferences[.userInfo] = self.userInfo
+                            
+                            let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
+                            shared.set("\(weather.low)°C - \(weather.high)°C", forKey: "degree")
+                            shared.set("\(weather.text_day)转\(weather.text_night)", forKey: "status")
+                            shared.set("\(city.locality!)", forKey: "city")
+                            shared.synchronize()
                         })
                     }
                 }

@@ -10,7 +10,11 @@ import UIKit
 import Lottie
 import SnapKit
 
+
 class AnimationTestViewController: UIViewController {
+    // User Default
+    let Preferences = PreferenceManager.shared
+    var userInfo: UserInfo = UserInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +30,7 @@ class AnimationTestViewController: UIViewController {
         UIView.animate(withDuration: 8) {
             animationView?.alpha = 0
         }
+        
     }
+    
 }

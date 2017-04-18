@@ -58,6 +58,7 @@
 		D5E3B7551EA4AEC700021D37 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5E3B7591EA5C6EC00021D37 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3B7581EA5C6EC00021D37 /* MovieData.swift */; };
 		D5E3B75B1EA5D1E600021D37 /* LaunchAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3B75A1EA5D1E600021D37 /* LaunchAnimationView.swift */; };
+		D5E3B75F1EA613AD00021D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E3B75E1EA613AD00021D37 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,9 @@
 		D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D5E3B7581EA5C6EC00021D37 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieData.swift; path = App/Database/MovieData.swift; sourceTree = "<group>"; };
 		D5E3B75A1EA5D1E600021D37 /* LaunchAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchAnimationView.swift; path = App/View/LaunchAnimationView.swift; sourceTree = "<group>"; };
+		D5E3B75C1EA6122D00021D37 /* Calendouer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendouer.entitlements; sourceTree = "<group>"; };
+		D5E3B75D1EA612A000021D37 /* Calendouer-widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calendouer-widget.entitlements"; sourceTree = "<group>"; };
+		D5E3B75E1EA613AD00021D37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8A08A95730A76A12845FD1F /* Pods-Calendouer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer/Pods-Calendouer.debug.xcconfig"; sourceTree = "<group>"; };
 		DF9CEEE2CC15DEF670F499B5 /* Pods-Calendouer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer/Pods-Calendouer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,9 +287,11 @@
 		D573CB201E7597AD00D06407 /* Calendouer-widget */ = {
 			isa = PBXGroup;
 			children = (
+				D5E3B75D1EA612A000021D37 /* Calendouer-widget.entitlements */,
 				D573CB211E7597AD00D06407 /* TodayViewController.swift */,
 				D573CB231E7597AD00D06407 /* MainInterface.storyboard */,
 				D573CB261E7597AD00D06407 /* Info.plist */,
+				D5E3B75E1EA613AD00021D37 /* Assets.xcassets */,
 			);
 			path = "Calendouer-widget";
 			sourceTree = "<group>";
@@ -302,9 +308,9 @@
 		D5AF78591E6E9C60006E63DC /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D573CB2E1E76828900D06407 /* PreferenceManager.swift */,
 				D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */,
 				D5AF78651E6F8134006E63DC /* ProcessManager.swift */,
-				D573CB2E1E76828900D06407 /* PreferenceManager.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 		D5D7068C1E68612800F61871 /* Calendouer */ = {
 			isa = PBXGroup;
 			children = (
+				D5E3B75C1EA6122D00021D37 /* Calendouer.entitlements */,
 				D5D706C11E68684F00F61871 /* App */,
 				D5D706BE1E6867B000F61871 /* Config */,
 			);
@@ -538,12 +545,22 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = C3JGTFM664;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					D5D706891E68612800F61871 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = C3JGTFM664;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D5D7069D1E68612900F61871 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -585,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E3B75F1EA613AD00021D37 /* Assets.xcassets in Resources */,
 				D573CB251E7597AD00D06407 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,6 +812,7 @@
 		D573CB2B1E7597AD00D06407 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -807,6 +826,7 @@
 		D573CB2C1E7597AD00D06407 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -917,6 +937,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Calendouer/Calendouer.entitlements;
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -960,6 +981,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Calendouer/Calendouer.entitlements;
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
