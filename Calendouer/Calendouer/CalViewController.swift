@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import SnapKit
 import CoreLocation
+import SwipeableTabBarController
 
 
 class CalViewController: UIViewController {
@@ -134,6 +135,7 @@ class CalViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+        setTabBarSwipe(enabled: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -388,10 +390,12 @@ extension CalViewController: CLLocationManagerDelegate {
                             self.userInfo.weatherMsg = weatherMsgs
                             self.Preferences[.userInfo] = self.userInfo
                             
+                            // 更新 Widget
                             let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
                             shared.set("\(weather.low)°C - \(weather.high)°C", forKey: "degree")
                             shared.set("\(weather.text_day)转\(weather.text_night)", forKey: "status")
                             shared.set("\(city.locality!)", forKey: "city")
+                            shared.set(weather.getWeatherIcon(), forKey: "image")
                             shared.synchronize()
                         })
                     }

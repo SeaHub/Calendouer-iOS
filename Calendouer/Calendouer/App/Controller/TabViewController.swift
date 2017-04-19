@@ -14,6 +14,6 @@ class TabViewController: SwipeableTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedViewController = viewControllers?[0]
-        
+        tabBar.unselectedItemTintColor = UIColor.gray.withAlphaComponent(0.6)
     }
 }

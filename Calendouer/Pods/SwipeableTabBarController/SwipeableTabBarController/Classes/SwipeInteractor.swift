@@ -14,15 +14,25 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
     
     // MARK: - Private
     private var viewController: UIViewController!
-    fileprivate var panRecognizer: UIPanGestureRecognizer?
     private var rightToLeftSwipe = false
     private var shouldCompleteTransition = false
     private var canceled = false
     
-    private let kSwipeVelocityForComplete: CGFloat = 200.0
-    private let kSwipeGestureKey = "kSwipeableTabBarControllerGestureKey"
+    // MARK: - Fileprivate
+    fileprivate var panRecognizer: UIPanGestureRecognizer?
+    fileprivate struct InteractionConstants {
+        static let yTranslationForSuspend: CGFloat = 5.0
+        static let yVelocityForSuspend: CGFloat = 100.0
+        static let xVelocityForComplete: CGFloat = 200.0
+        static let xTranslationForRecognition: CGFloat = 5.0
+    }
+    
+    fileprivate struct AssociatedKey {
+        static var swipeGestureKey = "kSwipeableTabBarControllerGestureKey"
+    }
     
     // MARK: - Public
+    var isDiagonalSwipeEnabled = false
     var interactionInProgress = false
     
     typealias Closure = (() -> ())
@@ -31,7 +41,7 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
     /// Sets the viewController to be the one in charge of handling the swipe transition.
     ///
     /// - Parameter viewController: `UIViewController` in charge of the the transition.
-    func wireTo(viewController: UIViewController) {
+    public func wireTo(viewController: UIViewController) {
         self.viewController = viewController
         prepareGestureRecognizer(inView: viewController.view)
     }
@@ -40,8 +50,8 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
     /// Adds the `UIPanGestureRecognizer` to the controller's view to handle swiping.
     ///
     /// - Parameter view: `UITabBarController` tab controller's view (`UINavigationControllers` not included).
-    func prepareGestureRecognizer(inView view: UIView) {
-        panRecognizer = objc_getAssociatedObject(view, kSwipeGestureKey) as? UIPanGestureRecognizer
+    public func prepareGestureRecognizer(inView view: UIView) {
+        panRecognizer = objc_getAssociatedObject(view, &AssociatedKey.swipeGestureKey) as? UIPanGestureRecognizer
         
         if let swipe = panRecognizer {
             view.removeGestureRecognizer(swipe)
@@ -49,9 +59,9 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
         
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SwipeInteractor.handlePan(_:)))
         panRecognizer?.delegate = self
-        panRecognizer?.isEnabled = true
+        panRecognizer?.isEnabled = isEnabled
         view.addGestureRecognizer(panRecognizer!)
-        objc_setAssociatedObject(view, kSwipeGestureKey, panRecognizer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objc_setAssociatedObject(view, &AssociatedKey.swipeGestureKey, panRecognizer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
     
@@ -65,6 +75,12 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
     
         switch recognizer.state {
         case .began:
+
+            if shouldSuspendInteraction(yTranslation: translation.y, yVelocity: velocity.y) {
+                interactionInProgress = false
+                return
+            }
+            
             rightToLeftSwipe = velocity.x < 0
             if rightToLeftSwipe {
                 if viewController.tabBarController!.selectedIndex < viewController.tabBarController!.viewControllers!.count - 1 {
@@ -101,9 +117,9 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
             if interactionInProgress {
                 interactionInProgress = false
                 if !shouldCompleteTransition {
-                    if (rightToLeftSwipe && velocity.x < -kSwipeVelocityForComplete) {
+                    if (rightToLeftSwipe && velocity.x < -InteractionConstants.xVelocityForComplete) {
                         shouldCompleteTransition = true
-                    } else if (!rightToLeftSwipe && velocity.x > kSwipeVelocityForComplete) {
+                    } else if (!rightToLeftSwipe && velocity.x > InteractionConstants.xVelocityForComplete) {
                         shouldCompleteTransition = true
                     }
                 }
@@ -121,6 +137,28 @@ class SwipeInteractor: UIPercentDrivenInteractiveTransition {
         default : break
         }
     }
+    
+    /// enables/disables the entire interactor. 
+    public var isEnabled = true {
+        didSet { panRecognizer?.isEnabled = isEnabled }
+    }
+    
+    /// Checks for the diagonal swipe support. It evaluates if the current gesture is diagonal or Y-Axis based.
+    ///
+    /// - Parameters:
+    ///   - yTranslation: gesture translation on the Y-axis.
+    ///   - yVelocity: gesture velocity on the Y-axis.
+    /// - Returns: boolean determing wether the interaction should take place or not.
+    private func shouldSuspendInteraction(yTranslation: CGFloat, yVelocity: CGFloat) -> Bool {
+        if !isDiagonalSwipeEnabled {
+            // Cancel interaction if the movement is on the Y axis.
+            let isTranslatingOnYAxis = fabs(yTranslation) > InteractionConstants.yTranslationForSuspend
+            let hasVelocityOnYAxis = fabs(yVelocity) > InteractionConstants.yVelocityForSuspend
+            
+            return isTranslatingOnYAxis || hasVelocityOnYAxis
+        }
+        return false
+    }
 }
 
 // MARK: - UIGestureRecognizerDelegate
@@ -129,7 +167,7 @@ extension SwipeInteractor: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == panRecognizer {
             if let point = panRecognizer?.translation(in: panRecognizer?.view?.superview) {
-                return fabs(point.x) < 5
+                return fabs(point.x) < InteractionConstants.xTranslationForRecognition
             }
         }
         return true

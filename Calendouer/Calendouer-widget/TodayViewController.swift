@@ -33,10 +33,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let status = shared.value(forKey: "status") as? String
         let degree = shared.value(forKey: "degree") as? String
         let city = shared.value(forKey: "city") as? String
+        let image = shared.value(forKey: "image") as? String
         
         self.cityLabel.text = city ?? ""
         self.degreeLabel.text = degree ?? ""
         self.statusLabel.text = status ?? ""
-        
+        self.weatherImageView.image = UIImage(named: image ?? "")
     }
 }
