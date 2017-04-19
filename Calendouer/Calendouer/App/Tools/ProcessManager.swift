@@ -67,6 +67,9 @@ class ProcessManager: NSObject {
                 dataDic["mobile_link"]          = json_movie["mobile_link"].stringValue
                 dataDic["alt"]                  = json_movie["alt"].stringValue
                 dataDic["year"]                 = json_movie["year"].stringValue
+                dataDic["director"]             = json_movie["directors"][0]["name"].stringValue
+                dataDic["id"]                   = json_movie["id"].stringValue
+                
                 let movie: MovieObject = MovieObject(Dictionary: dataDic)
                 handle(movie)
             })

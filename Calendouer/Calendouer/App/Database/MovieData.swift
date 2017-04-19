@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class MovieData: Object {
-    dynamic var id = 0
+    dynamic var movie_id = ""
     dynamic var title = ""
     dynamic var rating = ""
     dynamic var year = ""
@@ -20,9 +20,6 @@ class MovieData: Object {
     dynamic var genres = ""
     dynamic var director = ""
     
-    dynamic var appearDay: NSDate? = nil
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+    dynamic var is_appeared = false
+    dynamic var appear_day: String? = nil
 }

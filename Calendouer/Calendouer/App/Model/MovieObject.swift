@@ -34,6 +34,7 @@ class MovieObject: NSObject {
     var ratings_count: Int = 0
     var aka: String = ""
     var alt_title: String = ""
+    var director: String = ""
     
     init(Dictionary dic: [String: Any]) {
         if let rating = dic["rating"] {
@@ -110,6 +111,9 @@ class MovieObject: NSObject {
         }
         if let alt_title = dic["alt_title"] {
             self.alt_title = alt_title as! String
+        }
+        if let director = dic["director"] {
+            self.director = director as! String
         }
     }
 }

@@ -11,7 +11,6 @@ import Spring
 import RealmSwift
 
 // Realm Database
-let realm = try! Realm()
 
 // Log Function
 func printLog<T>(message: T,

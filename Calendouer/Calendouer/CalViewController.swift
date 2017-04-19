@@ -113,9 +113,11 @@ class CalViewController: UIViewController {
     var lock = NSLock()
     var currentLocation: CLLocation = CLLocation()
     
-    // Process Manger
+    // Process Manager
     let process: ProcessManager = ProcessManager()
     var cardData: [NSObject] = []
+    
+    // Database Manager
     
     // Refresh Controller
     var refreshControl: UIRefreshControl = UIRefreshControl()
@@ -174,7 +176,7 @@ class CalViewController: UIViewController {
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 10000
-        
+       
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
@@ -212,6 +214,7 @@ class CalViewController: UIViewController {
         self.process.GetMovie(Switch: true) { (movie) in
             self.cardData.append(movie)
             self.tableView.reloadData(animated: true)
+//            DataBase.addMovieToDB(movie: movie)
         }
     }
     
@@ -294,11 +297,19 @@ extension CalViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite") { action, index in
+        
+        let favorite = UITableViewRowAction(style: .normal, title: "\u{267A}") { action, index in
             print("favorite button tapped")
         }
+        favorite.backgroundColor = .clear
+        UIButton.appearance().setTitleColor(.gray, for: .normal)
+
         
         return [favorite]
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
 }
 
