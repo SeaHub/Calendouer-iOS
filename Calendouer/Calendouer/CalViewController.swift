@@ -170,6 +170,7 @@ class CalViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         tableView.register(UINib(nibName: CardTableViewCellId, bundle: nil), forCellReuseIdentifier: CardTableViewCellId)
+        tableView.register(UINib(nibName: DownloadCardTableViewCellId, bundle: nil), forCellReuseIdentifier: DownloadCardTableViewCellId)
         
         // Core Location
         locationManager.delegate = self
@@ -203,18 +204,49 @@ class CalViewController: UIViewController {
         bakView.addSubview(weatherImageView)
     }
     
-    private func setupData() {
+    public func setupData() {
+        self.cardData = []
+        let isReceiveMovie = self.userInfo.isReceiveMovie
+        let isReceiveMatter = self.userInfo.isReceiveMatter
+        let isReceiveReport = self.userInfo.isReceiveReport
+        let isCacheMovieList = self.userInfo.isCacheMovieList
+        let isCacheNovelList = self.userInfo.isCacheNovelList
+        
         self.process.GetDay(Switch: true) { (day) in
             self.monthLabel.changeText(data: day.getMonth())
             self.weekdayLabel.changeText(data: day.getWeekDay())
             self.lunarLabel.changeText(data: day.getLunnerDay())
             self.dayLabel.changeText(data: day.getDay())
         }
+       
+        if isReceiveMovie && isCacheMovieList {
+            self.process.getMovieFromCache(Switch: true, handle: { (movie) in
+                self.cardData.append(movie)
+                self.tableView.reloadData(animated: true)
+            })
+        }
         
-        self.process.GetMovie(Switch: true) { (movie) in
-            self.cardData.append(movie)
-            self.tableView.reloadData(animated: true)
-//            DataBase.addMovieToDB(movie: movie)
+        if isReceiveMovie && !isCacheMovieList {
+            let card: BlankCardObject = BlankCardObject(type: .movie)
+            self.cardData.append(card)
+        }
+    }
+    
+    public func updateData() {
+        self.cardData = []
+        let isReceiveMovie = self.userInfo.isReceiveMovie
+        let isCacheMovieList = self.userInfo.isCacheMovieList
+        
+        if isReceiveMovie && isCacheMovieList {
+            self.process.getMovieFromCache(Switch: true, handle: { (movie) in
+                self.cardData.append(movie)
+                self.tableView.reloadData(animated: true)
+            })
+        }
+        
+        if isReceiveMovie && !isCacheMovieList {
+            let card: BlankCardObject = BlankCardObject(type: .movie)
+            self.cardData.append(card)
         }
     }
     
@@ -316,15 +348,33 @@ extension CalViewController: UITableViewDelegate {
 extension CalViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CardTableViewCell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCellId, for: indexPath) as! CardTableViewCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
         if cardData.count > 0 {
             if cardData[indexPath.row].classForCoder == MovieObject.self {
+                let cell: CardTableViewCell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCellId, for: indexPath) as! CardTableViewCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
                 let movie: MovieObject = self.cardData[indexPath.row] as! MovieObject
                 cell.movie = movie
+                return cell
+            }
+            else if cardData[indexPath.row].classForCoder == BlankCardObject.self {
+                let cell: DownloadCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: DownloadCardTableViewCellId, for: indexPath) as! DownloadCardTableViewCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.setProcessHandle(handle: { () -> Bool in
+                    let result = true
+                    self.process.cacheMovies(Switch: true, handle: { (status) in
+                        if status {
+                            self.userInfo.isCacheMovieList = true
+                            self.Preferences[.userInfo] = self.userInfo
+                            self.updateData()
+                            tableView.reloadData()
+                        }
+                    })
+                    return result
+                })
+                return cell
             }
         }
-        return cell
+        return UITableViewCell()
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -75,5 +75,51 @@ class ProcessManager: NSObject {
             })
         }
     }
+    
+    public func cacheMovies(Switch authority: Bool, handle: @escaping (_ status: Bool) -> Void) {
+        let top250Url = "https://api.douban.com/v2/movie/top250?start=0&count=250"
+        Alamofire.request(top250Url).responseJSON { (response) in
+            let json = JSON(response.result.value ?? "")
+            for index in 0...249 {
+                let movie_id = json["subjects"][index]["id"].stringValue
+                if movie_id != "" {
+                    DataBase.addMovieBasicToDB(movie_id: movie_id)
+                }
+            }
+            handle(true)
+        }
+    }
+    
+    public func getMovieFromCache(Switch authority: Bool, handle: @escaping (_ movie: MovieObject) -> Void) {
+        let today = DayObject()
+        let todayMovie = DataBase.getTodayMovieFromDB(appear_day: today.getDayToString())
+        if todayMovie.id != "" {
+            handle(todayMovie)
+        } else {
+            let todayMovieBasic = DataBase.popMovieBasicFromDB()
+            if todayMovieBasic.movie_id != "" {
+                let getMovieUrl = "https://api.douban.com/v2/movie/subject/\(todayMovieBasic.movie_id)"
+                Alamofire.request(getMovieUrl).responseJSON(completionHandler: { (response) in
+                    let json_movie = JSON(response.result.value!)
+                    var dataDic: [String: String] = [: ]
+                    dataDic["rating"]               = "\(json_movie["rating"]["average"].floatValue)"
+                    dataDic["original_title"]       = json_movie["title"].stringValue
+                    dataDic["alt_title"]            = json_movie["alt_title"].stringValue
+                    dataDic["summary"]              = json_movie["summary"].stringValue
+                    dataDic["mobile_link"]          = json_movie["mobile_link"].stringValue
+                    dataDic["alt"]                  = json_movie["alt"].stringValue
+                    dataDic["year"]                 = json_movie["year"].stringValue
+                    dataDic["director"]             = json_movie["directors"][0]["name"].stringValue
+                    dataDic["id"]                   = json_movie["id"].stringValue
+                    dataDic["images"]               = json_movie["images"]["large"].stringValue
+                    dataDic["title"]                = json_movie["title"].stringValue
+                    
+                    let movie: MovieObject = MovieObject(Dictionary: dataDic)
+                    DataBase.addMovieToDB(movie: movie, today: today.getDayToString())
+                    handle(movie)
+                })
+            }
+        }
+    }
 }
 

@@ -99,4 +99,16 @@ class DayObject: NSObject {
     public func getDay() -> String {
         return "\(self.day)"
     }
+    
+    public func getDayToString() -> String {
+        var mm = "\(self.month)"
+        var dd = "\(self.day)"
+        if mm.length == 1 {
+            mm = "0\(self.month)"
+        }
+        if dd.length == 1 {
+            dd = "0\(self.day)"
+        }
+        return "\(self.year)\(self.month)\(self.day)"
+    }
 }

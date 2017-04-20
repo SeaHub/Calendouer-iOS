@@ -52,6 +52,9 @@
 		D5D706C01E68681000F61871 /* AppDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D706BF1E68681000F61871 /* AppDefault.swift */; };
 		D5D706C41E6BAB9000F61871 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D706C31E6BAB9000F61871 /* TabViewController.swift */; };
 		D5D706C61E6CEF0600F61871 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D706C51E6CEF0600F61871 /* SettingViewController.swift */; };
+		D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D812CF1EA83DCC001737CF /* DownloadCardTableViewCell.swift */; };
+		D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D812D01EA83DCC001737CF /* DownloadCardTableViewCell.xib */; };
+		D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D812D31EA85FBF001737CF /* BlankCardObject.swift */; };
 		D5E3B7511EA4AEC300021D37 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; };
 		D5E3B7521EA4AEC300021D37 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5E3B7541EA4AEC700021D37 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */; };
@@ -166,6 +169,9 @@
 		D5D706BF1E68681000F61871 /* AppDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDefault.swift; path = Default/AppDefault.swift; sourceTree = "<group>"; };
 		D5D706C31E6BAB9000F61871 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = App/Controller/TabViewController.swift; sourceTree = "<group>"; };
 		D5D706C51E6CEF0600F61871 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = App/Controller/SettingViewController.swift; sourceTree = "<group>"; };
+		D5D812CF1EA83DCC001737CF /* DownloadCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadCardTableViewCell.swift; path = App/View/card/DownloadCardTableViewCell.swift; sourceTree = "<group>"; };
+		D5D812D01EA83DCC001737CF /* DownloadCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadCardTableViewCell.xib; path = App/View/card/DownloadCardTableViewCell.xib; sourceTree = "<group>"; };
+		D5D812D31EA85FBF001737CF /* BlankCardObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlankCardObject.swift; path = App/Model/BlankCardObject.swift; sourceTree = "<group>"; };
 		D5E3B74C1EA4ACC600021D37 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D5E3B7581EA5C6EC00021D37 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieData.swift; path = App/Database/MovieData.swift; sourceTree = "<group>"; };
@@ -303,6 +309,8 @@
 			children = (
 				D5AF78251E6D2BC7006E63DC /* CardTableViewCell.swift */,
 				D5AF78261E6D2BC7006E63DC /* CardTableViewCell.xib */,
+				D5D812CF1EA83DCC001737CF /* DownloadCardTableViewCell.swift */,
+				D5D812D01EA83DCC001737CF /* DownloadCardTableViewCell.xib */,
 			);
 			name = card;
 			sourceTree = "<group>";
@@ -413,6 +421,7 @@
 			children = (
 				D5AF78671E6FD691006E63DC /* WeatherObject.swift */,
 				D56289991E7058A00060DDEE /* MovieObject.swift */,
+				D5D812D31EA85FBF001737CF /* BlankCardObject.swift */,
 				D5110D231E723B6C006188DB /* DayObject.swift */,
 				D573CB301E768B9900D06407 /* UserInfo.swift */,
 			);
@@ -625,6 +634,7 @@
 				D515B4C91E87910200EC7BF9 /* MovieSummaryTableViewCell.xib in Resources */,
 				D5D706931E68612800F61871 /* Main.storyboard in Resources */,
 				D5AF78281E6D2BC7006E63DC /* CardTableViewCell.xib in Resources */,
+				D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +739,7 @@
 				D56289A21E712ABF0060DDEE /* TextSettingTableViewCell.swift in Sources */,
 				D573CB311E768B9900D06407 /* UserInfo.swift in Sources */,
 				D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */,
+				D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */,
 				D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */,
 				D56289A61E712AD50060DDEE /* TitleSettingTableViewCell.swift in Sources */,
 				D5AF78681E6FD691006E63DC /* WeatherObject.swift in Sources */,
@@ -742,6 +753,7 @@
 				D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */,
 				D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */,
 				D5D706C01E68681000F61871 /* AppDefault.swift in Sources */,
+				D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */,
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
 				D5CAD9B31E877ABA00669251 /* MovieIntroductionTableViewCell.swift in Sources */,
 				2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */,

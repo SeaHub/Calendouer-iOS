@@ -16,14 +16,21 @@ final class UserInfo: NSObject, NSCoding {
     var isReceiveReport: Bool = true
     var isReceiveMatter: Bool = true
     
+    var isCacheMovieList: Bool = false
+    var isCacheNovelList: Bool = false
+    
     var timestamp: Int = 0
     var weatherMsg: Array<String> = []
     
-    convenience init(irMovie: Bool, irReport: Bool, irMatter: Bool, timestamp: Int, weather: Array<String>) {
+    convenience init(irMovie: Bool, irReport: Bool, irMatter: Bool, timestamp: Int, weather: Array<String>, caMovie: Bool, caNovel: Bool) {
         self.init()
         self.isReceiveMovie = irMovie
         self.isReceiveMatter = irMatter
         self.isReceiveReport = irReport
+        
+        self.isCacheMovieList = caMovie
+        self.isCacheNovelList = caNovel
+        
         self.timestamp = timestamp
         self.weatherMsg = weather
     }
