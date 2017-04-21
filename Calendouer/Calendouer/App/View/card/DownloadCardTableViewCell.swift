@@ -74,11 +74,16 @@ class DownloadCardTableViewCell: UITableViewCell {
         initialDownload()
         
         if status {
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 5, animations: {
                 self.processBackView?.transform = CGAffineTransform(scaleX: 0.0001, y: 1)
             }) { (finish) in
                 self.processBackView?.removeFromSuperview()
                 self.clickCallback(status)
+                
+                // 暂时隐藏动画
+                UIView.animate(withDuration: 1, animations: {
+                    self.alpha = 0
+                })
             }
         } else {
             self.processBackView?.transform = CGAffineTransform(translationX: -10, y: 0)

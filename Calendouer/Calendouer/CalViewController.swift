@@ -165,7 +165,7 @@ class CalViewController: UIViewController {
         // Refresh Control
         refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.clear
-        refreshControl.attributedTitle = NSAttributedString(string: "换电影")
+        refreshControl.attributedTitle = NSAttributedString(string: "\u{1F680}")
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
@@ -204,7 +204,7 @@ class CalViewController: UIViewController {
         bakView.addSubview(weatherImageView)
     }
     
-    public func setupData() {
+    private func setupData() {
         self.cardData = []
         let isReceiveMovie = self.userInfo.isReceiveMovie
         let isReceiveMatter = self.userInfo.isReceiveMatter
@@ -232,7 +232,7 @@ class CalViewController: UIViewController {
         }
     }
     
-    public func updateData() {
+    public func updateData(handle: @escaping () -> Void) {
         self.cardData = []
         let isReceiveMovie = self.userInfo.isReceiveMovie
         let isCacheMovieList = self.userInfo.isCacheMovieList
@@ -241,6 +241,8 @@ class CalViewController: UIViewController {
             self.process.getMovieFromCache(Switch: true, handle: { (movie) in
                 self.cardData.append(movie)
                 self.tableView.reloadData(animated: true)
+                handle()
+                return
             })
         }
         
@@ -248,6 +250,7 @@ class CalViewController: UIViewController {
             let card: BlankCardObject = BlankCardObject(type: .movie)
             self.cardData.append(card)
         }
+        handle()
     }
     
     private func settingLayout() {
@@ -309,10 +312,7 @@ class CalViewController: UIViewController {
     }
     
     @objc private func refresh(sender: AnyObject) {
-        self.cardData = []
-        self.process.GetMovie(Switch: true) { (movie) in
-            self.cardData.append(movie)
-            self.tableView.reloadData()
+        self.updateData {
             self.refreshControl.endRefreshing()
         }
     }
@@ -365,8 +365,8 @@ extension CalViewController: UITableViewDataSource {
                         if status {
                             self.userInfo.isCacheMovieList = true
                             self.Preferences[.userInfo] = self.userInfo
-                            self.updateData()
-                            tableView.reloadData()
+                            self.updateData(handle: {
+                            })
                         }
                     })
                     return result
