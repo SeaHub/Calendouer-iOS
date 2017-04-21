@@ -172,6 +172,7 @@ extension SettingViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 let cell: TitleSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TitleSettingTableViewCellId, for: indexPath) as! TitleSettingTableViewCell
                 cell.initialCell(title: "关于")
+                cell.selectionStyle = .none
                 return cell
             }
             else if indexPath.row == SettingAboutCell["AuthorAbout"] {

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '13DA8252562C1887291491530E7EFAFC'
+               BlueprintIdentifier = '669869F1AB6E0F13AD20928AAC60FBE9'
                BlueprintName = 'TKSwitcherCollection'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TKSwitcherCollection.framework'>

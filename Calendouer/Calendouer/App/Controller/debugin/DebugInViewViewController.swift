@@ -13,7 +13,7 @@ class DebugInViewViewController: UIViewController {
     let cellData: [DebugIn] = [
         DebugIn(id: "CalViewController"),
         DebugIn(id: "AnimationTestViewController"),
-        
+        DebugIn(id: "WeatherDetailViewController"),
     ]
     
     var tableView: UITableView!

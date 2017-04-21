@@ -141,6 +141,9 @@ class CalViewController: UIViewController {
         // 切换页面时刷新 tableView
         self.updateData {}
         setTabBarSwipe(enabled: false)
+        
+        // Animated
+        Animated.getExplosion(view: self.weatherImageView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -187,6 +190,11 @@ class CalViewController: UIViewController {
         // Userdefault
         let userInfo: UserInfo = Preferences[.userInfo]!
         self.userInfo = userInfo
+        
+        //
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toWeatherDetail))
+        weatherImageView.isUserInteractionEnabled = true
+        weatherImageView.addGestureRecognizer(tapGestureRecognizer)
         
         self.tabBarController?.tabBar.barTintColor = UIColor.white
         
@@ -324,6 +332,11 @@ class CalViewController: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
+    
+    @objc private func toWeatherDetail() {
+        let weatherDetailViewController = WeatherDetailViewController()
+        self.navigationController?.pushViewController(weatherDetailViewController, animated: true)
+    }
 }
 
 extension CalViewController: UITableViewDelegate {
@@ -343,7 +356,6 @@ extension CalViewController: UITableViewDelegate {
         }
         favorite.backgroundColor = .clear
         UIButton.appearance().setTitleColor(.gray, for: .normal)
-
         
         return [favorite]
     }

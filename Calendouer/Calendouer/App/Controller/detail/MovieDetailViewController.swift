@@ -30,7 +30,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func initialView() {
-        self.title = "电影"
+        self.title = "\u{1F3AC} 电影"
         self.view.backgroundColor = DouBackGray
         
         let barbak = UIImage(color: DouGreen)

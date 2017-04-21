@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.4.0)
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
+  - Charts/Core (3.0.1)
   - lottie-ios (1.0.4)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -12,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Charts (~> 3.0.1)
   - lottie-ios (~> 1.0.4)
   - SDWebImage (~> 3.8)
   - SnapKit (~> 3.0.2)
@@ -32,6 +36,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   lottie-ios: 8b2c5ba38105430a72f03ce54be90d8dac950161
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
@@ -40,6 +45,6 @@ SPEC CHECKSUMS:
   SwipeableTabBarController: a52688ad47614ba98611df30a788202db90620fe
   TKSwitcherCollection: 939c8a60c47be0db6f0327906456cac855918275
 
-PODFILE CHECKSUM: 272db290ab99e0cbd916cf191c5cf743b5ae0f26
+PODFILE CHECKSUM: af158bc68a204d7835ebb4f8ef6f339bcb4efae5
 
 COCOAPODS: 1.2.0

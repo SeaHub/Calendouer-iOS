@@ -66,6 +66,7 @@ let MoviePostTableViewCellId: String = "MoviePostTableViewCell"
 let MovieIntroductionTableViewCellId: String = "MovieIntroductionTableViewCell"
 let MovieSummaryTableViewCellId: String = "MovieSummaryTableViewCell"
 let DownloadCardTableViewCellId: String = "DownloadCardTableViewCell"
+let DegreeLineTableViewCellId: String = "DegreeLineTableViewCell"
 
 
 // NSObject

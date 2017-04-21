@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Calendouer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +57,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13DA8252562C1887291491530E7EFAFC</key>
+		<key>0D7F7B2CE4A853FF19172F134A5850C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22B095E85A0F102AF4B96C0D6C0471AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23AC2DEF58410EA18A83B510AB3B0293</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,27 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3448DFFAC679B2CCE0463915E912475A</key>
+		<key>669869F1AB6E0F13AD20928AAC60FBE9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4361ABF8B32A99E209AF36025CAE45CA</key>
+		<key>7E64C9EAB43F50B70FC6A16FE0C32F77</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63B66276F00293E63E0CCF8A3843DD2C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D2212EB7225558AC3D2A7EF29372B69</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>74BD4DF21F7DB17C70FDD8F58EA65737</key>
+		<key>85E1B13BE504874C67E8DA2DF37929F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0E007E92FBF788AD8A20CC671A39722</key>
+		<key>DE46EDAC04163FF046512D17038862B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F307B842FF76B2DE6C55DB67C0885325</key>
 		<dict>
 			<key>primary</key>
 			<true/>

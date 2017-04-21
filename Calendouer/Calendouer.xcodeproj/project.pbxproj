@@ -55,6 +55,11 @@
 		D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D812CF1EA83DCC001737CF /* DownloadCardTableViewCell.swift */; };
 		D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D812D01EA83DCC001737CF /* DownloadCardTableViewCell.xib */; };
 		D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D812D31EA85FBF001737CF /* BlankCardObject.swift */; };
+		D5E051B11EA9C51500F20CD4 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051B01EA9C51500F20CD4 /* LineChart.swift */; };
+		D5E051B31EA9C57800F20CD4 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051B21EA9C57800F20CD4 /* WeatherDetailViewController.swift */; };
+		D5E051B81EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */; };
+		D5E051BB1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */; };
+		D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */; };
 		D5E3B7511EA4AEC300021D37 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; };
 		D5E3B7521EA4AEC300021D37 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5E3B7541EA4AEC700021D37 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */; };
@@ -172,6 +177,11 @@
 		D5D812CF1EA83DCC001737CF /* DownloadCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadCardTableViewCell.swift; path = App/View/card/DownloadCardTableViewCell.swift; sourceTree = "<group>"; };
 		D5D812D01EA83DCC001737CF /* DownloadCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadCardTableViewCell.xib; path = App/View/card/DownloadCardTableViewCell.xib; sourceTree = "<group>"; };
 		D5D812D31EA85FBF001737CF /* BlankCardObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlankCardObject.swift; path = App/Model/BlankCardObject.swift; sourceTree = "<group>"; };
+		D5E051B01EA9C51500F20CD4 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		D5E051B21EA9C57800F20CD4 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherDetailViewController.swift; path = App/Controller/detail/WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DegreeLineTableViewCell.swift; path = App/View/detail/DegreeLineTableViewCell.swift; sourceTree = "<group>"; };
+		D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DegreeLineTableViewCell.xib; path = App/View/detail/DegreeLineTableViewCell.xib; sourceTree = "<group>"; };
+		D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedEnhance.swift; path = App/Tools/AnimatedEnhance.swift; sourceTree = "<group>"; };
 		D5E3B74C1EA4ACC600021D37 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D5E3B7581EA5C6EC00021D37 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieData.swift; path = App/Database/MovieData.swift; sourceTree = "<group>"; };
@@ -266,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				D51343AE1E851BBD003EE79B /* MovieDetailViewController.swift */,
+				D5E051B21EA9C57800F20CD4 /* WeatherDetailViewController.swift */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -322,6 +333,8 @@
 				D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */,
 				D5AF78651E6F8134006E63DC /* ProcessManager.swift */,
 				D5E3B7651EA71C5300021D37 /* DatabaseManager.swift */,
+				D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */,
+				D5E051B01EA9C51500F20CD4 /* LineChart.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -335,6 +348,8 @@
 				D5CAD9B21E877ABA00669251 /* MovieIntroductionTableViewCell.xib */,
 				D515B4C61E87910200EC7BF9 /* MovieSummaryTableViewCell.swift */,
 				D515B4C71E87910200EC7BF9 /* MovieSummaryTableViewCell.xib */,
+				D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */,
+				D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -633,6 +648,7 @@
 				D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */,
 				D515B4C91E87910200EC7BF9 /* MovieSummaryTableViewCell.xib in Resources */,
 				D5D706931E68612800F61871 /* Main.storyboard in Resources */,
+				D5E051BB1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib in Resources */,
 				D5AF78281E6D2BC7006E63DC /* CardTableViewCell.xib in Resources */,
 				D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */,
 			);
@@ -736,9 +752,12 @@
 				D5D706C61E6CEF0600F61871 /* SettingViewController.swift in Sources */,
 				D5E3B7591EA5C6EC00021D37 /* MovieData.swift in Sources */,
 				D51343AF1E851BBD003EE79B /* MovieDetailViewController.swift in Sources */,
+				D5E051B81EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift in Sources */,
 				D56289A21E712ABF0060DDEE /* TextSettingTableViewCell.swift in Sources */,
 				D573CB311E768B9900D06407 /* UserInfo.swift in Sources */,
 				D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */,
+				D5E051B11EA9C51500F20CD4 /* LineChart.swift in Sources */,
+				D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */,
 				D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */,
 				D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */,
 				D56289A61E712AD50060DDEE /* TitleSettingTableViewCell.swift in Sources */,
@@ -753,6 +772,7 @@
 				D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */,
 				D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */,
 				D5D706C01E68681000F61871 /* AppDefault.swift in Sources */,
+				D5E051B31EA9C57800F20CD4 /* WeatherDetailViewController.swift in Sources */,
 				D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */,
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
 				D5CAD9B31E877ABA00669251 /* MovieIntroductionTableViewCell.swift in Sources */,
