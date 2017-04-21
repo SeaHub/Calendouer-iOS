@@ -137,6 +137,9 @@ class CalViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+        
+        // 切换页面时刷新 tableView
+        self.updateData {}
         setTabBarSwipe(enabled: false)
     }
     
@@ -233,6 +236,10 @@ class CalViewController: UIViewController {
     }
     
     public func updateData(handle: @escaping () -> Void) {
+        
+        let userInfo: UserInfo = Preferences[.userInfo]!
+        self.userInfo = userInfo
+        
         self.cardData = []
         let isReceiveMovie = self.userInfo.isReceiveMovie
         let isCacheMovieList = self.userInfo.isCacheMovieList
@@ -250,6 +257,7 @@ class CalViewController: UIViewController {
             let card: BlankCardObject = BlankCardObject(type: .movie)
             self.cardData.append(card)
         }
+        self.tableView.reloadData(animated: true)
         handle()
     }
     
