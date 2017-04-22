@@ -18,6 +18,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var airMsgsLabel: UILabel!
+    @IBOutlet weak var airLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +36,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let degree = shared.value(forKey: "degree") as? String
         let city = shared.value(forKey: "city") as? String
         let image = shared.value(forKey: "image") as? String
+        let air = shared.value(forKey: "air-qlty") as? String
+        let airMsgs = shared.value(forKey: "air-msg") as? String
         
         self.cityLabel.text = city ?? ""
         self.degreeLabel.text = degree ?? ""
         self.statusLabel.text = status ?? ""
         self.weatherImageView.image = UIImage(named: image ?? "")
+        
+        if air == "" || airMsgs == "" {
+            self.airLabel.text =  ""
+            self.airMsgsLabel.text =  ""
+        } else {
+            self.airLabel.text = air
+            self.airMsgsLabel.text = airMsgs
+        }
     }
 }

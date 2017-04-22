@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="LH4-sX-WB8">
@@ -46,16 +46,32 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空气质量：良" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vq-zz-u4Q">
+                                <rect key="frame" x="176" y="26" width="72" height="17"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AQI 11 | PM2.5 19 | PM10 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvx-kA-36F">
+                                <rect key="frame" x="176" y="46" width="154" height="17"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="8pS-zb-y6H" firstAttribute="leading" secondItem="4nw-bm-zGE" secondAttribute="leading" id="8rV-Er-su9"/>
                             <constraint firstItem="4nw-bm-zGE" firstAttribute="leading" secondItem="LH4-sX-WB8" secondAttribute="trailing" constant="14" id="9gz-1H-w1e"/>
                             <constraint firstItem="8pS-zb-y6H" firstAttribute="top" secondItem="4nw-bm-zGE" secondAttribute="bottom" constant="2" id="DUC-c2-E5W"/>
                             <constraint firstItem="8pS-zb-y6H" firstAttribute="centerY" secondItem="LH4-sX-WB8" secondAttribute="centerY" id="Dvs-nY-yld"/>
+                            <constraint firstItem="8vq-zz-u4Q" firstAttribute="leading" secondItem="8pS-zb-y6H" secondAttribute="trailing" constant="15" id="GkF-ye-tUU"/>
                             <constraint firstItem="LH4-sX-WB8" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="Q76-Ro-VqU"/>
+                            <constraint firstItem="Hvx-kA-36F" firstAttribute="centerY" secondItem="cUC-6k-nV1" secondAttribute="centerY" id="TRU-fU-ns4"/>
                             <constraint firstItem="cUC-6k-nV1" firstAttribute="top" secondItem="8pS-zb-y6H" secondAttribute="bottom" constant="2" id="dls-tS-y6E"/>
                             <constraint firstItem="LH4-sX-WB8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="15" id="kyO-zo-J3X"/>
                             <constraint firstItem="cUC-6k-nV1" firstAttribute="leading" secondItem="8pS-zb-y6H" secondAttribute="leading" id="oaR-7e-ExA"/>
+                            <constraint firstItem="8vq-zz-u4Q" firstAttribute="centerY" secondItem="8pS-zb-y6H" secondAttribute="centerY" id="uZq-p3-Xhs"/>
+                            <constraint firstItem="Hvx-kA-36F" firstAttribute="leading" secondItem="8vq-zz-u4Q" secondAttribute="leading" id="yud-Me-qh3"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -63,8 +79,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="70"/>
+                    <size key="freeformSize" width="375" height="70"/>
                     <connections>
+                        <outlet property="airLabel" destination="8vq-zz-u4Q" id="uZS-c0-AdN"/>
+                        <outlet property="airMsgsLabel" destination="Hvx-kA-36F" id="qr4-St-Jj5"/>
                         <outlet property="cityLabel" destination="4nw-bm-zGE" id="bzk-7f-G2d"/>
                         <outlet property="degreeLabel" destination="8pS-zb-y6H" id="zgt-Df-R6E"/>
                         <outlet property="statusLabel" destination="cUC-6k-nV1" id="EBm-YY-isq"/>

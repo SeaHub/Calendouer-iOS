@@ -435,7 +435,8 @@ extension CalViewController: CLLocationManagerDelegate {
                     if let city = place?.last {
                         // 暂时更改 UI 方法
                         // TODO: 通用方法修改视图回调接口
-                        self.cityLabel.changeText(data: city.locality!)
+                        let cityName = city.locality ?? ""
+                        self.cityLabel.changeText(data: cityName)
                         
                         // 根据时间缓存判断是否更新天气
                         let last = self.userInfo.timestamp
@@ -444,7 +445,9 @@ extension CalViewController: CLLocationManagerDelegate {
                         
                         if last > 0 {
                             // 暂时设置为 10 分钟
-                            if now - last < 600 && self.userInfo.weatherMsg.count == 4{
+                            if now - last < 2 && self.userInfo.weatherMsg.count == 4{
+                            
+//                            if now - last < 60 * 60 * 2 && self.userInfo.weatherMsg.count == 4{
                                 print ("无需更新")
                                 self.degreeLabel.text = self.userInfo.weatherMsg[0]
                                 self.weatherLabel.text = self.userInfo.weatherMsg[1]
@@ -477,6 +480,22 @@ extension CalViewController: CLLocationManagerDelegate {
                             shared.set("\(weather.text_day)转\(weather.text_night)", forKey: "status")
                             shared.set("\(city.locality!)", forKey: "city")
                             shared.set(weather.getWeatherIcon(), forKey: "image")
+                            shared.synchronize()
+                        })
+                        
+                        self.process.GetAir(Switch: true, city: cityName, handle: { (air) in
+                            let airMsgs: Array<String> = [
+                                "\(air.pm25)",
+                                "\(air.pm10)",
+                                "\(air.aqi)",
+                                "\(air.qlty)",
+                                "\(air.txt)",
+                            ]
+                            
+                            // 更新 Widget
+                            let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
+                            shared.set("空气质量：\(air.qlty)", forKey: "air-qlty")
+                            shared.set("AQI \(air.aqi) · PM2.5 \(air.pm25) · PM10 \(air.pm10)", forKey: "air-msg")
                             shared.synchronize()
                         })
                     }

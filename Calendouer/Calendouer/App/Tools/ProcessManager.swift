@@ -42,6 +42,45 @@ class ProcessManager: NSObject {
         }
     }
     
+    public func GetAir(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ air: AirObject) -> Void) {
+        let url = "https://free-api.heweather.com/v5/weather?city=\(longitude),\(latitude)&key=c3acec2e21754c9585d6e7db857a5999"
+        Alamofire.request(url).responseJSON { response in
+            let json = JSON(response.result.value!)
+            let air = AirObject()
+            air.aqi = json["HeWeather5"][0]["aqi"]["city"]["aqi"].stringValue
+            air.co = json["HeWeather5"][0]["aqi"]["city"]["co"].stringValue
+            air.no2 = json["HeWeather5"][0]["aqi"]["city"]["no2"].stringValue
+            air.o3 = json["HeWeather5"][0]["aqi"]["city"]["o3"].stringValue
+            air.pm10 = json["HeWeather5"][0]["aqi"]["city"]["pm10"].stringValue
+            air.pm25 = json["HeWeather5"][0]["aqi"]["city"]["pm25"].stringValue
+            air.qlty = json["HeWeather5"][0]["aqi"]["city"]["qlty"].stringValue
+            air.so2 = json["HeWeather5"][0]["aqi"]["city"]["so2"].stringValue
+            air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
+            
+            handle(air)
+        }
+    }
+    
+    public func GetAir(Switch authority: Bool, city: String, handle: @escaping (_ air: AirObject) -> Void) {
+        let url = "https://free-api.heweather.com/v5/weather?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
+        let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        Alamofire.request(urln).responseJSON { response in
+            let json = JSON(response.result.value!)
+            let air = AirObject()
+            air.aqi = json["HeWeather5"][0]["aqi"]["city"]["aqi"].stringValue
+            air.co = json["HeWeather5"][0]["aqi"]["city"]["co"].stringValue
+            air.no2 = json["HeWeather5"][0]["aqi"]["city"]["no2"].stringValue
+            air.o3 = json["HeWeather5"][0]["aqi"]["city"]["o3"].stringValue
+            air.pm10 = json["HeWeather5"][0]["aqi"]["city"]["pm10"].stringValue
+            air.pm25 = json["HeWeather5"][0]["aqi"]["city"]["pm25"].stringValue
+            air.qlty = json["HeWeather5"][0]["aqi"]["city"]["qlty"].stringValue
+            air.so2 = json["HeWeather5"][0]["aqi"]["city"]["so2"].stringValue
+            air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
+            
+            handle(air)
+        }
+    }
+    
     public func GetDay(Switch authority: Bool, handle: @escaping (_ day: DayObject) -> Void) {
         let dayObject: DayObject = DayObject()
         handle(dayObject)

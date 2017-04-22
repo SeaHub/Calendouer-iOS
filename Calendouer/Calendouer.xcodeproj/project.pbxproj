@@ -60,6 +60,9 @@
 		D5E051B81EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */; };
 		D5E051BB1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */; };
 		D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */; };
+		D5E051C01EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051BE1EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift */; };
+		D5E051C11EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E051BF1EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib */; };
+		D5E051C31EAA56CE00F20CD4 /* AirObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E051C21EAA56CE00F20CD4 /* AirObject.swift */; };
 		D5E3B7511EA4AEC300021D37 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; };
 		D5E3B7521EA4AEC300021D37 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74C1EA4ACC600021D37 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D5E3B7541EA4AEC700021D37 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */; };
@@ -182,6 +185,9 @@
 		D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DegreeLineTableViewCell.swift; path = App/View/detail/DegreeLineTableViewCell.swift; sourceTree = "<group>"; };
 		D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DegreeLineTableViewCell.xib; path = App/View/detail/DegreeLineTableViewCell.xib; sourceTree = "<group>"; };
 		D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedEnhance.swift; path = App/Tools/AnimatedEnhance.swift; sourceTree = "<group>"; };
+		D5E051BE1EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DegreeRadarTableViewCell.swift; path = App/View/detail/DegreeRadarTableViewCell.swift; sourceTree = "<group>"; };
+		D5E051BF1EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DegreeRadarTableViewCell.xib; path = App/View/detail/DegreeRadarTableViewCell.xib; sourceTree = "<group>"; };
+		D5E051C21EAA56CE00F20CD4 /* AirObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirObject.swift; path = App/Model/AirObject.swift; sourceTree = "<group>"; };
 		D5E3B74C1EA4ACC600021D37 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		D5E3B7581EA5C6EC00021D37 /* MovieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieData.swift; path = App/Database/MovieData.swift; sourceTree = "<group>"; };
@@ -350,6 +356,8 @@
 				D515B4C71E87910200EC7BF9 /* MovieSummaryTableViewCell.xib */,
 				D5E051B61EA9D0E000F20CD4 /* DegreeLineTableViewCell.swift */,
 				D5E051BA1EA9DAE800F20CD4 /* DegreeLineTableViewCell.xib */,
+				D5E051BE1EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift */,
+				D5E051BF1EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -438,6 +446,7 @@
 				D56289991E7058A00060DDEE /* MovieObject.swift */,
 				D5D812D31EA85FBF001737CF /* BlankCardObject.swift */,
 				D5110D231E723B6C006188DB /* DayObject.swift */,
+				D5E051C21EAA56CE00F20CD4 /* AirObject.swift */,
 				D573CB301E768B9900D06407 /* UserInfo.swift */,
 			);
 			name = Model;
@@ -644,6 +653,7 @@
 				D5CAD9B01E86CAE600669251 /* MoviePostTableViewCell.xib in Resources */,
 				D562899F1E711F220060DDEE /* SwitchSettingTableViewCell.xib in Resources */,
 				D56289A31E712ABF0060DDEE /* TextSettingTableViewCell.xib in Resources */,
+				D5E051C11EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib in Resources */,
 				D5D706951E68612800F61871 /* Assets.xcassets in Resources */,
 				D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */,
 				D515B4C91E87910200EC7BF9 /* MovieSummaryTableViewCell.xib in Resources */,
@@ -756,6 +766,7 @@
 				D56289A21E712ABF0060DDEE /* TextSettingTableViewCell.swift in Sources */,
 				D573CB311E768B9900D06407 /* UserInfo.swift in Sources */,
 				D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */,
+				D5E051C01EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift in Sources */,
 				D5E051B11EA9C51500F20CD4 /* LineChart.swift in Sources */,
 				D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */,
 				D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */,
@@ -772,6 +783,7 @@
 				D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */,
 				D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */,
 				D5D706C01E68681000F61871 /* AppDefault.swift in Sources */,
+				D5E051C31EAA56CE00F20CD4 /* AirObject.swift in Sources */,
 				D5E051B31EA9C57800F20CD4 /* WeatherDetailViewController.swift in Sources */,
 				D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */,
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
