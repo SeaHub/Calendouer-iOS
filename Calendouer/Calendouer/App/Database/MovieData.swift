@@ -19,6 +19,8 @@ class MovieData: Object {
     dynamic var original_title = ""
     dynamic var genres = ""
     dynamic var director = ""
+    dynamic var countries = ""
+    dynamic var ratings_count = 0
     
     dynamic var is_appeared = false
     dynamic var appear_day: String? = nil
@@ -32,8 +34,11 @@ class MovieData: Object {
         movie.images = self.images
         movie.summary = self.summary
         movie.original_title = self.original_title
-        movie.genres = self.genres
-        movie.director = self.genres
+        movie.director = self.director
+        movie.countries = self.countries.components(separatedBy: ",")
+        movie.genres = self.genres.components(separatedBy: ",")
+        movie.ratings_count = self.ratings_count
+        
         return movie
     }
 }

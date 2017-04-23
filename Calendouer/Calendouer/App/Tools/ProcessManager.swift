@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class ProcessManager: NSObject {
     
+    // 获取当日天气
     public func GetWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: WeatherObject) -> Void) {
         let url: String = "https://api.thinkpage.cn/v3/weather/daily.json?key=c3zfxqulwe5jzete&location=\(latitude):\(longitude)&language=zh-Hans&unit=c"
         Alamofire.request(url).responseJSON { response in
@@ -42,6 +43,12 @@ class ProcessManager: NSObject {
         }
     }
     
+    // 获取三日天气
+    public func Get3DaysWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: WeatherObject) -> Void) {
+        
+    }
+    
+    // 根据坐标获取空气质量
     public func GetAir(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ air: AirObject) -> Void) {
         let url = "https://free-api.heweather.com/v5/weather?city=\(longitude),\(latitude)&key=c3acec2e21754c9585d6e7db857a5999"
         Alamofire.request(url).responseJSON { response in
@@ -61,6 +68,7 @@ class ProcessManager: NSObject {
         }
     }
     
+    // 根据城市名称获取空气质量
     public func GetAir(Switch authority: Bool, city: String, handle: @escaping (_ air: AirObject) -> Void) {
         let url = "https://free-api.heweather.com/v5/weather?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
         let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
@@ -81,11 +89,13 @@ class ProcessManager: NSObject {
         }
     }
     
+    // 获取当日信息
     public func GetDay(Switch authority: Bool, handle: @escaping (_ day: DayObject) -> Void) {
         let dayObject: DayObject = DayObject()
         handle(dayObject)
     }
     
+    // 获取随机电影
     public func GetMovie(Switch authority: Bool, handle: @escaping (_ movie: MovieObject) -> Void) {
         let top250Url = "https://api.douban.com/v2/movie/top250"
         Alamofire.request(top250Url).responseJSON { (response) in
@@ -115,6 +125,7 @@ class ProcessManager: NSObject {
         }
     }
     
+    // 缓存电影数据
     public func cacheMovies(Switch authority: Bool, handle: @escaping (_ status: Bool) -> Void) {
         let top250Url = "https://api.douban.com/v2/movie/top250?start=0&count=250"
         Alamofire.request(top250Url).responseJSON { (response) in
@@ -129,6 +140,7 @@ class ProcessManager: NSObject {
         }
     }
     
+    // 获取电影数据
     public func getMovieFromCache(Switch authority: Bool, handle: @escaping (_ movie: MovieObject) -> Void) {
         let today = DayObject()
         let todayMovie = DataBase.getTodayMovieFromDB(appear_day: today.getDayToString())
@@ -140,7 +152,7 @@ class ProcessManager: NSObject {
                 let getMovieUrl = "https://api.douban.com/v2/movie/subject/\(todayMovieBasic.movie_id)"
                 Alamofire.request(getMovieUrl).responseJSON(completionHandler: { (response) in
                     let json_movie = JSON(response.result.value!)
-                    var dataDic: [String: String] = [: ]
+                    var dataDic: [String: Any] = [: ]
                     dataDic["rating"]               = "\(json_movie["rating"]["average"].floatValue)"
                     dataDic["original_title"]       = json_movie["title"].stringValue
                     dataDic["alt_title"]            = json_movie["alt_title"].stringValue
@@ -152,6 +164,9 @@ class ProcessManager: NSObject {
                     dataDic["id"]                   = json_movie["id"].stringValue
                     dataDic["images"]               = json_movie["images"]["large"].stringValue
                     dataDic["title"]                = json_movie["title"].stringValue
+                    dataDic["countries"]            = self.jsonToArr(jsons: json_movie["countries"].arrayValue)
+                    dataDic["genres"]               = self.jsonToArr(jsons: json_movie["genres"].arrayValue)
+                    dataDic["ratings_count"]        = json_movie["ratings_count"].intValue
                     
                     let movie: MovieObject = MovieObject(Dictionary: dataDic)
                     DataBase.addMovieToDB(movie: movie, today: today.getDayToString())
@@ -159,6 +174,15 @@ class ProcessManager: NSObject {
                 })
             }
         }
+    }
+    
+    // Change
+    private func jsonToArr(jsons: [JSON]) -> [String] {
+        var arr: [String] = []
+        for json in jsons {
+            arr.append(json.stringValue)
+        }
+        return arr
     }
 }
 

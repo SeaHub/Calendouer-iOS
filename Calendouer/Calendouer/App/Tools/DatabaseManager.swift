@@ -23,9 +23,11 @@ final class DatabaseManager {
         movieData.images = movie.images
         movieData.summary = movie.summary
         movieData.original_title = movie.original_title
-        movieData.genres = movie.genres
         movieData.director = movie.director
         movieData.movie_id = movie.id
+        movieData.countries = movie.serialCountry()
+        movieData.genres = movie.serialCountry()
+        movieData.ratings_count = movie.ratings_count
         
         movieData.appear_day = today
         

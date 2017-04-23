@@ -18,9 +18,9 @@ class DownloadCardTableViewCell: UITableViewCell {
     
     var clickCallback: (_ status: Bool) -> Void = { status in
         if status == true {
-            print("下载成功")
+            printLog(message: "下载成功")
         } else {
-            print("下载失败")
+            printLog(message: "下载失败")
         }
     }
     

@@ -428,7 +428,7 @@ extension CalViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lock.lock()
         if let currentLocation = locations.last {
-            print("\(currentLocation.coordinate.latitude), \(currentLocation.coordinate.longitude)")
+            printLog(message: "\(currentLocation.coordinate.latitude), \(currentLocation.coordinate.longitude)")
             let geocoder: CLGeocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(currentLocation, completionHandler: { (place, error) in
                 if place != nil {
@@ -441,14 +441,14 @@ extension CalViewController: CLLocationManagerDelegate {
                         // 根据时间缓存判断是否更新天气
                         let last = self.userInfo.timestamp
                         let now = Int(Date().timeIntervalSince1970)
-                        print ("Now: \(now) Last: \(last)")
+                        printLog (message: "时间戳 - Now: \(now) Last: \(last)")
                         
                         if last > 0 {
                             // 暂时设置为 10 分钟
-                            if now - last < 2 && self.userInfo.weatherMsg.count == 4{
+//                            if now - last < 2 && self.userInfo.weatherMsg.count == 4{
                             
-//                            if now - last < 60 * 60 * 2 && self.userInfo.weatherMsg.count == 4{
-                                print ("无需更新")
+                            if now - last < 60 * 60 * 2 && self.userInfo.weatherMsg.count == 4{
+                                printLog(message: "无需更新")
                                 self.degreeLabel.text = self.userInfo.weatherMsg[0]
                                 self.weatherLabel.text = self.userInfo.weatherMsg[1]
                                 self.updateTimeLabel.text = self.userInfo.weatherMsg[2]

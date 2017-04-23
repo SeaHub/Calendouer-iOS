@@ -24,8 +24,8 @@ class MovieObject: NSObject {
     var seasons_count: Int = 0
     var schedule_url: String = ""
     var episodes_count: Int = 0
-    var countries: String = ""
-    var genres: String = ""
+    var countries: [String] = []
+    var genres: [String] = []
     var collect_count: Int = 0
     var original_title: String = ""
     var summary: String = ""
@@ -83,10 +83,10 @@ class MovieObject: NSObject {
             self.episodes_count = episodes_count as! Int
         }
         if let countries = dic["countries"] {
-            self.countries = countries as! String
+            self.countries = countries as! [String]
         }
         if let genres = dic["genres"] {
-            self.genres = genres as! String
+            self.genres = genres as! [String]
         }
         if let collect_count = dic["collect_count"] {
             self.collect_count = collect_count as! Int
@@ -115,5 +115,55 @@ class MovieObject: NSObject {
         if let director = dic["director"] {
             self.director = director as! String
         }
+    }
+    
+    public func showType() -> String {
+        var cnt = 0;
+        var res = ""
+        for country in countries {
+            if cnt == 0 {
+                res = country
+            } else {
+                res.append(" / \(country)")
+            }
+            cnt += 1
+            if cnt > 2 {
+                break
+            }
+        }
+        for genres in genres {
+            if cnt == 0 {
+                res = genres
+            } else {
+                res.append(" / \(genres)")
+            }
+            cnt += 1
+            if cnt > 3 {
+                break
+            }
+        }
+        return res
+    }
+    
+    public func serialCountry() -> String {
+        return serial(arr: countries)
+    }
+    
+    public func serialGenres() -> String {
+        return serial(arr: genres)
+    }
+    
+    private func serial(arr: [String]) -> String {
+        var cnt = 0
+        var res = ""
+        for str in arr {
+            if cnt == 0 {
+                res = str
+            } else {
+                res.append(",\(str)")
+            }
+            cnt += 1
+        }
+        return res
     }
 }

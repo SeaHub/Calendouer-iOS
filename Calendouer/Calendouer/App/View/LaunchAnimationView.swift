@@ -79,7 +79,7 @@ class LaunchAnimationView: UIView {
     
     public func animationBegin() {
         self.animationView.play(completion: {finished in
-            print("animation end")
+            printLog(message: "animation end")
         })
         UIView.animate(withDuration: 0.6, delay: 2.5, options: .allowUserInteraction, animations: {
             self.alpha = 0

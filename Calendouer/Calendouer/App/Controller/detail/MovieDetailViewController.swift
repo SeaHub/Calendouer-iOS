@@ -52,8 +52,6 @@ class MovieDetailViewController: UIViewController {
         tableView.register(UINib(nibName: MoviePostTableViewCellId, bundle: nil), forCellReuseIdentifier: MoviePostTableViewCellId)
         tableView.register(UINib(nibName: MovieIntroductionTableViewCellId, bundle: nil), forCellReuseIdentifier: MovieIntroductionTableViewCellId)
         tableView.register(UINib(nibName: MovieSummaryTableViewCellId, bundle: nil), forCellReuseIdentifier: MovieSummaryTableViewCellId)
-        
-        // Userdefalut
     }
     
     private func addSubView() {
@@ -99,6 +97,11 @@ extension MovieDetailViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviePostTableViewCellId, for: indexPath) as! MoviePostTableViewCell
             cell.selectionStyle = .none
             cell.movie = self.movie
+            cell.setAblumClickAction(callBack: { (image) in
+                let agrume = Agrume(image: image, backgroundColor: .black)
+                agrume.hideStatusBar = true
+                agrume.showFrom(self)
+            })
             return cell
         }
         else if indexPath.row == 1 {

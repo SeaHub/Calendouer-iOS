@@ -44,7 +44,6 @@ class WeatherDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: DegreeLineTableViewCellId, bundle: nil), forCellReuseIdentifier: DegreeLineTableViewCellId)
         tableView.register(UINib(nibName: TitleSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TitleSettingTableViewCellId)
     }
     
@@ -76,13 +75,7 @@ extension WeatherDetailViewController: UITableViewDelegate {
 extension WeatherDetailViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TitleSettingTableViewCellId, for: indexPath) as! TitleSettingTableViewCell
-            cell.initialCell(title: titleData[indexPath.section])
-            return cell
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: DegreeLineTableViewCellId, for: indexPath) as! DegreeLineTableViewCell
-        cell.selectionStyle = .none
+        let cell = UITableViewCell()
         return cell
     }
 }
