@@ -23,6 +23,10 @@
 		D52624F11EAC43A5008B4E76 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624EB1EAC43A5008B4E76 /* ImageDownloader.swift */; };
 		D52624F21EAC43A5008B4E76 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D52624EC1EAC43A5008B4E76 /* Info.plist */; };
 		D52624F31EAC43A5008B4E76 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624ED1EAC43A5008B4E76 /* UIViewExtensions.swift */; };
+		D52624F51EAC8DC0008B4E76 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624F41EAC8DC0008B4E76 /* WeatherData.swift */; };
+		D52624F81EACFABD008B4E76 /* DegreeLifeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624F61EACFABD008B4E76 /* DegreeLifeTableViewCell.swift */; };
+		D52624F91EACFABD008B4E76 /* DegreeLifeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52624F71EACFABD008B4E76 /* DegreeLifeTableViewCell.xib */; };
+		D52624FC1EAD9238008B4E76 /* LifeScoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */; };
 		D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */; };
 		D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56289991E7058A00060DDEE /* MovieObject.swift */; };
 		D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */; };
@@ -145,6 +149,10 @@
 		D52624EB1EAC43A5008B4E76 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		D52624EC1EAC43A5008B4E76 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D52624ED1EAC43A5008B4E76 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		D52624F41EAC8DC0008B4E76 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherData.swift; path = App/Database/WeatherData.swift; sourceTree = "<group>"; };
+		D52624F61EACFABD008B4E76 /* DegreeLifeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DegreeLifeTableViewCell.swift; path = App/View/detail/DegreeLifeTableViewCell.swift; sourceTree = "<group>"; };
+		D52624F71EACFABD008B4E76 /* DegreeLifeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DegreeLifeTableViewCell.xib; path = App/View/detail/DegreeLifeTableViewCell.xib; sourceTree = "<group>"; };
+		D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeScoreObject.swift; path = App/Model/LifeScoreObject.swift; sourceTree = "<group>"; };
 		D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugInViewViewController.swift; path = App/Controller/debugin/DebugInViewViewController.swift; sourceTree = "<group>"; };
 		D56289991E7058A00060DDEE /* MovieObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieObject.swift; path = App/Model/MovieObject.swift; sourceTree = "<group>"; };
 		D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingTableViewCell.swift; path = App/View/setting/SwitchSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +389,8 @@
 				D515B4C71E87910200EC7BF9 /* MovieSummaryTableViewCell.xib */,
 				D5E051BE1EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift */,
 				D5E051BF1EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib */,
+				D52624F61EACFABD008B4E76 /* DegreeLifeTableViewCell.swift */,
+				D52624F71EACFABD008B4E76 /* DegreeLifeTableViewCell.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -470,6 +480,7 @@
 				D5D812D31EA85FBF001737CF /* BlankCardObject.swift */,
 				D5110D231E723B6C006188DB /* DayObject.swift */,
 				D5E051C21EAA56CE00F20CD4 /* AirObject.swift */,
+				D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */,
 				D573CB301E768B9900D06407 /* UserInfo.swift */,
 			);
 			name = Model;
@@ -506,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E3B7581EA5C6EC00021D37 /* MovieData.swift */,
+				D52624F41EAC8DC0008B4E76 /* WeatherData.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -682,6 +694,7 @@
 				D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */,
 				D515B4C91E87910200EC7BF9 /* MovieSummaryTableViewCell.xib in Resources */,
 				D5D706931E68612800F61871 /* Main.storyboard in Resources */,
+				D52624F91EACFABD008B4E76 /* DegreeLifeTableViewCell.xib in Resources */,
 				D5AF78281E6D2BC7006E63DC /* CardTableViewCell.xib in Resources */,
 				D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */,
 			);
@@ -788,6 +801,7 @@
 				D56289A21E712ABF0060DDEE /* TextSettingTableViewCell.swift in Sources */,
 				D573CB311E768B9900D06407 /* UserInfo.swift in Sources */,
 				D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */,
+				D52624F81EACFABD008B4E76 /* DegreeLifeTableViewCell.swift in Sources */,
 				D5E051C01EAA446D00F20CD4 /* DegreeRadarTableViewCell.swift in Sources */,
 				D5E051B11EA9C51500F20CD4 /* LineChart.swift in Sources */,
 				D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */,
@@ -805,6 +819,7 @@
 				D52624EE1EAC43A5008B4E76 /* Agrume.swift in Sources */,
 				D52624F31EAC43A5008B4E76 /* UIViewExtensions.swift in Sources */,
 				D5E3B7661EA71C5300021D37 /* DatabaseManager.swift in Sources */,
+				D52624FC1EAD9238008B4E76 /* LifeScoreObject.swift in Sources */,
 				D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */,
 				D52624F11EAC43A5008B4E76 /* ImageDownloader.swift in Sources */,
 				D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */,
@@ -816,6 +831,7 @@
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
 				D5CAD9B31E877ABA00669251 /* MovieIntroductionTableViewCell.swift in Sources */,
 				2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */,
+				D52624F51EAC8DC0008B4E76 /* WeatherData.swift in Sources */,
 				D5D7068E1E68612800F61871 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

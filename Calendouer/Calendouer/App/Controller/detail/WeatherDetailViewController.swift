@@ -45,6 +45,8 @@ class WeatherDetailViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: TitleSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TitleSettingTableViewCellId)
+        tableView.register(UINib(nibName: DegreeRadarTableViewCellId, bundle: nil), forCellReuseIdentifier: DegreeRadarTableViewCellId)
+        tableView.register(UINib(nibName: DegreeLifeTableViewCellId, bundle: nil), forCellReuseIdentifier: DegreeLifeTableViewCellId)
     }
     
     private func addViews() {
@@ -55,11 +57,11 @@ class WeatherDetailViewController: UIViewController {
 extension WeatherDetailViewController: UITableViewDelegate {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.1
     }
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
@@ -75,7 +77,15 @@ extension WeatherDetailViewController: UITableViewDelegate {
 extension WeatherDetailViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
+        if indexPath.row == 0 {
+            let cell: DegreeRadarTableViewCell = tableView.dequeueReusableCell(withIdentifier: DegreeRadarTableViewCellId, for: indexPath) as! DegreeRadarTableViewCell
+            return cell
+        }
+        else if indexPath.row == 1 {
+            let cell: DegreeLifeTableViewCell = tableView.dequeueReusableCell(withIdentifier: DegreeLifeTableViewCellId, for: indexPath) as! DegreeLifeTableViewCell
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 }

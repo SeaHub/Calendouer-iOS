@@ -125,5 +125,5 @@ extension PreferenceKeys {
 }
 
 let defaultPreferences: [PreferenceKeys: Any] = [
-    .userInfo: NSKeyedArchiver.archivedData(withRootObject: UserInfo(irMovie: true, irReport: true, irMatter: true, timestamp: 0, weather: [], caMovie: false, caNovel: false))
+    .userInfo: NSKeyedArchiver.archivedData(withRootObject: UserInfo(irMovie: true, irReport: true, irMatter: true, timestamp: 0, weather: [], caMovie: false, caNovel: false, _3DayWeather: []))
 ]
