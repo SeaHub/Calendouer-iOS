@@ -218,10 +218,10 @@ class CalViewController: UIViewController {
     private func setupData() {
         self.cardData = []
         let isReceiveMovie = self.userInfo.isReceiveMovie
-        let isReceiveMatter = self.userInfo.isReceiveMatter
-        let isReceiveReport = self.userInfo.isReceiveReport
+//        let isReceiveMatter = self.userInfo.isReceiveMatter
+//        let isReceiveReport = self.userInfo.isReceiveReport
         let isCacheMovieList = self.userInfo.isCacheMovieList
-        let isCacheNovelList = self.userInfo.isCacheNovelList
+//        let isCacheNovelList = self.userInfo.isCacheNovelList
         
         self.process.GetDay(Switch: true) { (day) in
             self.monthLabel.changeText(data: day.getMonth())
@@ -352,7 +352,7 @@ extension CalViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let favorite = UITableViewRowAction(style: .normal, title: "\u{267A}") { action, index in
-            print("favorite button tapped")
+            printLog(message: "favorite button tapped")
         }
         favorite.backgroundColor = .clear
         UIButton.appearance().setTitleColor(.gray, for: .normal)
@@ -446,7 +446,6 @@ extension CalViewController: CLLocationManagerDelegate {
                         if last > 0 {
                             // 暂时设置为 10 分钟
 //                            if now - last < 2 && self.userInfo.weatherMsg.count == 4{
-                            
                             if now - last < 60 * 60 * 2 && self.userInfo.weatherMsg.count == 4{
                                 printLog(message: "无需更新")
                                 self.degreeLabel.text = self.userInfo.weatherMsg[0]
@@ -482,6 +481,18 @@ extension CalViewController: CLLocationManagerDelegate {
                             shared.set(weather.getWeatherIcon(), forKey: "image")
                             shared.synchronize()
                         })
+                        
+//                        self.process.Get3DaysWeather(Switch: true, latitude: CGFloat(la), longitude: CGFloat(lo), handle: { (weathers) in
+//                            if weathers.count == 3 {
+//                                if let today = weathers.first {
+//                                    // 界面更新
+//                                    self.degreeLabel.changeText(data: "\(today.low)°C | \(today.high)°C")
+//                                    self.weatherLabel.changeText(data: "\(today.text_day)，\(today.text_night)")
+//                                    self.updateTimeLabel.changeText(data: "更新：\(today.last_update)")
+//                                    self.weatherImageView.image = UIImage(named: today.getWeatherIcon())
+//                                }
+//                            }
+//                        })
                         
                         self.process.GetAir(Switch: true, city: cityName, handle: { (air) in
                             let airMsgs: Array<String> = [

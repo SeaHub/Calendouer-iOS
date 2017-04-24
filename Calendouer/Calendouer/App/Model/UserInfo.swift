@@ -21,8 +21,9 @@ final class UserInfo: NSObject, NSCoding {
     
     var timestamp: Int = 0
     var weatherMsg: Array<String> = []
+    var _3DayWeather: [WeatherObject] = []
     
-    convenience init(irMovie: Bool, irReport: Bool, irMatter: Bool, timestamp: Int, weather: Array<String>, caMovie: Bool, caNovel: Bool) {
+    convenience init(irMovie: Bool, irReport: Bool, irMatter: Bool, timestamp: Int, weather: Array<String>, caMovie: Bool, caNovel: Bool, _3DayWeather: [WeatherObject]) {
         self.init()
         self.isReceiveMovie = irMovie
         self.isReceiveMatter = irMatter
@@ -33,6 +34,7 @@ final class UserInfo: NSObject, NSCoding {
         
         self.timestamp = timestamp
         self.weatherMsg = weather
+        self._3DayWeather = _3DayWeather
     }
     
     convenience required init?(coder aDecoder: NSCoder) {

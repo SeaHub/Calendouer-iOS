@@ -67,7 +67,8 @@ let MovieIntroductionTableViewCellId: String = "MovieIntroductionTableViewCell"
 let MovieSummaryTableViewCellId: String = "MovieSummaryTableViewCell"
 let DownloadCardTableViewCellId: String = "DownloadCardTableViewCell"
 let DegreeLineTableViewCellId: String = "DegreeLineTableViewCell"
-
+let DegreeRadarTableViewCellId: String = "DegreeRadarTableViewCell"
+let DegreeLifeTableViewCellId: String = "DegreeLifeTableViewCell"
 
 // NSObject
 extension NSObject {

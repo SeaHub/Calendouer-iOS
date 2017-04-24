@@ -44,8 +44,32 @@ class ProcessManager: NSObject {
     }
     
     // 获取三日天气
-    public func Get3DaysWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: WeatherObject) -> Void) {
-        
+    public func Get3DaysWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: [WeatherObject]) -> Void) {
+        let url: String = "https://api.seniverse.com/v3/weather/daily.json?key=c3zfxqulwe5jzete&location=\(latitude):\(longitude)&language=zh-Hans&unit=c&start=-1&days=5"
+        Alamofire.request(url).responseJSON { response in
+            let json = JSON(response.result.value!)
+            var res: [WeatherObject] = []
+            let location = json["results"][0]["location"]["name"].stringValue
+            let update_time = json["results"][0]["last_update"].stringValue
+            let datas = json["results"][0]["daily"].arrayValue
+            for data in datas {
+                let metaData: JSON = data
+                let weather: WeatherObject = WeatherObject(Dictionary: [:])
+                weather.date = metaData["date"].stringValue
+                weather.text_day = metaData["text_day"].stringValue
+                weather.code_day = metaData["code_day"].stringValue
+                weather.text_night = metaData["text_night"].stringValue
+                weather.code_night = metaData["code_night"].stringValue
+                weather.wind_direction = metaData["wind_direction"].stringValue
+                weather.wind_scale = metaData["wind_scale"].stringValue
+                weather.high = metaData["high"].stringValue
+                weather.low = metaData["low"].stringValue
+                weather.city = location
+                weather.last_update = update_time
+                res.append(weather)
+            }
+            handle(res)
+        }
     }
     
     // 根据坐标获取空气质量
@@ -86,6 +110,35 @@ class ProcessManager: NSObject {
             air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
             
             handle(air)
+        }
+    }
+    
+    // 获取当日生活指数
+    public func GetLifeScore(Switch authority: Bool, city: String, handle: @escaping (_ air: LifeScoreObject) -> Void) {
+        let url = "https://free-api.heweather.com/v5/suggestion?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
+        let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        Alamofire.request(urln).responseJSON { response in
+            let json = JSON(response.result.value!)
+            let lifeScore = LifeScoreObject()
+            lifeScore.city = json["HeWeather5"][0]["basic"]["city"].stringValue
+            lifeScore.air_brf = json["HeWeather5"][0]["suggestion"]["air"]["brf"].stringValue
+            lifeScore.air_txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
+            lifeScore.comf_brf = json["HeWeather5"][0]["suggestion"]["comf"]["brf"].stringValue
+            lifeScore.comf_txt = json["HeWeather5"][0]["suggestion"]["comf"]["txt"].stringValue
+            lifeScore.cw_brf = json["HeWeather5"][0]["suggestion"]["cw"]["brf"].stringValue
+            lifeScore.cw_txt = json["HeWeather5"][0]["suggestion"]["cw"]["txt"].stringValue
+            lifeScore.drsg_brf = json["HeWeather5"][0]["suggestion"]["drsg"]["brf"].stringValue
+            lifeScore.drsg_txt = json["HeWeather5"][0]["suggestion"]["drsg"]["txt"].stringValue
+            lifeScore.flu_brf = json["heweather5"][0]["suggestion"]["flu"]["brf"].stringValue
+            lifeScore.flu_txt = json["HeWeather5"][0]["suggestion"]["flu"]["txt"].stringValue
+            lifeScore.sport_brf = json["HeWeather5"][0]["suggestion"]["sport"]["brf"].stringValue
+            lifeScore.sport_txt = json["HeWeather5"][0]["suggestion"]["sport"]["txt"].stringValue
+            lifeScore.trav_brf = json["HeWeather5"][0]["suggestion"]["trav"]["brf"].stringValue
+            lifeScore.trav_txt = json["HeWeather5"][0]["suggestion"]["trav"]["txt"].stringValue
+            lifeScore.uv_brf = json["HeWeather5"][0]["suggestion"]["uv"]["brf"].stringValue
+            lifeScore.uv_txt = json["HeWeather5"][0]["suggestion"]["uv"]["txt"].stringValue
+            
+            handle(lifeScore)
         }
     }
     
