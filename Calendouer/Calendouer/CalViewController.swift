@@ -382,10 +382,12 @@ extension CalViewController: UITableViewDataSource {
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 cell.setProcessHandle(handle: { () -> Bool in
                     let result = true
-                    self.process.cacheMovies(Switch: true, handle: { (status) in
+                    self.process.cacheMovies(Switch: true, handle: { [unowned self]
+                        (status) in
                         if status {
                             self.userInfo.isCacheMovieList = true
                             self.Preferences[.userInfo] = self.userInfo
+                            // 循环引用
                             self.updateData(handle: {
                             })
                         }
