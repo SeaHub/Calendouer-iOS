@@ -10,33 +10,38 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+struct JSONParms {
+    static let kHeWeather5 = "HeWeather5"
+    static let kSuggetion  = "suggestion"
+    static let kResults    = "results"
+}
+
 class ProcessManager: NSObject {
-    
     // 获取当日天气
     public func GetWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: WeatherObject) -> Void) {
         let url: String = "https://api.thinkpage.cn/v3/weather/daily.json?key=c3zfxqulwe5jzete&location=\(latitude):\(longitude)&language=zh-Hans&unit=c"
         Alamofire.request(url).responseJSON { response in
             let json = JSON(response.result.value!)
-            var dataDic: [String: String] = [:]
-            dataDic["name"]                 = json["results"][0]["location"]["name"].stringValue
-            dataDic["path"]                 = json["results"][0]["location"]["path"].stringValue
-            dataDic["id"]                   = json["results"][0]["location"]["id"].stringValue
-            dataDic["country"]              = json["results"][0]["location"]["country"].stringValue
-            dataDic["timezone"]             = json["results"][0]["location"]["timezone"].stringValue
-            dataDic["timezone_offset"]      = json["results"][0]["location"]["timezone_offset"].stringValue
-            dataDic["date"]                 = json["results"][0]["daily"][0]["date"].stringValue
-            dataDic["text_day"]             = json["results"][0]["daily"][0]["text_day"].stringValue
-            dataDic["code_day"]             = json["results"][0]["daily"][0]["code_day"].stringValue
-            dataDic["text_night"]           = json["results"][0]["daily"][0]["text_night"].stringValue
-            dataDic["code_night"]           = json["results"][0]["daily"][0]["code_night"].stringValue
-            dataDic["high"]                 = json["results"][0]["daily"][0]["high"].stringValue
-            dataDic["low"]                  = json["results"][0]["daily"][0]["low"].stringValue
-            dataDic["precip"]               = json["results"][0]["daily"][0]["precip"].stringValue
-            dataDic["wind_direction"]       = json["results"][0]["daily"][0]["wind_direction"].stringValue
-            dataDic["wind_direction_degree"] = json["results"][0]["daily"][0]["wind_direction_degree"].stringValue
-            dataDic["wind_speed"]           = json["results"][0]["daily"][0]["wind_speed"].stringValue
-            dataDic["wind_scale"]           = json["results"][0]["daily"][0]["wind_scale"].stringValue
-            dataDic["last_update"]          = json["results"][0]["last_update"].stringValue
+            var dataDic: [String: String]    = [:]
+            dataDic["name"]                  = json[JSONParms.kResults][0]["location"]["name"].stringValue
+            dataDic["path"]                  = json[JSONParms.kResults][0]["location"]["path"].stringValue
+            dataDic["id"]                    = json[JSONParms.kResults][0]["location"]["id"].stringValue
+            dataDic["country"]               = json[JSONParms.kResults][0]["location"]["country"].stringValue
+            dataDic["timezone"]              = json[JSONParms.kResults][0]["location"]["timezone"].stringValue
+            dataDic["timezone_offset"]       = json[JSONParms.kResults][0]["location"]["timezone_offset"].stringValue
+            dataDic["date"]                  = json[JSONParms.kResults][0]["daily"][0]["date"].stringValue
+            dataDic["text_day"]              = json[JSONParms.kResults][0]["daily"][0]["text_day"].stringValue
+            dataDic["code_day"]              = json[JSONParms.kResults][0]["daily"][0]["code_day"].stringValue
+            dataDic["text_night"]            = json[JSONParms.kResults][0]["daily"][0]["text_night"].stringValue
+            dataDic["code_night"]            = json[JSONParms.kResults][0]["daily"][0]["code_night"].stringValue
+            dataDic["high"]                  = json[JSONParms.kResults][0]["daily"][0]["high"].stringValue
+            dataDic["low"]                   = json[JSONParms.kResults][0]["daily"][0]["low"].stringValue
+            dataDic["precip"]                = json[JSONParms.kResults][0]["daily"][0]["precip"].stringValue
+            dataDic["wind_direction"]        = json[JSONParms.kResults][0]["daily"][0]["wind_direction"].stringValue
+            dataDic["wind_direction_degree"] = json[JSONParms.kResults][0]["daily"][0]["wind_direction_degree"].stringValue
+            dataDic["wind_speed"]            = json[JSONParms.kResults][0]["daily"][0]["wind_speed"].stringValue
+            dataDic["wind_scale"]            = json[JSONParms.kResults][0]["daily"][0]["wind_scale"].stringValue
+            dataDic["last_update"]           = json[JSONParms.kResults][0]["last_update"].stringValue
             
             let weather: WeatherObject = WeatherObject(Dictionary: dataDic)
             handle(weather)
@@ -47,25 +52,28 @@ class ProcessManager: NSObject {
     public func Get3DaysWeather(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ weather: [WeatherObject]) -> Void) {
         let url: String = "https://api.seniverse.com/v3/weather/daily.json?key=c3zfxqulwe5jzete&location=\(latitude):\(longitude)&language=zh-Hans&unit=c&start=-1&days=5"
         Alamofire.request(url).responseJSON { response in
-            let json = JSON(response.result.value!)
+            let json                 = JSON(response.result.value!)
             var res: [WeatherObject] = []
-            let location = json["results"][0]["location"]["name"].stringValue
-            let update_time = json["results"][0]["last_update"].stringValue
-            let datas = json["results"][0]["daily"].arrayValue
+            
+            let location    = json[JSONParms.kResults][0]["location"]["name"].stringValue
+            let update_time = json[JSONParms.kResults][0]["last_update"].stringValue
+            let datas       = json[JSONParms.kResults][0]["daily"].arrayValue
+            
             for data in datas {
-                let metaData: JSON = data
+                let metaData: JSON         = data
                 let weather: WeatherObject = WeatherObject(Dictionary: [:])
-                weather.date = metaData["date"].stringValue
-                weather.text_day = metaData["text_day"].stringValue
-                weather.code_day = metaData["code_day"].stringValue
-                weather.text_night = metaData["text_night"].stringValue
-                weather.code_night = metaData["code_night"].stringValue
-                weather.wind_direction = metaData["wind_direction"].stringValue
-                weather.wind_scale = metaData["wind_scale"].stringValue
-                weather.high = metaData["high"].stringValue
-                weather.low = metaData["low"].stringValue
-                weather.city = location
-                weather.last_update = update_time
+                weather.date               = metaData["date"].stringValue
+                weather.text_day           = metaData["text_day"].stringValue
+                weather.code_day           = metaData["code_day"].stringValue
+                weather.text_night         = metaData["text_night"].stringValue
+                weather.code_night         = metaData["code_night"].stringValue
+                weather.wind_direction     = metaData["wind_direction"].stringValue
+                weather.wind_scale         = metaData["wind_scale"].stringValue
+                weather.high               = metaData["high"].stringValue
+                weather.low                = metaData["low"].stringValue
+                weather.city               = location
+                weather.last_update        = update_time
+                weather.wind_speed         = metaData["wind_speed"].stringValue
                 res.append(weather)
             }
             handle(res)
@@ -78,15 +86,15 @@ class ProcessManager: NSObject {
         Alamofire.request(url).responseJSON { response in
             let json = JSON(response.result.value!)
             let air = AirObject()
-            air.aqi = json["HeWeather5"][0]["aqi"]["city"]["aqi"].stringValue
-            air.co = json["HeWeather5"][0]["aqi"]["city"]["co"].stringValue
-            air.no2 = json["HeWeather5"][0]["aqi"]["city"]["no2"].stringValue
-            air.o3 = json["HeWeather5"][0]["aqi"]["city"]["o3"].stringValue
-            air.pm10 = json["HeWeather5"][0]["aqi"]["city"]["pm10"].stringValue
-            air.pm25 = json["HeWeather5"][0]["aqi"]["city"]["pm25"].stringValue
-            air.qlty = json["HeWeather5"][0]["aqi"]["city"]["qlty"].stringValue
-            air.so2 = json["HeWeather5"][0]["aqi"]["city"]["so2"].stringValue
-            air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
+            air.aqi = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["aqi"].stringValue
+            air.co = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["co"].stringValue
+            air.no2 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["no2"].stringValue
+            air.o3 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["o3"].stringValue
+            air.pm10 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["pm10"].stringValue
+            air.pm25 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["pm25"].stringValue
+            air.qlty = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["qlty"].stringValue
+            air.so2 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["so2"].stringValue
+            air.txt = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["air"]["txt"].stringValue
             
             handle(air)
         }
@@ -99,15 +107,15 @@ class ProcessManager: NSObject {
         Alamofire.request(urln).responseJSON { response in
             let json = JSON(response.result.value!)
             let air = AirObject()
-            air.aqi = json["HeWeather5"][0]["aqi"]["city"]["aqi"].stringValue
-            air.co = json["HeWeather5"][0]["aqi"]["city"]["co"].stringValue
-            air.no2 = json["HeWeather5"][0]["aqi"]["city"]["no2"].stringValue
-            air.o3 = json["HeWeather5"][0]["aqi"]["city"]["o3"].stringValue
-            air.pm10 = json["HeWeather5"][0]["aqi"]["city"]["pm10"].stringValue
-            air.pm25 = json["HeWeather5"][0]["aqi"]["city"]["pm25"].stringValue
-            air.qlty = json["HeWeather5"][0]["aqi"]["city"]["qlty"].stringValue
-            air.so2 = json["HeWeather5"][0]["aqi"]["city"]["so2"].stringValue
-            air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
+            air.aqi = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["aqi"].stringValue
+            air.co = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["co"].stringValue
+            air.no2 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["no2"].stringValue
+            air.o3 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["o3"].stringValue
+            air.pm10 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["pm10"].stringValue
+            air.pm25 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["pm25"].stringValue
+            air.qlty = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["qlty"].stringValue
+            air.so2 = json[JSONParms.kHeWeather5][0]["aqi"]["city"]["so2"].stringValue
+            air.txt = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["air"]["txt"].stringValue
             
             handle(air)
         }
@@ -140,25 +148,25 @@ class ProcessManager: NSObject {
         let url = "https://free-api.heweather.com/v5/suggestion?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
         let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         Alamofire.request(urln).responseJSON { response in
-            let json = JSON(response.result.value!)
-            let lifeScore = LifeScoreObject()
-            lifeScore.city = json["HeWeather5"][0]["basic"]["city"].stringValue
-            lifeScore.air_brf = json["HeWeather5"][0]["suggestion"]["air"]["brf"].stringValue
-            lifeScore.air_txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
-            lifeScore.comf_brf = json["HeWeather5"][0]["suggestion"]["comf"]["brf"].stringValue
-            lifeScore.comf_txt = json["HeWeather5"][0]["suggestion"]["comf"]["txt"].stringValue
-            lifeScore.cw_brf = json["HeWeather5"][0]["suggestion"]["cw"]["brf"].stringValue
-            lifeScore.cw_txt = json["HeWeather5"][0]["suggestion"]["cw"]["txt"].stringValue
-            lifeScore.drsg_brf = json["HeWeather5"][0]["suggestion"]["drsg"]["brf"].stringValue
-            lifeScore.drsg_txt = json["HeWeather5"][0]["suggestion"]["drsg"]["txt"].stringValue
-            lifeScore.flu_brf = json["heweather5"][0]["suggestion"]["flu"]["brf"].stringValue
-            lifeScore.flu_txt = json["HeWeather5"][0]["suggestion"]["flu"]["txt"].stringValue
-            lifeScore.sport_brf = json["HeWeather5"][0]["suggestion"]["sport"]["brf"].stringValue
-            lifeScore.sport_txt = json["HeWeather5"][0]["suggestion"]["sport"]["txt"].stringValue
-            lifeScore.trav_brf = json["HeWeather5"][0]["suggestion"]["trav"]["brf"].stringValue
-            lifeScore.trav_txt = json["HeWeather5"][0]["suggestion"]["trav"]["txt"].stringValue
-            lifeScore.uv_brf = json["HeWeather5"][0]["suggestion"]["uv"]["brf"].stringValue
-            lifeScore.uv_txt = json["HeWeather5"][0]["suggestion"]["uv"]["txt"].stringValue
+            let json            = JSON(response.result.value!)
+            let lifeScore       = LifeScoreObject()
+            lifeScore.city      = json[JSONParms.kHeWeather5][0]["basic"]["city"].stringValue
+            lifeScore.air_brf   = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["air"]["brf"].stringValue
+            lifeScore.air_txt   = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["air"]["txt"].stringValue
+            lifeScore.comf_brf  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["comf"]["brf"].stringValue
+            lifeScore.comf_txt  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["comf"]["txt"].stringValue
+            lifeScore.cw_brf    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["cw"]["brf"].stringValue
+            lifeScore.cw_txt    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["cw"]["txt"].stringValue
+            lifeScore.drsg_brf  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["drsg"]["brf"].stringValue
+            lifeScore.drsg_txt  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["drsg"]["txt"].stringValue
+            lifeScore.flu_brf   = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["flu"]["brf"].stringValue
+            lifeScore.flu_txt   = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["flu"]["txt"].stringValue
+            lifeScore.sport_brf = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["sport"]["brf"].stringValue
+            lifeScore.sport_txt = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["sport"]["txt"].stringValue
+            lifeScore.trav_brf  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["trav"]["brf"].stringValue
+            lifeScore.trav_txt  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["trav"]["txt"].stringValue
+            lifeScore.uv_brf    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["uv"]["brf"].stringValue
+            lifeScore.uv_txt    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["uv"]["txt"].stringValue
             
             handle(lifeScore)
         }
@@ -200,6 +208,7 @@ class ProcessManager: NSObject {
         }
     }
     
+    // MARK: - Caching -
     // 缓存电影数据
     public func cacheMovies(Switch authority: Bool, handle: @escaping (_ status: Bool) -> Void) {
         let top250Url = "https://api.douban.com/v2/movie/top250?start=0&count=250"
@@ -215,7 +224,7 @@ class ProcessManager: NSObject {
         }
     }
     
-    // 获取电影数据
+    // 从缓存中获取电影数据
     public func getMovieFromCache(Switch authority: Bool, handle: @escaping (_ movie: MovieObject) -> Void) {
         let today = DayObject()
         let todayMovie = DataBase.getTodayMovieFromDB(appear_day: today.getDayToString())
@@ -249,6 +258,10 @@ class ProcessManager: NSObject {
             }
         }
     }
+    
+    // TODO
+    // 从缓存中获取当日生活指数
+    // 从缓存中获取三日天气
     
     // Change
     private func jsonToArr(jsons: [JSON]) -> [String] {

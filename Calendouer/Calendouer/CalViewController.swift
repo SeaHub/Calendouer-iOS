@@ -111,7 +111,7 @@ class CalViewController: UIViewController {
     // Location Manager
     let locationManager: CLLocationManager = CLLocationManager()
     var lock = NSLock()
-    var currentLocation: CLLocation = CLLocation()
+    var currentLocation: CLLocation? = nil
     
     // Process Manager
     let process: ProcessManager = ProcessManager()
@@ -334,7 +334,8 @@ class CalViewController: UIViewController {
     }
     
     @objc private func toWeatherDetail() {
-        let weatherDetailViewController = WeatherDetailViewController()
+        let weatherDetailViewController             = WeatherDetailViewController()
+        weatherDetailViewController.currentLocation = self.currentLocation
         self.navigationController?.pushViewController(weatherDetailViewController, animated: true)
     }
 }
@@ -428,6 +429,7 @@ extension CalViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lock.lock()
         if let currentLocation = locations.last {
+            self.currentLocation = currentLocation
             printLog(message: "\(currentLocation.coordinate.latitude), \(currentLocation.coordinate.longitude)")
             let geocoder: CLGeocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(currentLocation, completionHandler: { (place, error) in
