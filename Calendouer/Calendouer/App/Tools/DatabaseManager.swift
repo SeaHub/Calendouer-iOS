@@ -15,6 +15,7 @@ let DataBase = DatabaseManager.shared
 final class DatabaseManager {
     static let shared = DatabaseManager()
     
+    // MARK: - Movie Part -
     public func addMovieToDB(movie: MovieObject, today: String) {
         let movieData = MovieData()
         movieData.title = movie.title
@@ -64,9 +65,10 @@ final class DatabaseManager {
         return MovieObject(Dictionary: [:])
     }
     
+    // MARK: - Weather Part -
     public func addWeatherToDB(weather: WeatherObject, today: String) {
         let weatherData = WeatherData()
-        
+        // TODO
         
         try! realm.write {
             realm.add(weatherData)

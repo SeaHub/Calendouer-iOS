@@ -43,11 +43,12 @@ extension UIColor {
 }
 
 // Color
-let DouGreen: UIColor = UIColor(value: 0x4CAF50, alpha: 1)
-let DouDarkGreen: UIColor = UIColor(value: 0x388E3C, alpha: 1)
+let DouRed: UIColor          = RGBA(r: 244, g: 48, b: 14, a: 1)
+let DouGreen: UIColor        = UIColor(value: 0x4CAF50, alpha: 1)
+let DouDarkGreen: UIColor    = UIColor(value: 0x388E3C, alpha: 1)
 let DouCardTextGray: UIColor = RGBA(r: 122, g: 122, b: 122, a: 1)
-let DouBackGray: UIColor = UIColor(value: 0xFAFAFA, alpha: 1)
-let DouStarYellow: UIColor = UIColor(value: 0xFFD021, alpha: 1)
+let DouBackGray: UIColor     = UIColor(value: 0xFAFAFA, alpha: 1)
+let DouStarYellow: UIColor   = UIColor(value: 0xFFD021, alpha: 1)
 
 // Font
 let DouDefalutFontName: String = ".PingFangSC-Medium"
