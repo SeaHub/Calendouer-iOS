@@ -10,6 +10,7 @@
 		2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */; };
 		2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */; };
 		2923B9A515626D8C813579C7 /* Pods_Calendouer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B2545464D916F8368106AA /* Pods_Calendouer.framework */; };
+		923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */; };
 		D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */; };
 		D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */ = {isa = PBXBuildFile; fileRef = D5094C7F1E8B8F230042B60A /* refresh-cal.json */; };
 		D5110D241E723B6C006188DB /* DayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5110D231E723B6C006188DB /* DayObject.swift */; };
@@ -27,6 +28,7 @@
 		D52624F81EACFABD008B4E76 /* DegreeLifeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624F61EACFABD008B4E76 /* DegreeLifeTableViewCell.swift */; };
 		D52624F91EACFABD008B4E76 /* DegreeLifeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D52624F71EACFABD008B4E76 /* DegreeLifeTableViewCell.xib */; };
 		D52624FC1EAD9238008B4E76 /* LifeScoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */; };
+		D52625001EAED392008B4E76 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52624FE1EAED0F8008B4E76 /* SDWebImage.framework */; };
 		D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */; };
 		D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56289991E7058A00060DDEE /* MovieObject.swift */; };
 		D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */; };
@@ -134,6 +136,7 @@
 /* Begin PBXFileReference section */
 		2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewConfigurationType.swift; sourceTree = "<group>"; };
 		2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.release.xcconfig"; sourceTree = "<group>"; };
 		C3B2545464D916F8368106AA /* Pods_Calendouer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendouer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationTestViewController.swift; path = App/Controller/debugin/AnimationTestViewController.swift; sourceTree = "<group>"; };
 		D5094C7F1E8B8F230042B60A /* refresh-cal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "refresh-cal.json"; sourceTree = "<group>"; };
@@ -153,7 +156,9 @@
 		D52624F61EACFABD008B4E76 /* DegreeLifeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DegreeLifeTableViewCell.swift; path = App/View/detail/DegreeLifeTableViewCell.swift; sourceTree = "<group>"; };
 		D52624F71EACFABD008B4E76 /* DegreeLifeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DegreeLifeTableViewCell.xib; path = App/View/detail/DegreeLifeTableViewCell.xib; sourceTree = "<group>"; };
 		D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeScoreObject.swift; path = App/Model/LifeScoreObject.swift; sourceTree = "<group>"; };
+		D52624FE1EAED0F8008B4E76 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Calendouer-bjoahaqcewbesigzwnanrlrekqer/Build/Products/Debug-iphonesimulator/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
 		D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugInViewViewController.swift; path = App/Controller/debugin/DebugInViewViewController.swift; sourceTree = "<group>"; };
+		D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D56289991E7058A00060DDEE /* MovieObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieObject.swift; path = App/Model/MovieObject.swift; sourceTree = "<group>"; };
 		D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingTableViewCell.swift; path = App/View/setting/SwitchSettingTableViewCell.swift; sourceTree = "<group>"; };
 		D562899D1E711F220060DDEE /* SwitchSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SwitchSettingTableViewCell.xib; path = App/View/setting/SwitchSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -215,6 +220,7 @@
 		D5E3B7651EA71C5300021D37 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseManager.swift; path = App/Tools/DatabaseManager.swift; sourceTree = "<group>"; };
 		D8A08A95730A76A12845FD1F /* Pods-Calendouer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer/Pods-Calendouer.debug.xcconfig"; sourceTree = "<group>"; };
 		DF9CEEE2CC15DEF670F499B5 /* Pods-Calendouer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer/Pods-Calendouer.release.xcconfig"; sourceTree = "<group>"; };
+		F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendouer_widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +228,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D52625001EAED392008B4E76 /* SDWebImage.framework in Frameworks */,
 				D573CB1F1E7597AD00D06407 /* NotificationCenter.framework in Frameworks */,
+				923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +268,8 @@
 			children = (
 				D8A08A95730A76A12845FD1F /* Pods-Calendouer.debug.xcconfig */,
 				DF9CEEE2CC15DEF670F499B5 /* Pods-Calendouer.release.xcconfig */,
+				D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */,
+				591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -277,12 +287,14 @@
 		B3E5375B9D7F39E38B4D7ADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D52624FE1EAED0F8008B4E76 /* SDWebImage.framework */,
 				D5E3B74C1EA4ACC600021D37 /* Realm.framework */,
 				D5E3B74D1EA4ACC600021D37 /* RealmSwift.framework */,
 				D5AF78571E6E6DF9006E63DC /* CoreLocation.framework */,
 				C3B2545464D916F8368106AA /* Pods_Calendouer.framework */,
 				D5AF781F1E6CF698006E63DC /* Reveal.framework */,
 				D573CB1E1E7597AD00D06407 /* NotificationCenter.framework */,
+				F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -529,9 +541,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D573CB2D1E7597AD00D06407 /* Build configuration list for PBXNativeTarget "Calendouer-widget" */;
 			buildPhases = (
+				AC32C5E0276299F6E978DAC7 /* [CP] Check Pods Manifest.lock */,
 				D573CB191E7597AD00D06407 /* Sources */,
 				D573CB1A1E7597AD00D06407 /* Frameworks */,
 				D573CB1B1E7597AD00D06407 /* Resources */,
+				08C00E3A828718E841D2AAD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -717,6 +731,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08C00E3A828718E841D2AAD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6F109DE6EE13848C1643C48B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -745,6 +774,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calendouer/Pods-Calendouer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC32C5E0276299F6E978DAC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D5136CBD47B1077F78128D34 /* [CP] Check Pods Manifest.lock */ = {
@@ -902,6 +946,7 @@
 /* Begin XCBuildConfiguration section */
 		D573CB2B1E7597AD00D06407 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;
@@ -916,6 +961,7 @@
 		};
 		D573CB2C1E7597AD00D06407 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;

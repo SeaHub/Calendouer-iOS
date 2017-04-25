@@ -72,7 +72,7 @@ class ProcessManager: NSObject {
         }
     }
     
-    // 根据坐标获取空气质量
+    // 根据坐标获取空气质量 for widget
     public func GetAir(Switch authority: Bool, latitude: CGFloat, longitude: CGFloat, handle: @escaping (_ air: AirObject) -> Void) {
         let url = "https://free-api.heweather.com/v5/weather?city=\(longitude),\(latitude)&key=c3acec2e21754c9585d6e7db857a5999"
         Alamofire.request(url).responseJSON { response in
@@ -92,7 +92,7 @@ class ProcessManager: NSObject {
         }
     }
     
-    // 根据城市名称获取空气质量
+    // 根据城市名称获取空气质量 for widget
     public func GetAir(Switch authority: Bool, city: String, handle: @escaping (_ air: AirObject) -> Void) {
         let url = "https://free-api.heweather.com/v5/weather?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
         let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
@@ -110,6 +110,28 @@ class ProcessManager: NSObject {
             air.txt = json["HeWeather5"][0]["suggestion"]["air"]["txt"].stringValue
             
             handle(air)
+        }
+    }
+    
+    // 获取一部即将上映的影片 for widget
+    public func GetOneComingSoonMovie(Switch authority: Bool, handle: @escaping (_ movie: MovieObject) -> Void) {
+        let index = Int(arc4random() % 50)
+        let url = "http://api.douban.com/v2/movie/coming_soon?start=\(index)&count=1"
+        Alamofire.request(url).responseJSON { response in
+            let json = JSON(response.result.value!)
+            let movie = MovieObject(Dictionary: [:])
+            movie.title = json["subjects"][0]["title"].stringValue
+            movie.images = json["subjects"][0]["images"]["large"].stringValue
+            movie.year = json["subjects"][0]["year"].stringValue
+            movie.genres = self.jsonToArr(jsons: json["subjects"][0]["genres"].arrayValue)
+            
+            let casts_json = json["subjects"][0]["casts"].arrayValue
+            
+            for index in 0..<casts_json.count {
+                movie.casts.append(casts_json[index]["name"].stringValue)
+            }
+            
+            handle(movie)
         }
     }
     
@@ -205,24 +227,23 @@ class ProcessManager: NSObject {
                 let getMovieUrl = "https://api.douban.com/v2/movie/subject/\(todayMovieBasic.movie_id)"
                 Alamofire.request(getMovieUrl).responseJSON(completionHandler: { (response) in
                     let json_movie = JSON(response.result.value!)
-                    var dataDic: [String: Any] = [: ]
-                    dataDic["rating"]               = "\(json_movie["rating"]["average"].floatValue)"
-                    dataDic["original_title"]       = json_movie["title"].stringValue
-                    dataDic["alt_title"]            = json_movie["alt_title"].stringValue
-                    dataDic["summary"]              = json_movie["summary"].stringValue
-                    dataDic["mobile_link"]          = json_movie["mobile_link"].stringValue
-                    dataDic["alt"]                  = json_movie["alt"].stringValue
-                    dataDic["year"]                 = json_movie["year"].stringValue
-                    dataDic["director"]             = json_movie["directors"][0]["name"].stringValue
-                    dataDic["id"]                   = json_movie["id"].stringValue
-                    dataDic["images"]               = json_movie["images"]["large"].stringValue
-                    dataDic["title"]                = json_movie["title"].stringValue
-                    dataDic["countries"]            = self.jsonToArr(jsons: json_movie["countries"].arrayValue)
-                    dataDic["genres"]               = self.jsonToArr(jsons: json_movie["genres"].arrayValue)
-                    dataDic["ratings_count"]        = json_movie["ratings_count"].intValue
-                    
-                    let movie: MovieObject = MovieObject(Dictionary: dataDic)
+                    let movie: MovieObject = MovieObject(Dictionary: [:])
+                    movie.rating = "\(json_movie["rating"]["average"].floatValue)"
+                    movie.original_title = json_movie["title"].stringValue
+                    movie.alt_title = json_movie["alt_title"].stringValue
+                    movie.summary = json_movie["summary"].stringValue
+                    movie.mobile_url = json_movie["mobile_link"].stringValue
+                    movie.alt = json_movie["alt"].stringValue
+                    movie.year = json_movie["year"].stringValue
+                    movie.director = json_movie["directors"][0]["name"].stringValue
+                    movie.id = json_movie["id"].stringValue
+                    movie.images = json_movie["images"]["large"].stringValue
+                    movie.title = json_movie["title"].stringValue
+                    movie.countries = self.jsonToArr(jsons: json_movie["countries"].arrayValue)
+                    movie.genres = self.jsonToArr(jsons: json_movie["genres"].arrayValue)
+                    movie.ratings_count = json_movie["ratings_count"].intValue
                     DataBase.addMovieToDB(movie: movie, today: today.getDayToString())
+                    
                     handle(movie)
                 })
             }

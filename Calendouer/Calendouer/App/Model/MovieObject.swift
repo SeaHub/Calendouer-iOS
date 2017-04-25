@@ -14,7 +14,6 @@ class MovieObject: NSObject {
     var wish_count: Int = 0
     var douban_site: String = ""
     var year: String = ""
-    var images: String = ""
     var alt: String = ""
     var id: String = ""
     var mobile_url: String = ""
@@ -35,6 +34,14 @@ class MovieObject: NSObject {
     var aka: String = ""
     var alt_title: String = ""
     var director: String = ""
+    var casts: [String] = []
+    var images: String = "" {
+        didSet {
+            if !images.contains("https") {
+                images = images.replacingOccurrences(of: "http", with: "https")
+            }
+        }
+    }
     
     init(Dictionary dic: [String: Any]) {
         if let rating = dic["rating"] {
@@ -117,6 +124,8 @@ class MovieObject: NSObject {
         }
     }
     
+    
+    
     public func showType() -> String {
         var cnt = 0;
         var res = ""
@@ -151,6 +160,21 @@ class MovieObject: NSObject {
     
     public func serialGenres() -> String {
         return serial(arr: genres)
+    }
+    
+    public func get3Casts() -> String {
+        var res = ""
+        for index in 0..<(self.casts.count) {
+            if index >= 3 {
+                break
+            }
+            if index == 0 {
+                res.append(casts[index])
+            } else {
+                res.append(" \(casts[index])")
+            }
+        }
+        return res
     }
     
     private func serial(arr: [String]) -> String {
