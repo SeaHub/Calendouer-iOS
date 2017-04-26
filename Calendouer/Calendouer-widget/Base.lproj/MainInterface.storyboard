@@ -41,19 +41,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多云转晴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUC-6k-nV1">
-                                <rect key="frame" x="94" y="63.5" width="48" height="17"/>
+                                <rect key="frame" x="94" y="63" width="48" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空气质量：良" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vq-zz-u4Q">
-                                <rect key="frame" x="186" y="43.5" width="72" height="17"/>
+                                <rect key="frame" x="186" y="44" width="72" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AQI: 11    PM2.5: 19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvx-kA-36F">
-                                <rect key="frame" x="186" y="63.5" width="107" height="17"/>
+                                <rect key="frame" x="186" y="63" width="107" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -84,8 +84,8 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="曾帅  王良  苗青 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88Y-yG-3U3">
-                                <rect key="frame" x="118" y="151" width="92" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="曾帅  王良  苗青 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88Y-yG-3U3">
+                                <rect key="frame" x="118" y="151" width="181" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -116,21 +116,23 @@
                             <constraint firstItem="8vq-zz-u4Q" firstAttribute="leading" secondItem="8pS-zb-y6H" secondAttribute="trailing" constant="25" id="GkF-ye-tUU"/>
                             <constraint firstAttribute="trailing" secondItem="Kd7-j6-g3E" secondAttribute="trailing" constant="15" id="Imw-OF-ceI"/>
                             <constraint firstItem="x8K-IR-4Dq" firstAttribute="leading" secondItem="88Y-yG-3U3" secondAttribute="leading" id="RFv-8g-Tk9"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Sno-RB-Imj" secondAttribute="bottom" constant="28" id="Sa7-Q4-6w5"/>
                             <constraint firstItem="Hvx-kA-36F" firstAttribute="centerY" secondItem="cUC-6k-nV1" secondAttribute="centerY" id="TRU-fU-ns4"/>
                             <constraint firstItem="Kd7-j6-g3E" firstAttribute="top" secondItem="LH4-sX-WB8" secondAttribute="bottom" constant="8" id="UV7-D1-kRy"/>
-                            <constraint firstItem="ZDo-cY-gTK" firstAttribute="top" secondItem="88Y-yG-3U3" secondAttribute="bottom" id="Y8R-G4-pun"/>
                             <constraint firstItem="HJ4-kA-qoB" firstAttribute="centerY" secondItem="gQN-1Z-8nX" secondAttribute="centerY" id="YQe-tK-Qhh"/>
                             <constraint firstItem="cUC-6k-nV1" firstAttribute="top" secondItem="8pS-zb-y6H" secondAttribute="bottom" constant="2" id="dls-tS-y6E"/>
                             <constraint firstItem="LH4-sX-WB8" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="hYS-qk-3XH"/>
                             <constraint firstItem="Sno-RB-Imj" firstAttribute="leading" secondItem="ZDo-cY-gTK" secondAttribute="leading" id="ja1-7I-BdE"/>
                             <constraint firstItem="LH4-sX-WB8" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="15" id="kyO-zo-J3X"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="gQN-1Z-8nX" secondAttribute="bottom" constant="18" id="nHy-vf-rwd"/>
+                            <constraint firstItem="HJ4-kA-qoB" firstAttribute="leading" secondItem="88Y-yG-3U3" secondAttribute="trailing" constant="8" id="oAv-Jh-0mn"/>
                             <constraint firstItem="cUC-6k-nV1" firstAttribute="leading" secondItem="8pS-zb-y6H" secondAttribute="leading" id="oaR-7e-ExA"/>
                             <constraint firstItem="88Y-yG-3U3" firstAttribute="top" secondItem="x8K-IR-4Dq" secondAttribute="bottom" constant="10" id="pkS-8f-6xF"/>
                             <constraint firstItem="Kd7-j6-g3E" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="15" id="qFe-lg-5Kq"/>
                             <constraint firstItem="8vq-zz-u4Q" firstAttribute="centerY" secondItem="8pS-zb-y6H" secondAttribute="centerY" id="uZq-p3-Xhs"/>
                             <constraint firstItem="88Y-yG-3U3" firstAttribute="centerY" secondItem="gQN-1Z-8nX" secondAttribute="centerY" id="wap-eD-rNO"/>
                             <constraint firstItem="Hvx-kA-36F" firstAttribute="leading" secondItem="8vq-zz-u4Q" secondAttribute="leading" id="yud-Me-qh3"/>
+                            <constraint firstItem="ZDo-cY-gTK" firstAttribute="top" secondItem="88Y-yG-3U3" secondAttribute="bottom" id="zfX-L0-652"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
