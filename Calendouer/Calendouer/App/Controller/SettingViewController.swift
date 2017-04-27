@@ -51,6 +51,7 @@ class SettingViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        self.titleBarButton.setTitleColor(.white, for: .normal)
     }
     
     private func initialView() {
@@ -76,7 +77,6 @@ class SettingViewController: UIViewController {
         thirdTap.numberOfTapsRequired = 3
         thirdTap.numberOfTouchesRequired = 1
         self.titleBarButton.addGestureRecognizer(thirdTap)
-        self.titleBarButton.setTitleColor(.white, for: .normal)
     }
     
     private func addViews() {

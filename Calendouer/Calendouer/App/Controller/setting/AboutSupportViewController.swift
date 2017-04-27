@@ -1,14 +1,14 @@
 //
-//  AboutAppViewController.swift
+//  AboutSupportViewController.swift
 //  Calendouer
 //
-//  Created by 段昊宇 on 2017/4/26.
+//  Created by 段昊宇 on 2017/4/27.
 //  Copyright © 2017年 Desgard_Duan. All rights reserved.
 //
 
 import UIKit
 
-class AboutAppViewController: UIViewController {
+class AboutSupportViewController: UIViewController {
     
     var tableView: UITableView!
 
@@ -17,11 +17,11 @@ class AboutAppViewController: UIViewController {
         initialViews()
         addViews()
     }
-    
+
     private func initialViews() {
         view.backgroundColor = DouBackGray
         
-        title = "CALENDOUER"
+        title = "支持我们"
         
         tableView = UITableView(frame: view.bounds, style: UITableViewStyle.grouped)
         tableView.backgroundColor = DouBackGray
@@ -30,10 +30,10 @@ class AboutAppViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.allowsSelection = false
         
         tableView.register(UINib(nibName: LogoTableViewCellId, bundle: nil), forCellReuseIdentifier: LogoTableViewCellId)
-        tableView.register(UINib(nibName: AboutTextTableViewCellId, bundle: nil), forCellReuseIdentifier: AboutTextTableViewCellId)
+        tableView.register(UINib(nibName: TitleSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TitleSettingTableViewCellId)
+        tableView.register(UINib(nibName: TextSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TextSettingTableViewCellId)
     }
     
     private func addViews() {
@@ -41,12 +41,11 @@ class AboutAppViewController: UIViewController {
     }
 }
 
-extension AboutAppViewController: UITableViewDelegate {
+extension AboutSupportViewController: UITableViewDelegate {
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
@@ -61,7 +60,7 @@ extension AboutAppViewController: UITableViewDelegate {
     }
 }
 
-extension AboutAppViewController: UITableViewDataSource {
+extension AboutSupportViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
@@ -70,18 +69,28 @@ extension AboutAppViewController: UITableViewDataSource {
             return cell
         }
         else if indexPath.row == 1 {
-            let cell: AboutTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutTextTableViewCellId, for: indexPath) as! AboutTextTableViewCell
+            let cell: TitleSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TitleSettingTableViewCellId, for: indexPath) as! TitleSettingTableViewCell
+            cell.initialCell(title: "你可以通过以下方式支持")
+            cell.backgroundColor = .clear
             cell.selectionStyle = .none
-            cell.setToSupport {
-                self.navigationController?.pushViewController(AboutSupportViewController(), animated: true)
-            }
-            cell.setToOpenSource {
-                self.navigationController?.pushViewController(AboutOpenSourceViewController(), animated: true)
-            }
+            return cell
+        }
+        else if indexPath.row == 2 {
+            let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
+            cell.initialCell(title: "去 App Store 评价", target: "")
+            return cell
+        }
+        else if indexPath.row == 3 {
+            let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
+            cell.initialCell(title: "分享给你的朋友", target: "")
             return cell
         }
         else {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

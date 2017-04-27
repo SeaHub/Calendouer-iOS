@@ -14,6 +14,7 @@ class DebugInViewViewController: UIViewController {
         DebugIn(id: "CalViewController"),
         DebugIn(id: "AnimationTestViewController"),
         DebugIn(id: "WeatherDetailViewController"),
+        DebugIn(id: "AboutAppViewController"),
     ]
     
     var tableView: UITableView!

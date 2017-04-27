@@ -51,25 +51,27 @@ let DouBackGray: UIColor     = UIColor(value: 0xFAFAFA, alpha: 1)
 let DouStarYellow: UIColor   = UIColor(value: 0xFFD021, alpha: 1)
 
 // Font
-let DouDefalutFontName: String = ".PingFangSC-Medium"
-let DouIncFontName: String = ".PingFangSC-Regular"
-let DouCalendarFontName: String = "Arial-BoldMT"
-let DouDefalutFont: UIFont = UIFont(name: DouDefalutFontName, size: 15)!
-let DouIncFont: UIFont = UIFont(name: DouIncFontName, size: 14)!
-let DouCalendarFont: UIFont = UIFont(name: DouCalendarFontName, size: 90)!
+let DouDefalutFontName: String      = ".PingFangSC-Medium"
+let DouIncFontName: String          = ".PingFangSC-Regular"
+let DouCalendarFontName: String     = "Arial-BoldMT"
+let DouDefalutFont: UIFont          = UIFont(name: DouDefalutFontName, size: 15)!
+let DouIncFont: UIFont              = UIFont(name: DouIncFontName, size: 14)!
+let DouCalendarFont: UIFont         = UIFont(name: DouCalendarFontName, size: 90)!
 
 // Identity
-let CardTableViewCellId: String = "CardTableViewCell"
-let SwitchSettingTableViewCellId: String = "SwitchSettingTableViewCell"
-let TextSettingTableViewCellId: String = "TextSettingTableViewCell"
-let TitleSettingTableViewCellId: String = "TitleSettingTableViewCell"
-let MoviePostTableViewCellId: String = "MoviePostTableViewCell"
+let CardTableViewCellId: String             = "CardTableViewCell"
+let SwitchSettingTableViewCellId: String    = "SwitchSettingTableViewCell"
+let TextSettingTableViewCellId: String      = "TextSettingTableViewCell"
+let TitleSettingTableViewCellId: String     = "TitleSettingTableViewCell"
+let MoviePostTableViewCellId: String        = "MoviePostTableViewCell"
 let MovieIntroductionTableViewCellId: String = "MovieIntroductionTableViewCell"
-let MovieSummaryTableViewCellId: String = "MovieSummaryTableViewCell"
-let DownloadCardTableViewCellId: String = "DownloadCardTableViewCell"
-let DegreeLineTableViewCellId: String = "DegreeLineTableViewCell"
-let DegreeRadarTableViewCellId: String = "DegreeRadarTableViewCell"
-let DegreeLifeTableViewCellId: String = "DegreeLifeTableViewCell"
+let MovieSummaryTableViewCellId: String     = "MovieSummaryTableViewCell"
+let DownloadCardTableViewCellId: String     = "DownloadCardTableViewCell"
+let DegreeLineTableViewCellId: String       = "DegreeLineTableViewCell"
+let DegreeRadarTableViewCellId: String      = "DegreeRadarTableViewCell"
+let DegreeLifeTableViewCellId: String       = "DegreeLifeTableViewCell"
+let LogoTableViewCellId: String             = "LogoTableViewCell"
+let AboutTextTableViewCellId: String        = "AboutTextTableViewCell"
 
 // NSObject
 extension NSObject {
