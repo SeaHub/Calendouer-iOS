@@ -72,6 +72,7 @@ let DegreeRadarTableViewCellId: String      = "DegreeRadarTableViewCell"
 let DegreeLifeTableViewCellId: String       = "DegreeLifeTableViewCell"
 let LogoTableViewCellId: String             = "LogoTableViewCell"
 let AboutTextTableViewCellId: String        = "AboutTextTableViewCell"
+let AboutSettingTableViewCellId: String     = "AboutSettingTableViewCell"
 
 // NSObject
 extension NSObject {

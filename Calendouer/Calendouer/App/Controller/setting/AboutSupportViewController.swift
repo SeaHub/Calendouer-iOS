@@ -17,6 +17,15 @@ class AboutSupportViewController: UIViewController {
         initialViews()
         addViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Ubuntu-Light", size: 17) ?? UIFont.systemFont(ofSize: 17),
+            NSForegroundColorAttributeName: UIColor.white,
+        ]
+        self.tabBarController?.tabBar.isHidden = true
+    }
 
     private func initialViews() {
         view.backgroundColor = DouBackGray

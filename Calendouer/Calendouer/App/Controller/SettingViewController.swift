@@ -18,8 +18,7 @@ class SettingViewController: UIViewController {
     ]
     
     let SettingWeatherCell: [String: Int] = [
-        "IrWeather": 1,
-        "FrequencyWeather": 2,
+        "FrequencyWeather": 1,
     ]
     
     let SettingMovieCell: [String: Int] = [
@@ -27,10 +26,10 @@ class SettingViewController: UIViewController {
     ]
     
     let SettingAboutCell: [String: Int] = [
-        "AuthorAbout": 1,
-        "ConnectAbout": 2,
-        "AppVersionAbout": 3,
-        "ShareAbout": 4,
+        "AboutApp": 1,
+        "CommentApp": 2,
+        "ShareApp": 3,
+        "DevelopeApp": 4,
     ]
     
     let SectionHeaderHeight: CGFloat = 5
@@ -52,6 +51,10 @@ class SettingViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
         self.titleBarButton.setTitleColor(.white, for: .normal)
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Ubuntu-Light", size: 17) ?? UIFont.systemFont(ofSize: 17),
+            NSForegroundColorAttributeName: UIColor.white,
+        ]
     }
     
     private func initialView() {
@@ -67,6 +70,7 @@ class SettingViewController: UIViewController {
         tableView.register(UINib(nibName: SwitchSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: SwitchSettingTableViewCellId)
         tableView.register(UINib(nibName: TextSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TextSettingTableViewCellId)
         tableView.register(UINib(nibName: TitleSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TitleSettingTableViewCellId)
+        tableView.register(UINib(nibName: AboutSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: AboutSettingTableViewCellId)
         
         // Userdefault
         let userInfo: UserInfo = Preferences[.userInfo]!
@@ -138,15 +142,6 @@ extension SettingViewController: UITableViewDataSource {
                 cell.selectionStyle = .none
                 return cell
             }
-            else if indexPath.row == SettingWeatherCell["IrWeather"]! {
-                let cell: SwitchSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingTableViewCellId, for: indexPath) as! SwitchSettingTableViewCell
-                cell.selectionStyle = .none
-                cell.initialCell(title: "空气质量推送",status: self.userInfo.isReceiveReport,  switchAction: { (status) in
-                    self.userInfo.isReceiveReport = status
-                    self.Preferences[.userInfo] = self.userInfo
-                })
-                return cell
-            }
             else if indexPath.row == SettingWeatherCell["FrequencyWeather"]! {
                 let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
                 cell.initialCell(title: "推送频率", target: "3小时")
@@ -175,24 +170,26 @@ extension SettingViewController: UITableViewDataSource {
                 cell.selectionStyle = .none
                 return cell
             }
-            else if indexPath.row == SettingAboutCell["AuthorAbout"] {
-                let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                cell.initialCell(title: "关于作者", target: "")
+            else if indexPath.row == SettingAboutCell["AboutApp"] {
+                let cell: AboutSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutSettingTableViewCellId, for: indexPath) as! AboutSettingTableViewCell
+                cell.initialCell(title: "关于")
                 return cell
             }
-            else if indexPath.row == SettingAboutCell["ConnectAbout"] {
-                let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                cell.initialCell(title: "联系作者", target: "")
+            else if indexPath.row == SettingAboutCell["CommentApp"] {
+                let cell: AboutSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutSettingTableViewCellId, for: indexPath) as! AboutSettingTableViewCell
+                cell.initialCell(title: "吐槽")
+
                 return cell
             }
-            else if indexPath.row == SettingAboutCell["AppVersionAbout"] {
-                let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                cell.initialCell(title: "版本信息", target: "2.0")
+            else if indexPath.row == SettingAboutCell["ShareApp"] {
+                let cell: AboutSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutSettingTableViewCellId, for: indexPath) as! AboutSettingTableViewCell
+                cell.initialCell(title: "支持")
+
                 return cell
             }
-            else if indexPath.row == SettingAboutCell["ShareAbout"] {
-                let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                cell.initialCell(title: "分享日历", target: "")
+            else if indexPath.row == SettingAboutCell["DevelopeApp"] {
+                let cell: AboutSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutSettingTableViewCellId, for: indexPath) as! AboutSettingTableViewCell
+                cell.initialCell(title: "一起开发")
                 return cell
             }
             
@@ -205,5 +202,22 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.section {
+        case SettingSectionType["AboutSection"]!:
+            if indexPath.row == SettingAboutCell["AboutApp"] {
+                navigationController?.pushViewController(AboutAppViewController(), animated: true)
+            }
+            else if indexPath.row == SettingAboutCell["CommentApp"] {
+                
+            }
+            else if indexPath.row == SettingAboutCell["ShareApp"] {
+                navigationController?.pushViewController(AboutSupportViewController(), animated: true)
+            }
+            else if indexPath.row == SettingAboutCell["DevelopeApp"] {
+            }
+        default:
+            break
+        }
     }
 }

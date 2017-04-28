@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="LithosPro-Regular.otf">
-            <string>LithosPro-Regular</string>
+        <array key="LithosPro-Bold.otf">
+            <string>LithosPro-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -31,8 +31,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CALENDOUER - V1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGR-T9-Uf7">
-                        <rect key="frame" x="98" y="149" width="180.5" height="17"/>
-                        <fontDescription key="fontDescription" name="LithosPro-Regular" family="Lithos Pro" pointSize="17"/>
+                        <rect key="frame" x="94.5" y="149" width="187" height="17"/>
+                        <fontDescription key="fontDescription" name="LithosPro-Bold" family="Lithos Pro" pointSize="17"/>
                         <color key="textColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     </label>

@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>LithosPro-Bold.otf</string>
 		<string>LithosPro-Regular.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
