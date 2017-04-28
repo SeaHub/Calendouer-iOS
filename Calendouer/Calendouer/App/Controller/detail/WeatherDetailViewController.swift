@@ -12,6 +12,7 @@ import CoreLocation
 class WeatherDetailViewController: UIViewController {
     var tableView: UITableView!
     var refreshButton: UIButton!
+    var refreshBarButton: UIBarButtonItem!
     let userInfo                        = PreferenceManager.shared[.userInfo]!
     let process: ProcessManager         = ProcessManager()
     var weatherData: [WeatherObject]    = []
@@ -29,7 +30,7 @@ class WeatherDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden            = true
-        self.updateData { _ in }
+        self.updateData()
     }
 
     private func initialViews() {
@@ -52,27 +53,22 @@ class WeatherDetailViewController: UIViewController {
         tableView.register(UINib(nibName: DegreeLifeTableViewCellId, bundle: nil),
                            forCellReuseIdentifier: DegreeLifeTableViewCellId)
         
-        refreshButton  = UIButton(type: .custom)
-        let bgImage    = UIImage(named: "refresh")
+        refreshButton       = UIButton(type: .custom)
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        let bgImage         = UIImage(named: "refresh")
+        refreshBarButton    = UIBarButtonItem(customView: refreshButton)
         refreshButton.setBackgroundImage(bgImage, for: .normal)
         refreshButton.setBackgroundImage(bgImage, for: .highlighted)
-        refreshButton.addTarget(self, action: #selector(updateData(handle:)), for: .touchUpInside)
+        refreshButton.addTarget(self, action: #selector(updateData), for: .touchUpInside)
     }
     
     private func addViews() {
         view.addSubview(tableView)
-        view.addSubview(refreshButton)
-        
-        refreshButton.snp.makeConstraints { (make) in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.top.equalTo(view.snp.top).offset(10)
-            make.right.equalTo(view.snp.right).offset(-10)
-        }
+        self.navigationItem.rightBarButtonItem = refreshBarButton
     }
     
     // MARK: - Data related -
-    @objc private func updateData(handle: @escaping (_ isSucceeded: Bool) -> Void) {
+    @objc private func updateData() {
         // Refresh button rotates
         UIView.animate(withDuration:0.5, animations: { () -> Void in
             self.refreshButton.transform = CGAffineTransform(rotationAngle: .pi)
@@ -81,12 +77,11 @@ class WeatherDetailViewController: UIViewController {
         // TODO: We should check network status here...
         
         UIView.animate(withDuration: 0.5, delay: 0.45, options: .curveEaseIn, animations: { () -> Void in
-            self.refreshButton.transform = CGAffineTransform(rotationAngle: .pi)
+            self.refreshButton.transform = CGAffineTransform(rotationAngle: .pi * 2)
         }, completion: nil)
         
         // Update data from cache or network
         guard userInfo.isReceive3DayWeather else {
-            handle(false)
             return
         }
         
@@ -100,7 +95,6 @@ class WeatherDetailViewController: UIViewController {
             self.updateDataFromNetwork { [unowned self] in
                 self.cacheWriting {
                     printLog(message: "updateDataFromNetwork and cacheWriting now")
-                    handle(true)
                 }
             }
                 
@@ -109,7 +103,6 @@ class WeatherDetailViewController: UIViewController {
         
         self.updateDataFromCache {
             printLog(message: "updateDataFromCache")
-            handle(true)
         }
     }
     
