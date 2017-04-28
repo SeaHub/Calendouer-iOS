@@ -10,6 +10,7 @@
 		2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */; };
 		2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */; };
 		2923B9A515626D8C813579C7 /* Pods_Calendouer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B2545464D916F8368106AA /* Pods_Calendouer.framework */; };
+		524556D01EB0C77E00FFD1FE /* LifeScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */; };
 		923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */; };
 		D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */; };
 		D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */ = {isa = PBXBuildFile; fileRef = D5094C7F1E8B8F230042B60A /* refresh-cal.json */; };
@@ -149,6 +150,7 @@
 /* Begin PBXFileReference section */
 		2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewConfigurationType.swift; sourceTree = "<group>"; };
 		2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeScoreData.swift; sourceTree = "<group>"; };
 		591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.release.xcconfig"; sourceTree = "<group>"; };
 		C3B2545464D916F8368106AA /* Pods_Calendouer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendouer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationTestViewController.swift; path = App/Controller/debugin/AnimationTestViewController.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			children = (
 				D5E3B7581EA5C6EC00021D37 /* MovieData.swift */,
 				D52624F41EAC8DC0008B4E76 /* WeatherData.swift */,
+				524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				D5E3B75B1EA5D1E600021D37 /* LaunchAnimationView.swift in Sources */,
 				D54CA53A1EB2D90E0081BD41 /* AboutSettingTableViewCell.swift in Sources */,
 				D5110D241E723B6C006188DB /* DayObject.swift in Sources */,
+				524556D01EB0C77E00FFD1FE /* LifeScoreData.swift in Sources */,
 				D5D706901E68612800F61871 /* CalViewController.swift in Sources */,
 				D573CB2F1E76828900D06407 /* PreferenceManager.swift in Sources */,
 				D52624EE1EAC43A5008B4E76 /* Agrume.swift in Sources */,

@@ -56,14 +56,14 @@ class DegreeLifeTableViewCell: UITableViewCell {
     
     // Maybe there are better solutions??？
     private func updateTextColor() {
-        self.airQuantityBriefLabel.textColor     = self.chooseColorByContent(self.airQuantityBriefLabel.text!,     badStrs: ["低"],            goodStrs: ["高"])
-        self.comfortQuantityBriefLabel.textColor = self.chooseColorByContent(self.comfortQuantityBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["较舒适"])
+        self.airQuantityBriefLabel.textColor     = self.chooseColorByContent(self.airQuantityBriefLabel.text!,     badStrs: ["较差，很差"],              goodStrs: ["优"])
+        self.comfortQuantityBriefLabel.textColor = self.chooseColorByContent(self.comfortQuantityBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["舒适", "较舒适"])
         self.carWashingBriefLabel.textColor      = self.chooseColorByContent(self.carWashingBriefLabel.text!,      badStrs: ["不宜"],          goodStrs: ["较适宜"])
         self.clothesDressingBriefLabel.textColor = self.chooseColorByContent(self.clothesDressingBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["较舒适"])
-        self.coldCatchingBriefLabel.textColor    = self.chooseColorByContent(self.coldCatchingBriefLabel.text!,    badStrs: ["较易发", "易发"], goodStrs: ["不易发"])
-        self.sportsDoingBriefLabel.textColor     = self.chooseColorByContent(self.sportsDoingBriefLabel.text!,     badStrs: ["较不宜", "不宜"], goodStrs: ["适宜"])
-        self.travellingBriefLabel.textColor      = self.chooseColorByContent(self.travellingBriefLabel.text!,      badStrs: ["较不宜", "不宜"], goodStrs: ["适宜"])
-        self.ultravioletBriefLabel.textColor     = self.chooseColorByContent(self.ultravioletBriefLabel.text!,     badStrs: ["强", "较强"],    goodStrs: ["最弱", "较弱"])
+        self.coldCatchingBriefLabel.textColor    = self.chooseColorByContent(self.coldCatchingBriefLabel.text!,    badStrs: ["易发"], goodStrs: ["少发"])
+        self.sportsDoingBriefLabel.textColor     = self.chooseColorByContent(self.sportsDoingBriefLabel.text!,     badStrs: ["不宜"], goodStrs: ["较适宜", "适宜"])
+        self.travellingBriefLabel.textColor      = self.chooseColorByContent(self.travellingBriefLabel.text!,      badStrs: ["不宜"], goodStrs: ["较适宜", "适宜"])
+        self.ultravioletBriefLabel.textColor     = self.chooseColorByContent(self.ultravioletBriefLabel.text!,     badStrs: ["强", "最强"],    goodStrs: ["最弱", "弱"])
     }
     
     // Maybe there are better algorithm??？

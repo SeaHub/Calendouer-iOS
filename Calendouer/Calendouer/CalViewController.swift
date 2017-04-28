@@ -223,7 +223,7 @@ class CalViewController: UIViewController {
         let isCacheMovieList = self.userInfo.isCacheMovieList
 //        let isCacheNovelList = self.userInfo.isCacheNovelList
         
-        self.process.GetDay(Switch: true) { (day) in
+        self.process.GetDay(Switch: true) { [unowned self](day) in
             self.monthLabel.changeText(data: day.getMonth())
             self.weekdayLabel.changeText(data: day.getWeekDay())
             self.lunarLabel.changeText(data: day.getLunnerDay())
@@ -231,7 +231,7 @@ class CalViewController: UIViewController {
         }
        
         if isReceiveMovie && isCacheMovieList {
-            self.process.getMovieFromCache(Switch: true, handle: { (movie) in
+            self.process.getMovieFromCache(Switch: true, handle: { [unowned self](movie) in
                 self.cardData.append(movie)
                 self.tableView.reloadData(animated: true)
             })
@@ -253,7 +253,7 @@ class CalViewController: UIViewController {
         let isCacheMovieList = self.userInfo.isCacheMovieList
         
         if isReceiveMovie && isCacheMovieList {
-            self.process.getMovieFromCache(Switch: true, handle: { (movie) in
+            self.process.getMovieFromCache(Switch: true, handle: { [unowned self](movie) in
                 self.cardData.append(movie)
                 self.tableView.reloadData(animated: true)
                 handle()
@@ -380,14 +380,12 @@ extension CalViewController: UITableViewDataSource {
             else if cardData[indexPath.row].classForCoder == BlankCardObject.self {
                 let cell: DownloadCardTableViewCell = tableView.dequeueReusableCell(withIdentifier: DownloadCardTableViewCellId, for: indexPath) as! DownloadCardTableViewCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
-                cell.setProcessHandle(handle: { () -> Bool in
+                cell.setProcessHandle(handle: { [unowned self]() -> Bool in
                     let result = true
-                    self.process.cacheMovies(Switch: true, handle: { [unowned self]
-                        (status) in
+                    self.process.cacheMovies(Switch: true, handle: { [unowned self](status) in
                         if status {
                             self.userInfo.isCacheMovieList = true
                             self.Preferences[.userInfo] = self.userInfo
-                            // 循环引用
                             self.updateData(handle: {
                             })
                         }
@@ -448,8 +446,7 @@ extension CalViewController: CLLocationManagerDelegate {
                         printLog (message: "时间戳 - Now: \(now) Last: \(last)")
                         
                         if last > 0 {
-                            // 暂时设置为 10 分钟
-//                            if now - last < 2 && self.userInfo.weatherMsg.count == 4{
+                            // 暂时设置为2小时
                             if now - last < 60 * 60 * 2 && self.userInfo.weatherMsg.count == 4{
                                 printLog(message: "无需更新")
                                 self.degreeLabel.text = self.userInfo.weatherMsg[0]
@@ -462,7 +459,7 @@ extension CalViewController: CLLocationManagerDelegate {
                         
                         let la = currentLocation.coordinate.latitude
                         let lo = currentLocation.coordinate.longitude
-                        self.process.GetWeather(Switch: true, latitude: CGFloat(la), longitude: CGFloat(lo), handle: { (weather) in
+                        self.process.GetWeather(Switch: true, latitude: CGFloat(la), longitude: CGFloat(lo), handle: { [unowned self](weather) in
                             self.degreeLabel.changeText(data: "\(weather.low)°C | \(weather.high)°C")
                             self.weatherLabel.changeText(data: "\(weather.text_day)，\(weather.text_night)")
                             self.updateTimeLabel.changeText(data: "更新：\(weather.last_update)")

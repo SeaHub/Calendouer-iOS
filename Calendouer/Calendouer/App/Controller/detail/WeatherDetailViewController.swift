@@ -11,11 +11,14 @@ import CoreLocation
 
 class WeatherDetailViewController: UIViewController {
     var tableView: UITableView!
+    var refreshButton: UIButton!
+    let userInfo                        = PreferenceManager.shared[.userInfo]!
     let process: ProcessManager         = ProcessManager()
     var weatherData: [WeatherObject]    = []
     var lifeScoreData: LifeScoreObject? = nil
     var currentLocation: CLLocation?    = nil
     
+    // MARK: - View related -
     override func viewDidLoad() {
         super.viewDidLoad()
         initialViews()
@@ -26,48 +29,124 @@ class WeatherDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden            = true
-        self.updateData { }
+        self.updateData { _ in }
     }
 
     private func initialViews() {
-        self.title = "\u{2600} 天气"
+        self.title                = "\u{2600} 天气"
         self.view.backgroundColor = DouBackGray
-        
-        let barbak = UIImage(color: DouGreen)
+        let barbak                = UIImage(color: DouGreen)
         self.navigationController?.navigationBar.setBackgroundImage(barbak, for: .default)
         
-        tableView                 = UITableView(frame: view.bounds, style: UITableViewStyle.grouped)
-        tableView.backgroundColor = UIColor.clear
-        tableView.separatorColor  = UIColor.clear
-        
+        tableView                          = UITableView(frame: view.bounds, style: UITableViewStyle.grouped)
+        tableView.backgroundColor          = UIColor.clear
+        tableView.separatorColor           = UIColor.clear
         tableView.estimatedRowHeight       = 30
         tableView.rowHeight                = 30
         tableView.rowHeight                = UITableViewAutomaticDimension
         tableView.dataSource               = self
         tableView.delegate                 = self
         tableView.allowsSelection          = false
+        tableView.register(UINib(nibName: DegreeRadarTableViewCellId, bundle: nil),
+                           forCellReuseIdentifier: DegreeRadarTableViewCellId)
+        tableView.register(UINib(nibName: DegreeLifeTableViewCellId, bundle: nil),
+                           forCellReuseIdentifier: DegreeLifeTableViewCellId)
         
-        tableView.register(UINib(nibName: TitleSettingTableViewCellId, bundle: nil), forCellReuseIdentifier: TitleSettingTableViewCellId)
-        tableView.register(UINib(nibName: DegreeRadarTableViewCellId, bundle: nil), forCellReuseIdentifier: DegreeRadarTableViewCellId)
-        tableView.register(UINib(nibName: DegreeLifeTableViewCellId, bundle: nil), forCellReuseIdentifier: DegreeLifeTableViewCellId)
+        refreshButton  = UIButton(type: .custom)
+        let bgImage    = UIImage(named: "refresh")
+        refreshButton.setBackgroundImage(bgImage, for: .normal)
+        refreshButton.setBackgroundImage(bgImage, for: .highlighted)
+        refreshButton.addTarget(self, action: #selector(updateData(handle:)), for: .touchUpInside)
     }
     
     private func addViews() {
         view.addSubview(tableView)
+        view.addSubview(refreshButton)
+        
+        refreshButton.snp.makeConstraints { (make) in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.top.equalTo(view.snp.top).offset(10)
+            make.right.equalTo(view.snp.right).offset(-10)
+        }
     }
     
-    // TODO: 缓存机制
-    private func updateData(handle: @escaping () -> Void) {
+    // MARK: - Data related -
+    @objc private func updateData(handle: @escaping (_ isSucceeded: Bool) -> Void) {
+        // Refresh button rotates
+        UIView.animate(withDuration:0.5, animations: { () -> Void in
+            self.refreshButton.transform = CGAffineTransform(rotationAngle: .pi)
+        })
+        
+        // TODO: We should check network status here...
+        
+        UIView.animate(withDuration: 0.5, delay: 0.45, options: .curveEaseIn, animations: { () -> Void in
+            self.refreshButton.transform = CGAffineTransform(rotationAngle: .pi)
+        }, completion: nil)
+        
+        // Update data from cache or network
+        guard userInfo.isReceive3DayWeather else {
+            handle(false)
+            return
+        }
+        
+        // 12小时过期
+        let kCacheExistedTimeout = 60 * 60 * 12
+        guard userInfo.isCacheLifeScore
+            && userInfo.isCache3DayWeather
+            && userInfo.weatherDetailedCacheExistedTime > 0
+            && userInfo.weatherDetailedCacheExistedTime < kCacheExistedTimeout else {
+                
+            self.updateDataFromNetwork { [unowned self] in
+                self.cacheWriting {
+                    printLog(message: "updateDataFromNetwork and cacheWriting now")
+                    handle(true)
+                }
+            }
+                
+            return
+        }
+        
+        self.updateDataFromCache {
+            printLog(message: "updateDataFromCache")
+            handle(true)
+        }
+    }
+    
+    private func cacheWriting(handle: @escaping () -> Void) {
+        userInfo.weatherDetailedTimestamp   = Int(Date().timeIntervalSince1970)
+        userInfo._3DayWeather               = self.weatherData
+        userInfo.isCache3DayWeather         = true
+        userInfo.lifeScore                  = self.lifeScoreData ?? LifeScoreObject()
+        userInfo.isCacheLifeScore           = true
+        PreferenceManager.shared[.userInfo] = userInfo
+        handle()
+    }
+    
+    private func updateDataFromCache(handle: @escaping () -> Void) {
+        self.weatherData   = userInfo._3DayWeather
+        self.lifeScoreData = userInfo.lifeScore
+        
+        self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0), IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.fade)
+        handle()
+    }
+    
+    private func updateDataFromNetwork(handle: @escaping () -> Void) {
         self.weatherData = []
         
         if let currentLocation = self.currentLocation {
             self.process.Get3DaysWeather(Switch: true,
                                          latitude: CGFloat(currentLocation.coordinate.latitude),
-                                         longitude: CGFloat(currentLocation.coordinate.longitude)) { [unowned self](weathers) in
+                                         longitude: CGFloat(currentLocation.coordinate.longitude)) {
+                                            [unowned self](weathers) in
+                                            
                 self.weatherData = weathers
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.fade)
                                             
-                self.process.GetLifeScore(Switch: true, city: (self.weatherData.first)!.city, handle: { [unowned self](lifeScore) in
+                self.process.GetLifeScore(Switch: true, city: (self.weatherData.first)!.city,
+                                          handle: {
+                                            [unowned self](lifeScore) in
+                                            
                     self.lifeScoreData = lifeScore
                     self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.fade)
                     handle()
@@ -86,6 +165,7 @@ class WeatherDetailViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate -
 extension WeatherDetailViewController: UITableViewDelegate {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +186,7 @@ extension WeatherDetailViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource -
 extension WeatherDetailViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
