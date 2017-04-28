@@ -144,8 +144,10 @@ class ProcessManager: NSObject {
     }
     
     // 获取当日生活指数
-    public func GetLifeScore(Switch authority: Bool, city: String, handle: @escaping (_ air: LifeScoreObject) -> Void) {
-        let url = "https://free-api.heweather.com/v5/suggestion?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
+    public func GetLifeScore(Switch authority: Bool,
+                             city: String,
+                             handle: @escaping (_ lifeScore: LifeScoreObject) -> Void) {
+        let url  = "https://free-api.heweather.com/v5/suggestion?city=\(city)&key=c3acec2e21754c9585d6e7db857a5999"
         let urln = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         Alamofire.request(urln).responseJSON { response in
             let json            = JSON(response.result.value!)
@@ -167,7 +169,7 @@ class ProcessManager: NSObject {
             lifeScore.trav_txt  = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["trav"]["txt"].stringValue
             lifeScore.uv_brf    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["uv"]["brf"].stringValue
             lifeScore.uv_txt    = json[JSONParms.kHeWeather5][0][JSONParms.kSuggetion]["uv"]["txt"].stringValue
-            
+            lifeScore.id        = json[JSONParms.kHeWeather5][0]["basic"]["id"].stringValue
             handle(lifeScore)
         }
     }
@@ -258,10 +260,6 @@ class ProcessManager: NSObject {
             }
         }
     }
-    
-    // TODO
-    // 从缓存中获取当日生活指数
-    // 从缓存中获取三日天气
     
     // Change
     private func jsonToArr(jsons: [JSON]) -> [String] {

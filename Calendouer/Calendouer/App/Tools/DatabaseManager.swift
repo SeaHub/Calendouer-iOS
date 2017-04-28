@@ -64,16 +64,6 @@ final class DatabaseManager {
         }
         return MovieObject(Dictionary: [:])
     }
-    
-    // MARK: - Weather Part -
-    public func addWeatherToDB(weather: WeatherObject, today: String) {
-        let weatherData = WeatherData()
-        // TODO
-        
-        try! realm.write {
-            realm.add(weatherData)
-        }
-    }
 }
 
 
