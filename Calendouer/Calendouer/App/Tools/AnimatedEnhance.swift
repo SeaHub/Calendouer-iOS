@@ -14,9 +14,23 @@ class AnimatedEnhance: NSObject {
     static let shared = AnimatedEnhance()
     
     public func getExplosion(view: UIView) {
+        if view.subviews.count > 1 {
+            if view.subviews.first?.classForCoder == ExplodeAnimationView.self {
+                let explodeView = view.subviews.first as! ExplodeAnimationView
+                explodeView.animate {}
+                return
+            }
+        }
         let explodeView = ExplodeAnimationView(frame: view.bounds)
         view.insertSubview(explodeView, at: 0)
-        explodeView.animate()
+        explodeView.animate {}
+    }
+    
+    public func getExplosionOnPoint(point: CGPoint, superView: UIView) {
+        let view = UIView.init(frame: CGRect.init(origin: point, size: CGSize.init(width: 20, height: 20)))
+        view.isUserInteractionEnabled = false
+        superView.addSubview(view)
+        getExplosion(view: view)
     }
 }
 
@@ -59,7 +73,7 @@ class ExplodeAnimationView: UIView {
         ready()
     }
     
-    public func animate() {
+    public func animate(handle: @escaping () -> Void) {
         let delayTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
             self.emitterLayer.beginTime = CACurrentMediaTime()

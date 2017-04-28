@@ -19,6 +19,7 @@ class AboutOpenSourceViewController: UIViewController {
         "lottie-ios",
         "RealmSwifty",
         "TKSwitcherCollection",
+        "Agrume",
     ]
     
     let urlDatas: [String] = [
