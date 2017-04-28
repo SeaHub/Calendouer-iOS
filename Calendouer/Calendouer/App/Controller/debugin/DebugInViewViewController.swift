@@ -14,6 +14,7 @@ class DebugInViewViewController: UIViewController {
         DebugIn(id: "CalViewController"),
         DebugIn(id: "AnimationTestViewController"),
         DebugIn(id: "WeatherDetailViewController"),
+        DebugIn(id: "AboutAppViewController"),
     ]
     
     var tableView: UITableView!
@@ -28,6 +29,10 @@ class DebugInViewViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Ubuntu-Light", size: 17) ?? UIFont.systemFont(ofSize: 17),
+            NSForegroundColorAttributeName: UIColor.white,
+        ]
     }
     
     private func initialView() {

@@ -31,6 +31,19 @@
 		D52624FC1EAD9238008B4E76 /* LifeScoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */; };
 		D52625001EAED392008B4E76 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52624FE1EAED0F8008B4E76 /* SDWebImage.framework */; };
 		D53F1E3A1E7E22F300CFE181 /* DebugInViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */; };
+		D54CA5261EB0EE8E0081BD41 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5251EB0EE8E0081BD41 /* AboutAppViewController.swift */; };
+		D54CA5291EB0F2950081BD41 /* LithosPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA5281EB0F2950081BD41 /* LithosPro-Regular.otf */; };
+		D54CA52A1EB0F2950081BD41 /* LithosPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA5281EB0F2950081BD41 /* LithosPro-Regular.otf */; };
+		D54CA52E1EB17B430081BD41 /* LogoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA52C1EB17B430081BD41 /* LogoTableViewCell.swift */; };
+		D54CA52F1EB17B430081BD41 /* LogoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54CA52D1EB17B430081BD41 /* LogoTableViewCell.xib */; };
+		D54CA5321EB187290081BD41 /* AboutTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5301EB187290081BD41 /* AboutTextTableViewCell.swift */; };
+		D54CA5331EB187290081BD41 /* AboutTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54CA5311EB187290081BD41 /* AboutTextTableViewCell.xib */; };
+		D54CA5351EB19A360081BD41 /* AboutSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5341EB19A360081BD41 /* AboutSupportViewController.swift */; };
+		D54CA5371EB1B22E0081BD41 /* AboutOpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5361EB1B22E0081BD41 /* AboutOpenSourceViewController.swift */; };
+		D54CA53A1EB2D90E0081BD41 /* AboutSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5381EB2D90E0081BD41 /* AboutSettingTableViewCell.swift */; };
+		D54CA53B1EB2D90E0081BD41 /* AboutSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54CA5391EB2D90E0081BD41 /* AboutSettingTableViewCell.xib */; };
+		D54CA53D1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */; };
+		D54CA53E1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */; };
 		D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56289991E7058A00060DDEE /* MovieObject.swift */; };
 		D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */; };
 		D562899F1E711F220060DDEE /* SwitchSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D562899D1E711F220060DDEE /* SwitchSettingTableViewCell.xib */; };
@@ -160,6 +173,17 @@
 		D52624FB1EAD9238008B4E76 /* LifeScoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeScoreObject.swift; path = App/Model/LifeScoreObject.swift; sourceTree = "<group>"; };
 		D52624FE1EAED0F8008B4E76 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Calendouer-bjoahaqcewbesigzwnanrlrekqer/Build/Products/Debug-iphonesimulator/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
 		D53F1E391E7E22F300CFE181 /* DebugInViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugInViewViewController.swift; path = App/Controller/debugin/DebugInViewViewController.swift; sourceTree = "<group>"; };
+		D54CA5251EB0EE8E0081BD41 /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutAppViewController.swift; path = App/Controller/setting/AboutAppViewController.swift; sourceTree = "<group>"; };
+		D54CA5281EB0F2950081BD41 /* LithosPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LithosPro-Regular.otf"; sourceTree = "<group>"; };
+		D54CA52C1EB17B430081BD41 /* LogoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoTableViewCell.swift; path = App/View/setting/subview/LogoTableViewCell.swift; sourceTree = "<group>"; };
+		D54CA52D1EB17B430081BD41 /* LogoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogoTableViewCell.xib; path = App/View/setting/subview/LogoTableViewCell.xib; sourceTree = "<group>"; };
+		D54CA5301EB187290081BD41 /* AboutTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutTextTableViewCell.swift; path = App/View/setting/subview/AboutTextTableViewCell.swift; sourceTree = "<group>"; };
+		D54CA5311EB187290081BD41 /* AboutTextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutTextTableViewCell.xib; path = App/View/setting/subview/AboutTextTableViewCell.xib; sourceTree = "<group>"; };
+		D54CA5341EB19A360081BD41 /* AboutSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutSupportViewController.swift; path = App/Controller/setting/AboutSupportViewController.swift; sourceTree = "<group>"; };
+		D54CA5361EB1B22E0081BD41 /* AboutOpenSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutOpenSourceViewController.swift; path = App/Controller/setting/AboutOpenSourceViewController.swift; sourceTree = "<group>"; };
+		D54CA5381EB2D90E0081BD41 /* AboutSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutSettingTableViewCell.swift; path = App/View/setting/AboutSettingTableViewCell.swift; sourceTree = "<group>"; };
+		D54CA5391EB2D90E0081BD41 /* AboutSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutSettingTableViewCell.xib; path = App/View/setting/AboutSettingTableViewCell.xib; sourceTree = "<group>"; };
+		D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LithosPro-Bold.otf"; sourceTree = "<group>"; };
 		D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D56289991E7058A00060DDEE /* MovieObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieObject.swift; path = App/Model/MovieObject.swift; sourceTree = "<group>"; };
 		D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingTableViewCell.swift; path = App/View/setting/SwitchSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -342,15 +366,48 @@
 			name = debugin;
 			sourceTree = "<group>";
 		};
+		D54CA5241EB0DB9C0081BD41 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				D54CA5251EB0EE8E0081BD41 /* AboutAppViewController.swift */,
+				D54CA5341EB19A360081BD41 /* AboutSupportViewController.swift */,
+				D54CA5361EB1B22E0081BD41 /* AboutOpenSourceViewController.swift */,
+			);
+			name = setting;
+			sourceTree = "<group>";
+		};
+		D54CA5271EB0F2840081BD41 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */,
+				D54CA5281EB0F2950081BD41 /* LithosPro-Regular.otf */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
+		D54CA52B1EB17AED0081BD41 /* subview */ = {
+			isa = PBXGroup;
+			children = (
+				D54CA52C1EB17B430081BD41 /* LogoTableViewCell.swift */,
+				D54CA52D1EB17B430081BD41 /* LogoTableViewCell.xib */,
+				D54CA5301EB187290081BD41 /* AboutTextTableViewCell.swift */,
+				D54CA5311EB187290081BD41 /* AboutTextTableViewCell.xib */,
+			);
+			name = subview;
+			sourceTree = "<group>";
+		};
 		D562899B1E70E06F0060DDEE /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				D54CA52B1EB17AED0081BD41 /* subview */,
 				D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */,
 				D562899D1E711F220060DDEE /* SwitchSettingTableViewCell.xib */,
 				D56289A01E712ABF0060DDEE /* TextSettingTableViewCell.swift */,
 				D56289A11E712ABF0060DDEE /* TextSettingTableViewCell.xib */,
 				D56289A41E712AD50060DDEE /* TitleSettingTableViewCell.swift */,
 				D56289A51E712AD50060DDEE /* TitleSettingTableViewCell.xib */,
+				D54CA5381EB2D90E0081BD41 /* AboutSettingTableViewCell.swift */,
+				D54CA5391EB2D90E0081BD41 /* AboutSettingTableViewCell.xib */,
 			);
 			name = setting;
 			sourceTree = "<group>";
@@ -467,6 +524,7 @@
 				D5D7068F1E68612800F61871 /* CalViewController.swift */,
 				D5D706C51E6CEF0600F61871 /* SettingViewController.swift */,
 				D5D706C31E6BAB9000F61871 /* TabViewController.swift */,
+				D54CA5241EB0DB9C0081BD41 /* setting */,
 				D51343AD1E84A512003EE79B /* detail */,
 				D53F1E381E7E229E00CFE181 /* debugin */,
 				2878DFDC1E7B81F900BDF37E /* tableview-future */,
@@ -503,6 +561,7 @@
 		D5D706BE1E6867B000F61871 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				D54CA5271EB0F2840081BD41 /* font */,
 				D5094C7C1E8B83280042B60A /* lottie-json */,
 				D5D706941E68612800F61871 /* Assets.xcassets */,
 				D5D706961E68612800F61871 /* LaunchScreen.storyboard */,
@@ -691,7 +750,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5E3B75F1EA613AD00021D37 /* Assets.xcassets in Resources */,
+				D54CA52A1EB0F2950081BD41 /* LithosPro-Regular.otf in Resources */,
 				D573CB251E7597AD00D06407 /* MainInterface.storyboard in Resources */,
+				D54CA53E1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,13 +768,18 @@
 				D56289A31E712ABF0060DDEE /* TextSettingTableViewCell.xib in Resources */,
 				D52624F21EAC43A5008B4E76 /* Info.plist in Resources */,
 				D5E051C11EAA446D00F20CD4 /* DegreeRadarTableViewCell.xib in Resources */,
+				D54CA52F1EB17B430081BD41 /* LogoTableViewCell.xib in Resources */,
 				D5D706951E68612800F61871 /* Assets.xcassets in Resources */,
+				D54CA53B1EB2D90E0081BD41 /* AboutSettingTableViewCell.xib in Resources */,
 				D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */,
 				D515B4C91E87910200EC7BF9 /* MovieSummaryTableViewCell.xib in Resources */,
 				D5D706931E68612800F61871 /* Main.storyboard in Resources */,
 				D52624F91EACFABD008B4E76 /* DegreeLifeTableViewCell.xib in Resources */,
+				D54CA53D1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */,
 				D5AF78281E6D2BC7006E63DC /* CardTableViewCell.xib in Resources */,
 				D5D812D21EA83DCC001737CF /* DownloadCardTableViewCell.xib in Resources */,
+				D54CA5331EB187290081BD41 /* AboutTextTableViewCell.xib in Resources */,
+				D54CA5291EB0F2950081BD41 /* LithosPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,12 +920,15 @@
 				D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */,
 				D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */,
 				D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */,
+				D54CA52E1EB17B430081BD41 /* LogoTableViewCell.swift in Sources */,
 				D56289A61E712AD50060DDEE /* TitleSettingTableViewCell.swift in Sources */,
 				D52624F01EAC43A5008B4E76 /* AgrumeServiceLocator.swift in Sources */,
 				D5AF78681E6FD691006E63DC /* WeatherObject.swift in Sources */,
 				D5AF78271E6D2BC7006E63DC /* CardTableViewCell.swift in Sources */,
 				D5D706C41E6BAB9000F61871 /* TabViewController.swift in Sources */,
+				D54CA5261EB0EE8E0081BD41 /* AboutAppViewController.swift in Sources */,
 				D5E3B75B1EA5D1E600021D37 /* LaunchAnimationView.swift in Sources */,
+				D54CA53A1EB2D90E0081BD41 /* AboutSettingTableViewCell.swift in Sources */,
 				D5110D241E723B6C006188DB /* DayObject.swift in Sources */,
 				524556D01EB0C77E00FFD1FE /* LifeScoreData.swift in Sources */,
 				D5D706901E68612800F61871 /* CalViewController.swift in Sources */,
@@ -870,11 +939,14 @@
 				D52624FC1EAD9238008B4E76 /* LifeScoreObject.swift in Sources */,
 				D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */,
 				D52624F11EAC43A5008B4E76 /* ImageDownloader.swift in Sources */,
+				D54CA5321EB187290081BD41 /* AboutTextTableViewCell.swift in Sources */,
+				D54CA5371EB1B22E0081BD41 /* AboutOpenSourceViewController.swift in Sources */,
 				D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */,
 				D5D706C01E68681000F61871 /* AppDefault.swift in Sources */,
 				D52624EF1EAC43A5008B4E76 /* AgrumeCell.swift in Sources */,
 				D5E051C31EAA56CE00F20CD4 /* AirObject.swift in Sources */,
 				D5E051B31EA9C57800F20CD4 /* WeatherDetailViewController.swift in Sources */,
+				D54CA5351EB19A360081BD41 /* AboutSupportViewController.swift in Sources */,
 				D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */,
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
 				D5CAD9B31E877ABA00669251 /* MovieIntroductionTableViewCell.swift in Sources */,

@@ -42,16 +42,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private func initialData() {
         let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
-        let status = shared.value(forKey: "status") as? String
-        let degree = shared.value(forKey: "degree") as? String
-        let city = shared.value(forKey: "city") as? String
-        let image = shared.value(forKey: "image") as? String
-        let air = shared.value(forKey: "air-qlty") as? String
-        let airMsgs = shared.value(forKey: "air-msg") as? String
-        let ablumUrl = shared.value(forKey: "movie-image") as? String
-        let movieTitle = shared.value(forKey: "movie-title") as? String
-        let movieCasts = shared.value(forKey: "movie-casts") as? String
-        let movieYear = shared.value(forKey: "movie-year") as? String
+        let status      = shared.value(forKey: "status") as? String
+        let degree      = shared.value(forKey: "degree") as? String
+        let city        = shared.value(forKey: "city") as? String
+        let image       = shared.value(forKey: "image") as? String
+        let air         = shared.value(forKey: "air-qlty") as? String
+        let airMsgs     = shared.value(forKey: "air-msg") as? String
+        let ablumUrl    = shared.value(forKey: "movie-image") as? String
+        let movieTitle  = shared.value(forKey: "movie-title") as? String
+        let movieCasts  = shared.value(forKey: "movie-casts") as? String
+        let movieYear   = shared.value(forKey: "movie-year") as? String
         let movieGenres = shared.value(forKey: "movie-genres") as? String
         
         self.cityLabel.text = city ?? ""
@@ -67,7 +67,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.airMsgsLabel.text = airMsgs
         }
         
-        self.ablumImageView.sd_setImage(with: URL(string: ablumUrl ?? ""))
+//        self.ablumImageView.sd_setImage(with: URL(string: ablumUrl ?? ""))
+        self.ablumImageView.sd_setImage(with: URL(string: ablumUrl ?? ""), placeholderImage: UIImage(named: "movie"), options: .cacheMemoryOnly)
         self.movieTitleLabel.text = movieTitle
         self.movieActorLabel.text = movieCasts
         self.movieDateLabel.text = movieYear
