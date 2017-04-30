@@ -218,10 +218,7 @@ class CalViewController: UIViewController {
     private func setupData() {
         self.cardData = []
         let isReceiveMovie = self.userInfo.isReceiveMovie
-//        let isReceiveMatter = self.userInfo.isReceiveMatter
-//        let isReceiveReport = self.userInfo.isReceiveReport
         let isCacheMovieList = self.userInfo.isCacheMovieList
-//        let isCacheNovelList = self.userInfo.isCacheNovelList
         
         self.process.GetDay(Switch: true) { [unowned self](day) in
             self.monthLabel.changeText(data: day.getMonth())
@@ -475,36 +472,16 @@ extension CalViewController: CLLocationManagerDelegate {
                             self.Preferences[.userInfo] = self.userInfo
                             
                             // 更新 Widget
-                            let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
-                            shared.set("\(weather.low)°C - \(weather.high)°C", forKey: "degree")
-                            shared.set("\(weather.text_day)转\(weather.text_night)", forKey: "status")
-                            shared.set("\(city.locality!)", forKey: "city")
-                            shared.set(weather.getWeatherIcon(), forKey: "image")
-                            shared.synchronize()
+                            widgetHelper.shareDegree(low: weather.low, high: weather.high)
+                            widgetHelper.shareStatus(text_day: weather.text_day, text_nigth: weather.text_night)
+                            widgetHelper.shareCity(city: city.locality!)
+                            widgetHelper.shareWeatherImg(image: weather.getWeatherIcon())
                         })
                         
                         self.process.GetAir(Switch: true, city: cityName, handle: { (air) in
                             // 更新 Widget
-                            let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
-                            shared.set("空气质量：\(air.qlty)", forKey: "air-qlty")
-                            shared.set("AQI: \(air.aqi)   PM2.5: \(air.pm25)", forKey: "air-msg")
-                            shared.synchronize()
-                        })
-                        
-                        self.process.GetOneComingSoonMovie(Switch: true, handle: { (movie) in
-                            SDWebImageManager.shared().imageDownloader.downloadImage(with: URL(string: movie.images), options: SDWebImageDownloaderOptions.progressiveDownload, progress: { (min, max) in
-                            }, completed: { (image, data, error, finished) in
-                                printLog(message: error)
-                            })
-                            
-                            // 更新 Widget
-                            let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
-                            shared.set(movie.title, forKey: "movie-title")
-                            shared.set(movie.get3Casts(), forKey: "movie-casts")
-                            shared.set(movie.year, forKey: "movie-year")
-                            shared.set(movie.showType(), forKey: "movie-genres")
-                            shared.set(movie.images, forKey: "movie-image")
-                            shared.synchronize()
+                            widgetHelper.shareAirQlty(air: air.qlty)
+                            widgetHelper.shareAirMsgs(aqi: air.aqi, pm25: air.pm25)
                         })
                     }
                 }

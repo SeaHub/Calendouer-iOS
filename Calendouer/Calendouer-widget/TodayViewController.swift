@@ -24,12 +24,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var ablumImageView: UIImageView!
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var movieActorLabel: UILabel!
-    @IBOutlet weak var movieDateLabel: UILabel!
-    @IBOutlet weak var movieCountryLabel: UILabel!
-    @IBOutlet weak var showButton: UILabel!
     
+    @IBOutlet weak var lifeScoreTextLabel: UILabel!
+    @IBOutlet weak var lifeScoreTitleLabel: UILabel!
+    
+    @IBOutlet weak var titleShowLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
@@ -45,14 +44,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let status      = shared.value(forKey: "status") as? String
         let degree      = shared.value(forKey: "degree") as? String
         let city        = shared.value(forKey: "city") as? String
-        let image       = shared.value(forKey: "image") as? String
+        let image       = shared.value(forKey: "weather-img") as? String
         let air         = shared.value(forKey: "air-qlty") as? String
         let airMsgs     = shared.value(forKey: "air-msg") as? String
-        let ablumUrl    = shared.value(forKey: "movie-image") as? String
-        let movieTitle  = shared.value(forKey: "movie-title") as? String
-        let movieCasts  = shared.value(forKey: "movie-casts") as? String
-        let movieYear   = shared.value(forKey: "movie-year") as? String
-        let movieGenres = shared.value(forKey: "movie-genres") as? String
+        let lifeScoreTitle = shared.value(forKey: "life-score-msg") as? String
+        let lifeScoreDetail = shared.value(forKey: "life-score-detail") as? String
+        let lifeScoreImage = shared.value(forKey: "life-score-image") as? String
         
         self.cityLabel.text = city ?? ""
         self.degreeLabel.text = degree ?? ""
@@ -66,21 +63,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.airLabel.text = air
             self.airMsgsLabel.text = airMsgs
         }
-        
-//        self.ablumImageView.sd_setImage(with: URL(string: ablumUrl ?? ""))
-        self.ablumImageView.sd_setImage(with: URL(string: ablumUrl ?? ""), placeholderImage: UIImage(named: "movie"), options: .cacheMemoryOnly)
-        self.movieTitleLabel.text = movieTitle
-        self.movieActorLabel.text = movieCasts
-        self.movieDateLabel.text = movieYear
-        self.movieCountryLabel.text = movieGenres
-            
-        self.line.alpha = 0
-        self.ablumImageView.alpha = 0
-        self.movieDateLabel.alpha = 0
-        self.movieActorLabel.alpha = 0
-        self.movieCountryLabel.alpha = 0
-        self.movieTitleLabel.alpha = 0
-        self.showButton.alpha = 0
+        self.ablumImageView.image = UIImage(named: lifeScoreImage ?? "")
+        self.lifeScoreTitleLabel.text = lifeScoreTitle ?? ""
+        self.lifeScoreTextLabel.text = lifeScoreDetail ?? ""
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -93,20 +78,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.preferredContentSize = maxSize
             self.line.alpha = 0
             self.ablumImageView.alpha = 0
-            self.movieDateLabel.alpha = 0
-            self.movieActorLabel.alpha = 0
-            self.movieCountryLabel.alpha = 0
-            self.movieTitleLabel.alpha = 0
-            self.showButton.alpha = 0
+            self.lifeScoreTextLabel.alpha = 0
+            self.lifeScoreTextLabel.alpha = 0
+            self.titleShowLabel.alpha = 0
         case .expanded:
             self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 230)
             self.line.alpha = 1
             self.ablumImageView.alpha = 1
-            self.movieDateLabel.alpha = 1
-            self.movieActorLabel.alpha = 1
-            self.movieCountryLabel.alpha = 1
-            self.movieTitleLabel.alpha = 1
-            self.showButton.alpha = 1
+            self.lifeScoreTextLabel.alpha = 1
+            self.lifeScoreTextLabel.alpha = 1
+            self.titleShowLabel.alpha = 1
         }
     }
 }
