@@ -8,16 +8,17 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class WeatherDetailViewController: UIViewController {
-    var tableView: UITableView!
-    var refreshButton: UIButton!
-    var refreshBarButton: UIBarButtonItem!
-    let userInfo                        = PreferenceManager.shared[.userInfo]!
-    let process: ProcessManager         = ProcessManager()
-    var weatherData: [WeatherObject]    = []
-    var lifeScoreData: LifeScoreObject? = nil
-    var currentLocation: CLLocation?    = nil
+    private var tableView: UITableView!
+    private var refreshButton: UIButton!
+    private var refreshBarButton: UIBarButtonItem!
+    private let userInfo                            = PreferenceManager.shared[.userInfo]!
+    private let process: ProcessManager             = ProcessManager()
+    public  var currentLocation: CLLocation?        = nil
+    fileprivate var weatherData: [WeatherObject]    = []
+    fileprivate var lifeScoreData: LifeScoreObject? = nil
     
     // MARK: - View related -
     override func viewDidLoad() {

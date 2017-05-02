@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let notificationHelper: NotificationHelper = NotificationHelper()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let navbarFont = UIFont(name: "Ubuntu-Light", size: 17) ?? UIFont.systemFont(ofSize: 17)
@@ -33,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.addSubview(launchAnimation)
         launchAnimation.animationBegin()
         
+        self.configureNotification()
         return true
     }
 
@@ -58,6 +61,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - Notification -
+    private func configureNotification() {
+        self.registerNotificationCategory()
+        UNUserNotificationCenter.current().delegate = self.notificationHelper
+        let isNotificationAlertViewControllerShown  = "isNotificationAlertViewControllerShown"
+        guard UserDefaults.standard.object(forKey: isNotificationAlertViewControllerShown) == nil
+            || UserDefaults.standard.object(forKey: isNotificationAlertViewControllerShown) as! Bool == false else {
+            return
+        }
+        
+        UIAlertController.showCancelAlert(title: "提示", msg: "豆瓣日历接下来将请求您的授权，以通知您电影与天气方面的变化", cancelBtnTitle: "我知道了") { _ in
+            UserDefaults.standard.set(true, forKey: isNotificationAlertViewControllerShown)
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (isGranted, error) in
+                guard isGranted && error == nil else {
+                    printLog(message: "通知中心 - 用户不同意授权")
+                    return
+                }
+                
+                // 远程推送 - 需推送服务器
+                // UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    private func registerNotificationCategory() {
+        let category: UNNotificationCategory = {
+            let openAppAction      = UNNotificationAction(
+                identifier: kCurrentActionIdentifier,
+                title: "打开应用",
+                options: [.foreground])
+            
+            let _6hoursLaterAction  = UNNotificationAction(
+                identifier: k6hoursLaterIdentifier,
+                title: "6小时后提醒",
+                options: [.destructive])
+            
+            return UNNotificationCategory(identifier:kNotificationCategoryKey,
+                                          actions: [openAppAction, _6hoursLaterAction],
+                                          intentIdentifiers: [],
+                                          options: [.customDismissAction])
+        }()
+        
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+    }
+    
+    // 远程推送 - 需推送服务器
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        let token = deviceToken.base64EncodedString()
+//        printLog(message: "Remote notification token is \(token)")
 
+//      JSON Format
+//
+//        {
+//            "aps":{
+//                "alert":{
+//                    "title":"I am title",
+//                    "subtitle":"I am subtitle",
+//                    "body":"I am body"
+//                },
+//                "sound":"default",
+//                "badge":1
+//            }
+//        }
+//    }
 }
 

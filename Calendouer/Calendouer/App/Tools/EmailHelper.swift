@@ -40,7 +40,7 @@ class EmailHelper: NSObject {
     
     func showSendmailErrorAlert() {
         // iOS 7 及以下弹窗提示
-        guard #available(iOS 7, *) else {
+        guard #available(iOS 8, *) else {
             let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
             sendMailErrorAlert.show()
             return

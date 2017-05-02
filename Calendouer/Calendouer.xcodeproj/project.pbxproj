@@ -11,6 +11,8 @@
 		2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */; };
 		2923B9A515626D8C813579C7 /* Pods_Calendouer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B2545464D916F8368106AA /* Pods_Calendouer.framework */; };
 		524556D01EB0C77E00FFD1FE /* LifeScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */; };
+		52CC84BF1EB867F400EC0CE5 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC84BE1EB867F400EC0CE5 /* DispatchQueue+Extensions.swift */; };
+		52CC84C21EB8718500EC0CE5 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC84C11EB8718500EC0CE5 /* NotificationHelper.swift */; };
 		52DC7B2A1EB8431C00004641 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */; };
 		923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */; };
 		D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */; };
@@ -154,6 +156,8 @@
 		2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewConfigurationType.swift; sourceTree = "<group>"; };
 		2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeScoreData.swift; sourceTree = "<group>"; };
+		52CC84BE1EB867F400EC0CE5 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
+		52CC84C11EB8718500EC0CE5 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.release.xcconfig"; sourceTree = "<group>"; };
 		C3B2545464D916F8368106AA /* Pods_Calendouer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendouer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */,
+				52CC84BE1EB867F400EC0CE5 /* DispatchQueue+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				D54CA53F1EB310C50081BD41 /* EmailHelper.swift */,
 				D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */,
 				D5E051B01EA9C51500F20CD4 /* LineChart.swift */,
+				52CC84C11EB8718500EC0CE5 /* NotificationHelper.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -941,6 +947,8 @@
 				D54CA5401EB310C50081BD41 /* EmailHelper.swift in Sources */,
 				D54CA52E1EB17B430081BD41 /* LogoTableViewCell.swift in Sources */,
 				D56289A61E712AD50060DDEE /* TitleSettingTableViewCell.swift in Sources */,
+				52CC84C21EB8718500EC0CE5 /* NotificationHelper.swift in Sources */,
+				52CC84BF1EB867F400EC0CE5 /* DispatchQueue+Extensions.swift in Sources */,
 				D52624F01EAC43A5008B4E76 /* AgrumeServiceLocator.swift in Sources */,
 				D5AF78681E6FD691006E63DC /* WeatherObject.swift in Sources */,
 				D5AF78271E6D2BC7006E63DC /* CardTableViewCell.swift in Sources */,
