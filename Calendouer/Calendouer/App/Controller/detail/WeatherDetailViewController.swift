@@ -146,6 +146,8 @@ class WeatherDetailViewController: UIViewController {
                     self.lifeScoreData = lifeScore
                     self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.fade)
                                             
+                    handle()
+                                            
                     // Widget 暂时
                     let (title, state, txt, img) = lifeScore.randomLifeScore()
                     widgetHelper.shareLifeScoreMsg(type: title, state: state)
