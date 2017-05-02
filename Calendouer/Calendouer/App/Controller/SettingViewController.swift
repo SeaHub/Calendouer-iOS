@@ -209,12 +209,19 @@ extension SettingViewController: UITableViewDataSource {
                 navigationController?.pushViewController(AboutAppViewController(), animated: true)
             }
             else if indexPath.row == SettingAboutCell["CommentApp"] {
-                
+                let mailComposeViewController = emailHelper.configuredMailComposeViewController()
+                if emailHelper.canSendMail() {
+                    self.present(mailComposeViewController, animated: true, completion: {})
+                } else {
+                    emailHelper.showSendmailErrorAlert()
+                }
             }
             else if indexPath.row == SettingAboutCell["ShareApp"] {
                 navigationController?.pushViewController(AboutSupportViewController(), animated: true)
             }
             else if indexPath.row == SettingAboutCell["DevelopeApp"] {
+                let url = "https://github.com/Desgard/Calendouer-iOS"
+                UIApplication.shared.open(URL.init(string: url)!, options: [:], completionHandler: { (finished) in })
             }
         default:
             break

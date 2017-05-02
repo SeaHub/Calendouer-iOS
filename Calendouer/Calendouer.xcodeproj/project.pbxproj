@@ -44,6 +44,8 @@
 		D54CA53B1EB2D90E0081BD41 /* AboutSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54CA5391EB2D90E0081BD41 /* AboutSettingTableViewCell.xib */; };
 		D54CA53D1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */; };
 		D54CA53E1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */; };
+		D54CA5401EB310C50081BD41 /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA53F1EB310C50081BD41 /* EmailHelper.swift */; };
+		D54CA5421EB42D460081BD41 /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CA5411EB42D460081BD41 /* WidgetHelper.swift */; };
 		D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56289991E7058A00060DDEE /* MovieObject.swift */; };
 		D562899E1E711F220060DDEE /* SwitchSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */; };
 		D562899F1E711F220060DDEE /* SwitchSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D562899D1E711F220060DDEE /* SwitchSettingTableViewCell.xib */; };
@@ -184,6 +186,8 @@
 		D54CA5381EB2D90E0081BD41 /* AboutSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutSettingTableViewCell.swift; path = App/View/setting/AboutSettingTableViewCell.swift; sourceTree = "<group>"; };
 		D54CA5391EB2D90E0081BD41 /* AboutSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutSettingTableViewCell.xib; path = App/View/setting/AboutSettingTableViewCell.xib; sourceTree = "<group>"; };
 		D54CA53C1EB2DAFC0081BD41 /* LithosPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LithosPro-Bold.otf"; sourceTree = "<group>"; };
+		D54CA53F1EB310C50081BD41 /* EmailHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailHelper.swift; path = App/Tools/EmailHelper.swift; sourceTree = "<group>"; };
+		D54CA5411EB42D460081BD41 /* WidgetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WidgetHelper.swift; path = App/Tools/WidgetHelper.swift; sourceTree = "<group>"; };
 		D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D56289991E7058A00060DDEE /* MovieObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieObject.swift; path = App/Model/MovieObject.swift; sourceTree = "<group>"; };
 		D562899C1E711F220060DDEE /* SwitchSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingTableViewCell.swift; path = App/View/setting/SwitchSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,7 +208,7 @@
 		D5AF78261E6D2BC7006E63DC /* CardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardTableViewCell.xib; path = App/View/card/CardTableViewCell.xib; sourceTree = "<group>"; };
 		D5AF782A1E6DAC38006E63DC /* Calendouer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendouer-Bridging-Header.h"; sourceTree = "<group>"; };
 		D5AF78571E6E6DF9006E63DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSwitch.swift; sourceTree = "<group>"; };
+		D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedSwitch.swift; path = ../../../AnimatedSwitch.swift; sourceTree = "<group>"; };
 		D5AF78651E6F8134006E63DC /* ProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessManager.swift; path = App/Tools/ProcessManager.swift; sourceTree = "<group>"; };
 		D5AF78671E6FD691006E63DC /* WeatherObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherObject.swift; path = App/Model/WeatherObject.swift; sourceTree = "<group>"; };
 		D5CAD9AD1E86CAE600669251 /* MoviePostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviePostTableViewCell.swift; path = App/View/detail/MoviePostTableViewCell.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 		D52624E61EAC43A5008B4E76 /* Agrume */ = {
 			isa = PBXGroup;
 			children = (
+				D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */,
 				D52624E71EAC43A5008B4E76 /* Agrume.h */,
 				D52624E81EAC43A5008B4E76 /* Agrume.swift */,
 				D52624E91EAC43A5008B4E76 /* AgrumeCell.swift */,
@@ -440,9 +445,10 @@
 			children = (
 				D52624E61EAC43A5008B4E76 /* Agrume */,
 				D573CB2E1E76828900D06407 /* PreferenceManager.swift */,
-				D5AF785A1E6E9C6D006E63DC /* AnimatedSwitch.swift */,
 				D5AF78651E6F8134006E63DC /* ProcessManager.swift */,
 				D5E3B7651EA71C5300021D37 /* DatabaseManager.swift */,
+				D54CA5411EB42D460081BD41 /* WidgetHelper.swift */,
+				D54CA53F1EB310C50081BD41 /* EmailHelper.swift */,
 				D5E051BC1EAA06C700F20CD4 /* AnimatedEnhance.swift */,
 				D5E051B01EA9C51500F20CD4 /* LineChart.swift */,
 			);
@@ -493,7 +499,6 @@
 		D5D7068C1E68612800F61871 /* Calendouer */ = {
 			isa = PBXGroup;
 			children = (
-				D5E3B75C1EA6122D00021D37 /* Calendouer.entitlements */,
 				D5D706C11E68684F00F61871 /* App */,
 				D5D706BE1E6867B000F61871 /* Config */,
 			);
@@ -577,6 +582,7 @@
 		D5D706C11E68684F00F61871 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D5E3B75C1EA6122D00021D37 /* Calendouer.entitlements */,
 				D5E3B7571EA5C62800021D37 /* Database */,
 				D5AF78591E6E9C60006E63DC /* Tools */,
 				D5D706BD1E6867A700F61871 /* Model */,
@@ -920,6 +926,8 @@
 				D5E051BD1EAA06C700F20CD4 /* AnimatedEnhance.swift in Sources */,
 				D5D812D11EA83DCC001737CF /* DownloadCardTableViewCell.swift in Sources */,
 				D562899A1E7058A00060DDEE /* MovieObject.swift in Sources */,
+				D54CA5421EB42D460081BD41 /* WidgetHelper.swift in Sources */,
+				D54CA5401EB310C50081BD41 /* EmailHelper.swift in Sources */,
 				D54CA52E1EB17B430081BD41 /* LogoTableViewCell.swift in Sources */,
 				D56289A61E712AD50060DDEE /* TitleSettingTableViewCell.swift in Sources */,
 				D52624F01EAC43A5008B4E76 /* AgrumeServiceLocator.swift in Sources */,
