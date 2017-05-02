@@ -11,6 +11,7 @@
 		2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */; };
 		2923B9A515626D8C813579C7 /* Pods_Calendouer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B2545464D916F8368106AA /* Pods_Calendouer.framework */; };
 		524556D01EB0C77E00FFD1FE /* LifeScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */; };
+		52DC7B2A1EB8431C00004641 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */; };
 		923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71BB06480C89E55CA631C3E /* Pods_Calendouer_widget.framework */; };
 		D5094C7B1E8B82D70042B60A /* AnimationTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */; };
 		D5094C801E8B8F230042B60A /* refresh-cal.json in Resources */ = {isa = PBXBuildFile; fileRef = D5094C7F1E8B8F230042B60A /* refresh-cal.json */; };
@@ -153,6 +154,7 @@
 		2878DFDD1E7B828E00BDF37E /* TableViewConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewConfigurationType.swift; sourceTree = "<group>"; };
 		2878DFDF1E7B82D600BDF37E /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		524556CF1EB0C77E00FFD1FE /* LifeScoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeScoreData.swift; sourceTree = "<group>"; };
+		52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendouer-widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendouer-widget/Pods-Calendouer-widget.release.xcconfig"; sourceTree = "<group>"; };
 		C3B2545464D916F8368106AA /* Pods_Calendouer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendouer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5094C7A1E8B82D70042B60A /* AnimationTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationTestViewController.swift; path = App/Controller/debugin/AnimationTestViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,14 @@
 			path = "App/Controller/tableview-future";
 			sourceTree = "<group>";
 		};
+		520B5BA71EB8411D005B20CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52DC7B291EB8431C00004641 /* UIAlertController+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		B3E5375B9D7F39E38B4D7ADB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +453,7 @@
 		D5AF78591E6E9C60006E63DC /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				520B5BA71EB8411D005B20CD /* Extensions */,
 				D52624E61EAC43A5008B4E76 /* Agrume */,
 				D573CB2E1E76828900D06407 /* PreferenceManager.swift */,
 				D5AF78651E6F8134006E63DC /* ProcessManager.swift */,
@@ -956,6 +967,7 @@
 				D5E051B31EA9C57800F20CD4 /* WeatherDetailViewController.swift in Sources */,
 				D54CA5351EB19A360081BD41 /* AboutSupportViewController.swift in Sources */,
 				D5D812D41EA85FBF001737CF /* BlankCardObject.swift in Sources */,
+				52DC7B2A1EB8431C00004641 /* UIAlertController+Extensions.swift in Sources */,
 				2878DFDE1E7B828E00BDF37E /* TableViewConfigurationType.swift in Sources */,
 				D5CAD9B31E877ABA00669251 /* MovieIntroductionTableViewCell.swift in Sources */,
 				2878DFE01E7B82D600BDF37E /* DemoViewController.swift in Sources */,
@@ -1035,6 +1047,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desgard.calendouer.Calendouer-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1050,6 +1063,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
 				DEVELOPMENT_TEAM = C3JGTFM664;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desgard.calendouer.Calendouer-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";

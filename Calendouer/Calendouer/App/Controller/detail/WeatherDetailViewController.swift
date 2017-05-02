@@ -114,7 +114,10 @@ class WeatherDetailViewController: UIViewController {
         userInfo.isCacheLifeScore           = true
         PreferenceManager.shared[.userInfo] = userInfo
         
-        // TODO: widget data update
+        let (title, state, txt, img) = self.lifeScoreData!.randomLifeScore()
+        widgetHelper.shareLifeScoreMsg(type: title, state: state)
+        widgetHelper.shareLifeScoreDetail(text: txt)
+        widgetHelper.shareLifeScoreImage(image: img)
         
         handle()
     }
@@ -147,23 +150,15 @@ class WeatherDetailViewController: UIViewController {
                     self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.fade)
                                             
                     handle()
-                                            
-                    // Widget 暂时
-                    let (title, state, txt, img) = lifeScore.randomLifeScore()
-                    widgetHelper.shareLifeScoreMsg(type: title, state: state)
-                    widgetHelper.shareLifeScoreDetail(text: txt)
-                    widgetHelper.shareLifeScoreImage(image: img)
                 })
             }
             
         } else {
             printLog(message: "Can`t get user`s location")
-            let alertVC      = UIAlertController(title: "提示", message: "本步骤需要使用定位信息，请打开定位后进行操作", preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.cancel, handler: { (alert) in
+            UIAlertController.showCancelAlert(title: "提示", msg: "本步骤需要使用定位信息，请打开定位后进行操作", cancelBtnTitle: "确定", cancelBlock: {
+                alert in
                 self.navigationController?.popToRootViewController(animated: true)
             })
-            alertVC.addAction(cancelAction)
-            self.present(alertVC, animated: true, completion:nil)
         }
     }
 }
