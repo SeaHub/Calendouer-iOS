@@ -59,7 +59,7 @@ class DegreeLifeTableViewCell: UITableViewCell {
         self.airQuantityBriefLabel.textColor     = self.chooseColorByContent(self.airQuantityBriefLabel.text!,     badStrs: ["较差，很差"],              goodStrs: ["优"])
         self.comfortQuantityBriefLabel.textColor = self.chooseColorByContent(self.comfortQuantityBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["舒适", "较舒适"])
         self.carWashingBriefLabel.textColor      = self.chooseColorByContent(self.carWashingBriefLabel.text!,      badStrs: ["不宜"],          goodStrs: ["较适宜"])
-        self.clothesDressingBriefLabel.textColor = self.chooseColorByContent(self.clothesDressingBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["较舒适"])
+        self.clothesDressingBriefLabel.textColor = self.chooseColorByContent(self.clothesDressingBriefLabel.text!, badStrs: ["不舒适", "不宜"], goodStrs: ["较舒适", "舒适"])
         self.coldCatchingBriefLabel.textColor    = self.chooseColorByContent(self.coldCatchingBriefLabel.text!,    badStrs: ["易发"], goodStrs: ["少发"])
         self.sportsDoingBriefLabel.textColor     = self.chooseColorByContent(self.sportsDoingBriefLabel.text!,     badStrs: ["不宜"], goodStrs: ["较适宜", "适宜"])
         self.travellingBriefLabel.textColor      = self.chooseColorByContent(self.travellingBriefLabel.text!,      badStrs: ["不宜"], goodStrs: ["较适宜", "适宜"])

@@ -113,6 +113,9 @@ class WeatherDetailViewController: UIViewController {
         userInfo.lifeScore                  = self.lifeScoreData ?? LifeScoreObject()
         userInfo.isCacheLifeScore           = true
         PreferenceManager.shared[.userInfo] = userInfo
+        
+        // TODO: widget data update
+        
         handle()
     }
     
@@ -142,7 +145,12 @@ class WeatherDetailViewController: UIViewController {
                                             
                     self.lifeScoreData = lifeScore
                     self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.fade)
-                    handle()
+                                            
+                    // Widget 暂时
+                    let (title, state, txt, img) = lifeScore.randomLifeScore()
+                    widgetHelper.shareLifeScoreMsg(type: title, state: state)
+                    widgetHelper.shareLifeScoreDetail(text: txt)
+                    widgetHelper.shareLifeScoreImage(image: img)
                 })
             }
             

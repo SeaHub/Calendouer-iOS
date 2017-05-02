@@ -46,7 +46,7 @@ class WidgetHelper: NSObject {
     
     public func shareLifeScoreImage(image: String) {
         // Description: 传入 image 名称
-        dataSharer?.set(image, forKey: "life-score-img")
+        dataSharer?.set(image, forKey: "life-score-image")
         synchronize()
     }
     

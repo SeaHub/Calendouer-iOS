@@ -79,14 +79,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.line.alpha = 0
             self.ablumImageView.alpha = 0
             self.lifeScoreTextLabel.alpha = 0
-            self.lifeScoreTextLabel.alpha = 0
+            self.lifeScoreTitleLabel.alpha = 0
             self.titleShowLabel.alpha = 0
         case .expanded:
             self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 230)
             self.line.alpha = 1
             self.ablumImageView.alpha = 1
             self.lifeScoreTextLabel.alpha = 1
-            self.lifeScoreTextLabel.alpha = 1
+            self.lifeScoreTitleLabel.alpha = 1
             self.titleShowLabel.alpha = 1
         }
     }

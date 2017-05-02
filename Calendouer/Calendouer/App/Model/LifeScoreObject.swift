@@ -127,4 +127,64 @@ class LifeScoreObject: NSObject, NSCoding {
         aCoder.encode(self.cw_txt,    forKey: LifeScoreObjectCodingKey.kCodingCw_txt)
         aCoder.encode(self.id ,       forKey: LifeScoreObjectCodingKey.kCodingID)
     }
+    
+    public func randomLifeScore() -> (String, String, String, String) {
+        var res_type: [String] = []
+        var res_qlt: [String] = []
+        var res_txt: [String] = []
+        var res_img: [String] = []
+        if air_brf == "较差" || air_brf == "很差" {
+            res_qlt.append(air_brf)
+            res_type.append("空气质量")
+            res_txt.append(air_txt)
+            res_img.append("as_air")
+        }
+        if comf_brf == "不舒适" || comf_brf == "不宜" {
+            res_type.append("舒适度")
+            res_qlt.append(comf_brf)
+            res_txt.append(comf_txt)
+            res_img.append("as_comf")
+        }
+        if drsg_brf == "不宜" || drsg_brf == "不舒适" {
+            res_type.append("穿衣指数")
+            res_qlt.append(drsg_brf)
+            res_txt.append(drsg_txt)
+            res_img.append("as_drsg")
+        }
+        if flu_brf == "易发" {
+            res_type.append("感冒指数")
+            res_qlt.append(flu_brf)
+            res_txt.append(flu_txt)
+            res_img.append("as_flu")
+        }
+        if sport_brf == "不宜" {
+            res_type.append("运动指数")
+            res_qlt.append(sport_brf)
+            res_txt.append(sport_txt)
+            res_img.append("as_sport")
+        }
+        if trav_brf == "不宜" {
+            res_type.append("旅游指数")
+            res_qlt.append(trav_brf)
+            res_txt.append(trav_txt)
+            res_img.append("as_trav")
+        }
+        if uv_brf == "强" || uv_brf == "最强" {
+            res_type.append("紫外线指数")
+            res_qlt.append(uv_brf)
+            res_txt.append(uv_txt)
+            res_img.append("as_uv")
+        }
+        if cw_brf == "不宜" {
+            res_type.append("洗车指数")
+            res_qlt.append(cw_brf)
+            res_txt.append(cw_txt)
+            res_img.append("as_cw")
+        }
+        if res_type.count > 0 {
+            let index = Int(arc4random()) % res_type.count
+            return (res_type[index], res_qlt[index], res_txt[index], res_img[index])
+        }
+        return ("", "", "", "")
+    }
 }
