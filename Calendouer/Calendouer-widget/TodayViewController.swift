@@ -13,6 +13,7 @@ import SDWebImage
 let groupIdentifier: String = "group.desgard.calendouer"
 
 class TodayViewController: UIViewController, NCWidgetProviding {
+    @IBOutlet weak var toAppButton: UIButton!
     
     @IBOutlet weak var weatherImageView: UIImageView!
     
@@ -81,6 +82,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.lifeScoreTextLabel.alpha = 0
             self.lifeScoreTitleLabel.alpha = 0
             self.titleShowLabel.alpha = 0
+            self.toAppButton.alpha = 0
         case .expanded:
             self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 230)
             self.line.alpha = 1
@@ -88,6 +90,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.lifeScoreTextLabel.alpha = 1
             self.lifeScoreTitleLabel.alpha = 1
             self.titleShowLabel.alpha = 1
+            self.toAppButton.alpha = 1
         }
+    }
+    
+    @IBAction func toApp(_ sender: Any) {
+        self.extensionContext?.open(URL.init(string: "Calendouer://")!, completionHandler: { (finished) in
+        })
     }
 }

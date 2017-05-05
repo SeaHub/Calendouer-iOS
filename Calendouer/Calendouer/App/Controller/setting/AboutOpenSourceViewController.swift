@@ -17,13 +17,18 @@ class AboutOpenSourceViewController: UIViewController {
         "Alamofire",
         "SwiftyJSON",
         "lottie-ios",
-        "RealmSwifty",
         "TKSwitcherCollection",
         "Agrume",
     ]
     
     let urlDatas: [String] = [
         "https://github.com/rs/SDWebImage",
+        "https://github.com/SnapKit/SnapKit",
+        "https://github.com/Alamofire/Alamofire",
+        "https://github.com/SwiftyJSON/SwiftyJSON",
+        "https://github.com/airbnb/lottie-ios",
+        "https://github.com/TBXark/TKSwitcherCollection",
+        "https://github.com/JanGorman/Agrume",
     ]
 
     override func viewDidLoad() {
@@ -112,5 +117,12 @@ extension AboutOpenSourceViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return
+        }
+        else {
+            let url = self.urlDatas[indexPath.row - 2]
+            UIApplication.shared.open(URL.init(string: url)!, options: [:], completionHandler: { (finished) in })
+        }
     }
 }
