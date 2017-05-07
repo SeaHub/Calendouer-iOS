@@ -101,5 +101,23 @@ extension AboutSupportViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 2 {
+            let url = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1234070552&pageNumber=0&sortOrdering=2&mt=8"
+            UIApplication.shared.open(URL.init(string: url)!, options: [:], completionHandler: { (finished) in })
+        }
+        else if indexPath.row == 3 {
+            let txt = "Calendouer - 懂你的日历"
+            let image = UIImage.init(named: "logo")
+            let url = URL.init(string: "itms-apps://itunes.apple.com/app/id1234070552")
+            let activityItems: [Any] = [
+                txt,
+                image!,
+                url!,
+            ]
+            let activityVC: UIActivityViewController = UIActivityViewController.init(activityItems: activityItems, applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: { 
+                
+            })
+        }
     }
 }

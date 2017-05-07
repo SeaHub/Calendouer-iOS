@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Calendouer-share.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>Calendouer-widget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Calendouer.xcscheme</key>
 		<dict>
@@ -18,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>D573CB1C1E7597AD00D06407</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5A57A621EBF02EF00AD5167</key>
 		<dict>
 			<key>primary</key>
 			<true/>
