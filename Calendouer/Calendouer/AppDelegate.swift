@@ -40,8 +40,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("widget")
+        if url.absoluteString.contains("desgard.calendouer.lifescore") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "lifescore"), object: "")
+        }
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type.contains("desgard.calendouer.movie") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "movie"), object: "")
+        }
+        else if shortcutItem.type.contains("desgard.calendouer.lifescore") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "lifescore"), object: "")
+        }
+        
+        completionHandler(true)
     }
     
 
