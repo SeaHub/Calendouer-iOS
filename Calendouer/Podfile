@@ -17,6 +17,7 @@ target 'Calendouer' do
     pod 'TKSwitcherCollection'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
     pod 'Charts', '~> 3.0.1'
+    pod 'Bugly'
 end
 
 target 'Calendouer-widget' do

@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchAnimation.animationBegin()
         
         self.configureNotification()
+        
+        // Bugly Setting
+        Bugly.start(withAppId: "9049604c8e")
         return true
     }
     

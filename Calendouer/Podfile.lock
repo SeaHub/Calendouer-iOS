@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.4.0)
+  - Bugly (2.4.6)
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Bugly
   - Charts (~> 3.0.1)
   - lottie-ios (~> 1.0.4)
   - SDWebImage (~> 3.8)
@@ -36,6 +38,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Bugly: 7756e72c59387b0d490f46e83ab458ae94ee7fba
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   lottie-ios: 8b2c5ba38105430a72f03ce54be90d8dac950161
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -45,6 +48,6 @@ SPEC CHECKSUMS:
   SwipeableTabBarController: a52688ad47614ba98611df30a788202db90620fe
   TKSwitcherCollection: 939c8a60c47be0db6f0327906456cac855918275
 
-PODFILE CHECKSUM: 10ebbec3536dd7c190692c618f3e9399661ef692
+PODFILE CHECKSUM: 38e3e73beacf330e3d8a3fb7c006a2bd2f8d7537
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.2.0
