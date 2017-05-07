@@ -62,6 +62,9 @@
 		D573CB2A1E7597AD00D06407 /* Calendouer-widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D573CB1D1E7597AD00D06407 /* Calendouer-widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D573CB2F1E76828900D06407 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573CB2E1E76828900D06407 /* PreferenceManager.swift */; };
 		D573CB311E768B9900D06407 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D573CB301E768B9900D06407 /* UserInfo.swift */; };
+		D5A57A661EBF02EF00AD5167 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A57A651EBF02EF00AD5167 /* ShareViewController.swift */; };
+		D5A57A691EBF02EF00AD5167 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A57A671EBF02EF00AD5167 /* MainInterface.storyboard */; };
+		D5A57A6D1EBF02EF00AD5167 /* Calendouer-share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D5A57A631EBF02EF00AD5167 /* Calendouer-share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D5AF78231E6CF97B006E63DC /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AF781F1E6CF698006E63DC /* Reveal.framework */; };
 		D5AF78271E6D2BC7006E63DC /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AF78251E6D2BC7006E63DC /* CardTableViewCell.swift */; };
 		D5AF78281E6D2BC7006E63DC /* CardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5AF78261E6D2BC7006E63DC /* CardTableViewCell.xib */; };
@@ -110,6 +113,13 @@
 			remoteGlobalIDString = D573CB1C1E7597AD00D06407;
 			remoteInfo = "Calendouer-widget";
 		};
+		D5A57A6B1EBF02EF00AD5167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5D706821E68612800F61871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5A57A621EBF02EF00AD5167;
+			remoteInfo = "Calendouer-share";
+		};
 		D5D7069F1E68612900F61871 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D5D706821E68612800F61871 /* Project object */;
@@ -133,6 +143,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D5A57A6D1EBF02EF00AD5167 /* Calendouer-share.appex in Embed App Extensions */,
 				D573CB2A1E7597AD00D06407 /* Calendouer-widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -209,6 +220,10 @@
 		D573CB261E7597AD00D06407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D573CB2E1E76828900D06407 /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferenceManager.swift; path = App/Tools/PreferenceManager.swift; sourceTree = "<group>"; };
 		D573CB301E768B9900D06407 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = App/Model/UserInfo.swift; sourceTree = "<group>"; };
+		D5A57A631EBF02EF00AD5167 /* Calendouer-share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Calendouer-share.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5A57A651EBF02EF00AD5167 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D5A57A681EBF02EF00AD5167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D5A57A6A1EBF02EF00AD5167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5AF781F1E6CF698006E63DC /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		D5AF78251E6D2BC7006E63DC /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardTableViewCell.swift; path = App/View/card/CardTableViewCell.swift; sourceTree = "<group>"; };
 		D5AF78261E6D2BC7006E63DC /* CardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardTableViewCell.xib; path = App/View/card/CardTableViewCell.xib; sourceTree = "<group>"; };
@@ -267,6 +282,13 @@
 				D52625001EAED392008B4E76 /* SDWebImage.framework in Frameworks */,
 				D573CB1F1E7597AD00D06407 /* NotificationCenter.framework in Frameworks */,
 				923FC439A57CB3FA8FF0D3F9 /* Pods_Calendouer_widget.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5A57A601EBF02EF00AD5167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +466,16 @@
 			path = "Calendouer-widget";
 			sourceTree = "<group>";
 		};
+		D5A57A641EBF02EF00AD5167 /* Calendouer-share */ = {
+			isa = PBXGroup;
+			children = (
+				D5A57A651EBF02EF00AD5167 /* ShareViewController.swift */,
+				D5A57A671EBF02EF00AD5167 /* MainInterface.storyboard */,
+				D5A57A6A1EBF02EF00AD5167 /* Info.plist */,
+			);
+			path = "Calendouer-share";
+			sourceTree = "<group>";
+		};
 		D5AF78241E6D2B72006E63DC /* card */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +528,7 @@
 				D5D706A11E68612900F61871 /* CalendouerTests */,
 				D5D706AC1E68612900F61871 /* CalendouerUITests */,
 				D573CB201E7597AD00D06407 /* Calendouer-widget */,
+				D5A57A641EBF02EF00AD5167 /* Calendouer-share */,
 				D5D7068B1E68612800F61871 /* Products */,
 				148871C3AE3F61382B416EF7 /* Pods */,
 				B3E5375B9D7F39E38B4D7ADB /* Frameworks */,
@@ -509,6 +542,7 @@
 				D5D7069E1E68612900F61871 /* CalendouerTests.xctest */,
 				D5D706A91E68612900F61871 /* CalendouerUITests.xctest */,
 				D573CB1D1E7597AD00D06407 /* Calendouer-widget.appex */,
+				D5A57A631EBF02EF00AD5167 /* Calendouer-share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -641,6 +675,23 @@
 			productReference = D573CB1D1E7597AD00D06407 /* Calendouer-widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D5A57A621EBF02EF00AD5167 /* Calendouer-share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5A57A6E1EBF02EF00AD5167 /* Build configuration list for PBXNativeTarget "Calendouer-share" */;
+			buildPhases = (
+				D5A57A5F1EBF02EF00AD5167 /* Sources */,
+				D5A57A601EBF02EF00AD5167 /* Frameworks */,
+				D5A57A611EBF02EF00AD5167 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Calendouer-share";
+			productName = "Calendouer-share";
+			productReference = D5A57A631EBF02EF00AD5167 /* Calendouer-share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D5D706891E68612800F61871 /* Calendouer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5D706B21E68612900F61871 /* Build configuration list for PBXNativeTarget "Calendouer" */;
@@ -659,6 +710,7 @@
 			);
 			dependencies = (
 				D573CB281E7597AD00D06407 /* PBXTargetDependency */,
+				D5A57A6C1EBF02EF00AD5167 /* PBXTargetDependency */,
 			);
 			name = Calendouer;
 			productName = Calendouer;
@@ -707,23 +759,28 @@
 		D5D706821E68612800F61871 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Desgard_Duan;
 				TargetAttributes = {
 					D573CB1C1E7597AD00D06407 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = C3JGTFM664;
+						DevelopmentTeam = DNL5G5M9A8;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
+					D5A57A621EBF02EF00AD5167 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = DNL5G5M9A8;
+						ProvisioningStyle = Automatic;
+					};
 					D5D706891E68612800F61871 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = C3JGTFM664;
+						DevelopmentTeam = DNL5G5M9A8;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -763,6 +820,7 @@
 				D5D7069D1E68612900F61871 /* CalendouerTests */,
 				D5D706A81E68612900F61871 /* CalendouerUITests */,
 				D573CB1C1E7597AD00D06407 /* Calendouer-widget */,
+				D5A57A621EBF02EF00AD5167 /* Calendouer-share */,
 			);
 		};
 /* End PBXProject section */
@@ -776,6 +834,14 @@
 				D54CA52A1EB0F2950081BD41 /* LithosPro-Regular.otf in Resources */,
 				D573CB251E7597AD00D06407 /* MainInterface.storyboard in Resources */,
 				D54CA53E1EB2DAFC0081BD41 /* LithosPro-Bold.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5A57A611EBF02EF00AD5167 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5A57A691EBF02EF00AD5167 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +988,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D5A57A5F1EBF02EF00AD5167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5A57A661EBF02EF00AD5167 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D5D706861E68612800F61871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1008,6 +1082,11 @@
 			target = D573CB1C1E7597AD00D06407 /* Calendouer-widget */;
 			targetProxy = D573CB271E7597AD00D06407 /* PBXContainerItemProxy */;
 		};
+		D5A57A6C1EBF02EF00AD5167 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5A57A621EBF02EF00AD5167 /* Calendouer-share */;
+			targetProxy = D5A57A6B1EBF02EF00AD5167 /* PBXContainerItemProxy */;
+		};
 		D5D706A01E68612900F61871 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D5D706891E68612800F61871 /* Calendouer */;
@@ -1025,6 +1104,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				D573CB241E7597AD00D06407 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		D5A57A671EBF02EF00AD5167 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5A57A681EBF02EF00AD5167 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -1053,11 +1140,11 @@
 			baseConfigurationReference = D55E21820783B94B71D7C611 /* Pods-Calendouer-widget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
-				DEVELOPMENT_TEAM = C3JGTFM664;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "desgard.calendouer.Calendouer-widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gua.calendouer.Calendouer-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -1069,11 +1156,41 @@
 			baseConfigurationReference = 591C52F5555C113046DD99A5 /* Pods-Calendouer-widget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Calendouer-widget/Calendouer-widget.entitlements";
-				DEVELOPMENT_TEAM = C3JGTFM664;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
 				INFOPLIST_FILE = "Calendouer-widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "desgard.calendouer.Calendouer-widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gua.calendouer.Calendouer-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D5A57A6F1EBF02EF00AD5167 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
+				INFOPLIST_FILE = "Calendouer-share/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gua.calendouer.Calendouer-share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D5A57A701EBF02EF00AD5167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
+				INFOPLIST_FILE = "Calendouer-share/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gua.calendouer.Calendouer-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -1181,8 +1298,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Calendouer/Calendouer.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = C3JGTFM664;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1210,12 +1328,14 @@
 					"-framework",
 					Reveal,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = desgard.calendouer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gua.calendouer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Calendouer/Calendouer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1227,8 +1347,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Calendouer/Calendouer.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = C3JGTFM664;
+				DEVELOPMENT_TEAM = DNL5G5M9A8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1255,11 +1376,13 @@
 					"-framework",
 					Reveal,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = desgard.calendouer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gua.calendouer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Calendouer/Calendouer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1332,6 +1455,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D5A57A6E1EBF02EF00AD5167 /* Build configuration list for PBXNativeTarget "Calendouer-share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5A57A6F1EBF02EF00AD5167 /* Debug */,
+				D5A57A701EBF02EF00AD5167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D5D706851E68612800F61871 /* Build configuration list for PBXProject "Calendouer" */ = {
 			isa = XCConfigurationList;

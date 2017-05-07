@@ -123,6 +123,7 @@ class CalViewController: UIViewController {
     var refreshControl: UIRefreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNotification()
         initialView()
         addViews()
         settingLayout()
@@ -158,6 +159,10 @@ class CalViewController: UIViewController {
         }
     }
     
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(toMoviePage(notification:)), name: NSNotification.Name(rawValue: "movie"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(toWeatherDetail), name: NSNotification.Name(rawValue: "lifescore"), object: nil)
+    }
     
     private func initialView() {
         view.backgroundColor = DouBackGray
@@ -335,6 +340,16 @@ class CalViewController: UIViewController {
         weatherDetailViewController.currentLocation = self.currentLocation
         self.navigationController?.pushViewController(weatherDetailViewController, animated: true)
     }
+    
+    @objc func toMoviePage(notification: NSNotification) {
+        let movieDetailVC = MovieDetailViewController()
+        var movie = MovieObject(Dictionary: [:])
+        if self.cardData.count > 0 {
+            movie = self.cardData[0] as! MovieObject
+        }
+        movieDetailVC.movie = movie
+        self.navigationController?.pushViewController(movieDetailVC, animated: true)
+    }
 }
 
 extension CalViewController: UITableViewDelegate {
@@ -404,7 +419,10 @@ extension CalViewController: UITableViewDataSource {
             self.navigationController?.pushViewController(movieDetailVC, animated: true)
         }
     }
+    
 }
+
+
 
 // Shadow Changed Effect 
 extension CalViewController: UIScrollViewDelegate {

@@ -22,6 +22,7 @@ class LaunchAnimationView: UIView {
         label.text = "豆瓣日历"
         label.font = UIFont(name: "BodoniSvtyTwoITCTT-Bold", size: 18)
         label.textColor = DouGreen
+        label.alpha = 0
         return label
     }()
     

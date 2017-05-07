@@ -10,7 +10,7 @@ import UIKit
 import NotificationCenter
 import SDWebImage
 
-let groupIdentifier: String = "group.desgard.calendouer"
+let groupIdentifier: String = "group.com.desgard.calendouer"
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var toAppButton: UIButton!
@@ -41,7 +41,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     private func initialData() {
-        let shared: UserDefaults = UserDefaults(suiteName: "group.desgard.calendouer")!
+        let shared: UserDefaults = UserDefaults(suiteName: "group.com.desgard.calendouer")!
         let status      = shared.value(forKey: "status") as? String
         let degree      = shared.value(forKey: "degree") as? String
         let city        = shared.value(forKey: "city") as? String
@@ -95,7 +95,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func toApp(_ sender: Any) {
-        self.extensionContext?.open(URL.init(string: "Calendouer://")!, completionHandler: { (finished) in
+        self.extensionContext?.open(URL.init(string: "Calendouer://desgard.calendouer.lifescore")!, completionHandler: { (finished) in
         })
     }
 }

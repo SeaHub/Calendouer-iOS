@@ -36,12 +36,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchAnimation.animationBegin()
         
         self.configureNotification()
+        
+        // Bugly Setting
+        Bugly.start(withAppId: "9049604c8e")
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("widget")
+        if url.absoluteString.contains("desgard.calendouer.lifescore") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "lifescore"), object: "")
+        }
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type.contains("desgard.calendouer.movie") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "movie"), object: "")
+        }
+        else if shortcutItem.type.contains("desgard.calendouer.lifescore") {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "lifescore"), object: "")
+        }
+        
+        completionHandler(true)
     }
     
 

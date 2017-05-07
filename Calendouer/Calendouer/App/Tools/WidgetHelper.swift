@@ -12,7 +12,7 @@ let widgetHelper = WidgetHelper.shared
 
 class WidgetHelper: NSObject {
     static let shared = WidgetHelper()
-    let dataSharer = UserDefaults(suiteName: "group.desgard.calendouer")
+    let dataSharer = UserDefaults(suiteName: "group.com.desgard.calendouer")
     
     public func shareDegree(low: String, high: String) {
         dataSharer?.set("\(low)°C - \(high)°C", forKey: "degree")
