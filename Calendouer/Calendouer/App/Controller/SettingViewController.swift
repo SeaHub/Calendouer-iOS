@@ -284,8 +284,9 @@ extension SettingViewController {
 
 // MARK: Pushing Rate Picker Delegate
 extension SettingViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.pickerViewData[row]
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let title = self.pickerViewData[row]
+        return NSAttributedString(string: title, attributes:[NSForegroundColorAttributeName: DouGreen])
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 44.0
