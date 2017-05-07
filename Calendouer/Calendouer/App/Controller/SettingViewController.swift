@@ -10,6 +10,9 @@ import UIKit
 
 class SettingViewController: UIViewController {
     @IBOutlet weak var titleBarButton: UIButton!
+    fileprivate var pushingRateCell: TextSettingTableViewCell!
+    fileprivate let pushingRatePickerBgView = UIView()
+    fileprivate let pushingRatePickerView   = UIPickerView()
     
     let SettingSectionType: [String: Int] = [
         "WeatherSection": 0,
@@ -29,7 +32,7 @@ class SettingViewController: UIViewController {
         "AboutApp": 1,
         "CommentApp": 2,
         "ShareApp": 3,
-        "DevelopeApp": 4,
+        "Develop": 4,
     ]
     
     let SectionHeaderHeight: CGFloat = 5
@@ -81,17 +84,21 @@ class SettingViewController: UIViewController {
         thirdTap.numberOfTapsRequired = 3
         thirdTap.numberOfTouchesRequired = 1
         self.titleBarButton.addGestureRecognizer(thirdTap)
+        
+        // Pushing Rate Picker View
+        self.pushingRatePickerView.delegate   = self
+        self.pushingRatePickerView.dataSource = self
     }
     
     private func addViews() {
-        view.addSubview(tableView)
+        self.view.addSubview(self.tableView)
+        self.pushingRatePickerBgView.addSubview(self.pushingRatePickerView)
     }
     
     public func thirdTap() {
         let debugin = DebugInViewViewController()
         navigationController?.pushViewController(debugin, animated: true)
     }
-
 }
 
 extension SettingViewController: UITableViewDelegate {
@@ -143,9 +150,10 @@ extension SettingViewController: UITableViewDataSource {
                 return cell
             }
             else if indexPath.row == SettingWeatherCell["FrequencyWeather"]! {
-                let cell: TextSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                cell.initialCell(title: "推送频率", target: "3小时")
-                return cell
+                self.pushingRateCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
+                self.pushingRateCell.initialCell(title: "推送频率", target: "3小时")
+                
+                return self.pushingRateCell
             }
         case SettingSectionType["MovieSection"]!:
             if indexPath.row == 0 {
@@ -187,7 +195,7 @@ extension SettingViewController: UITableViewDataSource {
 
                 return cell
             }
-            else if indexPath.row == SettingAboutCell["DevelopeApp"] {
+            else if indexPath.row == SettingAboutCell["Develop"] {
                 let cell: AboutSettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: AboutSettingTableViewCellId, for: indexPath) as! AboutSettingTableViewCell
                 cell.initialCell(title: "一起开发")
                 return cell
@@ -204,6 +212,10 @@ extension SettingViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
+        case SettingSectionType["WeatherSection"]!:
+            if indexPath.row == SettingWeatherCell["FrequencyWeather"] {
+                self.showPushingRatePickerViewInRow(cell: self.tableView.cellForRow(at: indexPath)!)
+            }
         case SettingSectionType["AboutSection"]!:
             if indexPath.row == SettingAboutCell["AboutApp"] {
                 navigationController?.pushViewController(AboutAppViewController(), animated: true)
@@ -219,12 +231,77 @@ extension SettingViewController: UITableViewDataSource {
             else if indexPath.row == SettingAboutCell["ShareApp"] {
                 navigationController?.pushViewController(AboutSupportViewController(), animated: true)
             }
-            else if indexPath.row == SettingAboutCell["DevelopeApp"] {
+            else if indexPath.row == SettingAboutCell["Develop"] {
                 let url = "https://github.com/Desgard/Calendouer-iOS"
                 UIApplication.shared.open(URL.init(string: url)!, options: [:], completionHandler: { (finished) in })
             }
         default:
             break
         }
+    }
+}
+
+// MARK: Pushing Rate Picker
+extension SettingViewController {
+    fileprivate var pickerViewData: [String] {
+        get {
+            return ["2小时", "半天", "一天"]
+        }
+    }
+    
+    fileprivate func showPushingRatePickerViewInRow(cell: UITableViewCell) {
+        guard (!self.tableView.subviews.contains(self.pushingRatePickerBgView)) else {
+            self.removePickerBgViewWithAnimation()
+            return
+        }
+        
+        self.addPickerBgViewWithAnimation(view: cell)
+    }
+    
+    fileprivate func addPickerBgViewWithAnimation(view: UIView) {
+        self.pushingRatePickerBgView.backgroundColor    = DouBackGray
+        self.pushingRatePickerBgView.alpha              = 0
+        self.tableView.addSubview(self.pushingRatePickerBgView)
+        UIView.animate(withDuration: 0.5) {
+            self.pushingRatePickerBgView.alpha          = 1
+        }
+        
+        self.pushingRatePickerBgView.snp.makeConstraints { (make) in
+            make.top.equalTo(view.snp.bottom).offset(10.0)
+            make.width.equalTo(self.tableView.snp.width)
+            make.height.equalTo(self.tableView.snp.height)
+        }
+    }
+    
+    fileprivate func removePickerBgViewWithAnimation() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.pushingRatePickerBgView.alpha          = 0
+        }, completion: { _ in
+            self.pushingRatePickerBgView.removeFromSuperview()
+        })
+    }
+}
+
+// MARK: Pushing Rate Picker Delegate
+extension SettingViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.pickerViewData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 44.0
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.pushingRateCell.initialCell(title: "推送频率", target: "\(self.pickerViewData[row])")
+        self.removePickerBgViewWithAnimation()
+    }
+}
+
+// MARK: Pushing Rate Picker DataSource
+extension SettingViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.pickerViewData.count
     }
 }

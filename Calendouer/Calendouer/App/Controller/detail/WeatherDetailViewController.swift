@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreLocation
-import UserNotifications
 
 class WeatherDetailViewController: UIViewController {
     private var tableView: UITableView!
