@@ -86,13 +86,18 @@ class SettingViewController: UIViewController {
         self.titleBarButton.addGestureRecognizer(thirdTap)
         
         // Pushing Rate Picker View
-        self.pushingRatePickerView.delegate   = self
-        self.pushingRatePickerView.dataSource = self
+        self.pushingRatePickerView.delegate                = self
+        self.pushingRatePickerView.dataSource              = self
+        self.pushingRatePickerView.showsSelectionIndicator = false
     }
     
     private func addViews() {
         self.view.addSubview(self.tableView)
         self.pushingRatePickerBgView.addSubview(self.pushingRatePickerView)
+        self.pushingRatePickerView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.pushingRatePickerBgView)
+            make.top.equalTo(self.pushingRatePickerBgView).offset(44.0)
+        }
     }
     
     public func thirdTap() {
