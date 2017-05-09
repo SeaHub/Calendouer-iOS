@@ -164,6 +164,25 @@ class CalViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(toWeatherDetail), name: NSNotification.Name(rawValue: "lifescore"), object: nil)
     }
     
+    private func configureLocation() {
+        let isLocationAlertViewControllerShown = "isLocationAlertViewControllerShown"
+        guard UserDefaults.standard.object(forKey: isLocationAlertViewControllerShown) == nil
+            || UserDefaults.standard.object(forKey: isLocationAlertViewControllerShown) as! Bool == false else {
+            return
+        }
+        
+        let alertController: UIAlertController = UIAlertController(title: "提示", message: "Calendouer 接下来将请求您的授权，获得在打开应用时使用地理位置的权限，否则本应用不能正常使用", preferredStyle: .alert)
+        let cancelAction: UIAlertAction        = UIAlertAction(title: "确定", style: .cancel, handler: { [unowned self] _ in
+            self.locationManager.requestWhenInUseAuthorization()
+        })
+        alertController.addAction(cancelAction)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.present(alertController, animated: true, completion: nil)
+            UserDefaults.standard.set(true, forKey: isLocationAlertViewControllerShown)
+        }
+    }
+    
     private func initialView() {
         view.backgroundColor = DouBackGray
         
@@ -184,18 +203,17 @@ class CalViewController: UIViewController {
         tableView.register(UINib(nibName: DownloadCardTableViewCellId, bundle: nil), forCellReuseIdentifier: DownloadCardTableViewCellId)
         
         // Core Location
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        locationManager.delegate        = self
+        locationManager.distanceFilter  = kCLLocationAccuracyNearestTenMeters
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 10000
-       
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
+        locationManager.distanceFilter  = 10000
+        self.configureLocation()
+        self.locationManager.startUpdatingLocation()
+      
         // Userdefault
         let userInfo: UserInfo = Preferences[.userInfo]!
         self.userInfo = userInfo
-        
+    
         //
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toWeatherDetail))
         weatherImageView.isUserInteractionEnabled = true
@@ -278,48 +296,66 @@ class CalViewController: UIViewController {
             make.right.equalTo(view.snp.right)
             make.height.equalTo(260)
         }
-        monthLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(bakView.snp.left).offset(60)
-            make.top.equalTo(bakView.snp.top).offset(42)
-        }
-        lunarLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(bakView.snp.right).offset(-60)
-            make.centerY.equalTo(monthLabel)
-        }
         weekdayView.snp.makeConstraints { (make) in
-            make.left.equalTo(monthLabel.snp.right)
-            make.right.equalTo(lunarLabel.snp.left)
-            make.centerY.equalTo(monthLabel)
+            make.top.equalTo(bakView.snp.top).offset(40)
+            make.centerX.equalTo(bakView)
+            make.width.equalTo(bakView).multipliedBy(0.5)
             make.height.equalTo(20)
         }
         weekdayLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(weekdayView)
             make.centerY.equalTo(monthLabel)
         }
+        monthLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(weekdayView.snp.left).offset(-10)
+            make.centerY.equalTo(weekdayView)
+        }
+        lunarLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(weekdayView.snp.right).offset(-20)
+            make.centerY.equalTo(weekdayView)
+        }
         dayLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(bakView)
             make.top.equalTo(weekdayLabel.snp.bottom).offset(15)
-        }
-        cityLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(dayLabel.snp.bottom)
-            make.right.equalTo(view.snp.right).offset(-222)
-        }
-        updateTimeLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(cityLabel.snp.right)
-            make.top.equalTo(cityLabel.snp.bottom).offset(15)
-        }
-        weatherLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(cityLabel)
-            make.left.equalTo(view.snp.left).offset(222)
-        }
-        degreeLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(updateTimeLabel)
-            make.left.equalTo(weatherLabel)
         }
         weatherImageView.snp.makeConstraints { (make) in
             make.centerX.equalTo(dayLabel)
             make.height.equalTo(40)
             make.bottom.equalTo(updateTimeLabel.snp.bottom)
+        }
+        cityLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(dayLabel.snp.bottom)
+            if kIsIPhone5Size {
+                make.right.equalTo(weatherImageView.snp.left).offset(110)
+            } else {
+                make.right.equalTo(weatherImageView.snp.left).offset(105)
+            }
+        }
+        updateTimeLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cityLabel.snp.bottom).offset(15)
+            make.right.equalTo(cityLabel.snp.right)
+            if kIsIPhone5Size {
+                make.right.equalTo(weatherImageView.snp.left).offset(110)
+            } else {
+                make.right.equalTo(weatherImageView.snp.left).offset(105)
+            }
+        }
+        weatherLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(cityLabel)
+            if kIsIPhone5Size {
+                make.left.equalTo(weatherImageView.snp.right).offset(-110)
+            } else {
+                make.left.equalTo(weatherImageView.snp.right).offset(-105)
+            }
+        }
+        degreeLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(updateTimeLabel)
+            make.left.equalTo(weatherLabel)
+            if kIsIPhone5Size {
+                make.left.equalTo(weatherImageView.snp.right).offset(-110)
+            } else {
+                make.left.equalTo(weatherImageView.snp.right).offset(-105)
+            }
         }
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(bakView.snp.bottom)
@@ -505,6 +541,7 @@ extension CalViewController: CLLocationManagerDelegate {
                 }
             })
         }
+        self.locationManager.stopUpdatingHeading()
         lock.unlock()
     }
 }
