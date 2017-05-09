@@ -74,6 +74,11 @@ let LogoTableViewCellId: String             = "LogoTableViewCell"
 let AboutTextTableViewCellId: String        = "AboutTextTableViewCell"
 let AboutSettingTableViewCellId: String     = "AboutSettingTableViewCell"
 
+// Screen Size
+let kIsIPhone5Size   = (UIScreen.main.bounds.size.height == 568.0)
+let kIsIPhone6Size   = (UIScreen.main.bounds.size.height == 667.0)
+let kIsIphone6PSize  = (UIScreen.main.bounds.size.height == 736.0)
+
 // NSObject
 extension NSObject {
     public func selfType() -> String {
