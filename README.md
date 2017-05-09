@@ -26,7 +26,8 @@
 
 ### iOS 
 
-To be continued!
+Support iOS 10.0 +, From iPhone 5 - Newest iPhone, including iPhone Plus.
+Current only available in China.
 
 ## Feedback
 
