@@ -26,6 +26,8 @@
 
 ### iOS 
 
+<a href="https://itunes.apple.com/cn/app/calendouer/id1234070552?mt=8" style="display:inline-block;overflow:hidden;background:url(//linkmaker.itunes.apple.com/assets/shared/badges/zh-cht/appstore-lrg.svg) no-repeat;width:135px;height:40px;background-size:contain;"></a>
+
 Support iOS 10.0 +, From iPhone 5 - Newest iPhone, including iPhone Plus.
 Current only available in China.
 
