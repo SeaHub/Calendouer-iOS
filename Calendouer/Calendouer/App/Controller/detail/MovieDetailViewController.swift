@@ -13,6 +13,8 @@ class MovieDetailViewController: UIViewController {
     var tableView: UITableView!
     var bakView: UIView!
     
+    var needAnimated: Bool = true
+    
     // 电影实例
     var movie: MovieObject?
     
@@ -25,13 +27,21 @@ class MovieDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: needAnimated)
+        if needAnimated {
+            needAnimated = false
+        }
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     private func initialView() {
-        self.title = "\u{1F3AC} 电影"
-        self.view.backgroundColor = DouBackGray
+        title = "电影"
+        view.backgroundColor = DouBackGray
         
         let barbak = UIImage(color: DouGreen)
         self.navigationController?.navigationBar.setBackgroundImage(barbak, for: .default)
