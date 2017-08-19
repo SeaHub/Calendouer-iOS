@@ -21,12 +21,18 @@
 
 ### Android
 
-+ [Google Play](https://play.google.com/store/apps/details?id=cn.sealiu.calendouer)
-+ [百度手机助手](https://mobile.baidu.com/item?type=soft&docid=11009603)
+<a href="https://play.google.com/store/apps/details?id=cn.sealiu.calendouer">
+<img src="https://play.google.com/intl/en_us/badges/images/badge_new.png" />
+</a>
 
 ### iOS 
 
-To be continued!
+<a href="https://itunes.apple.com/cn/app/calendouer/id1234070552?mt=8">
+<img src="https://linkmaker.itunes.apple.com/assets/shared/badges/zh-cht/appstore-lrg-513dfa9cea2b10efb09cbf38d8cb834a3aec771e41d6dfc273199a448420b91c.svg" />
+</a>
+
+Support iOS 10.0 +, From iPhone 5 - Newest iPhone, including iPhone Plus.
+Current only available in China.
 
 ## Feedback
 

@@ -83,14 +83,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.lifeScoreTitleLabel.alpha = 0
             self.titleShowLabel.alpha = 0
             self.toAppButton.alpha = 0
-        case .expanded:
-            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 230)
-            self.line.alpha = 1
-            self.ablumImageView.alpha = 1
-            self.lifeScoreTextLabel.alpha = 1
-            self.lifeScoreTitleLabel.alpha = 1
-            self.titleShowLabel.alpha = 1
-            self.toAppButton.alpha = 1
+        default:
+            break
+//        case .expanded:
+//            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 230)
+//            self.line.alpha = 1
+//            self.ablumImageView.alpha = 1
+//            self.lifeScoreTextLabel.alpha = 1
+//            self.lifeScoreTitleLabel.alpha = 1
+//            self.titleShowLabel.alpha = 1
+//            self.toAppButton.alpha = 1
         }
     }
     

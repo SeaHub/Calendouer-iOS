@@ -93,19 +93,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         
-        UIAlertController.showCancelAlert(title: "提示", msg: "豆瓣日历接下来将请求您的授权，以通知您电影与天气方面的变化", cancelBtnTitle: "我知道了") { _ in
-            UserDefaults.standard.set(true, forKey: isNotificationAlertViewControllerShown)
-            
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (isGranted, error) in
-                guard isGranted && error == nil else {
-                    printLog(message: "通知中心 - 用户不同意授权")
-                    return
-                }
-                
-                // 远程推送 - 需推送服务器
-                // UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
+//        UIAlertController.showCancelAlert(title: "提示", msg: "豆瓣日历接下来将请求您的授权，以通知您电影与天气方面的变化", cancelBtnTitle: "我知道了") { _ in
+//            UserDefaults.standard.set(true, forKey: isNotificationAlertViewControllerShown)
+//            
+//            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (isGranted, error) in
+//                guard isGranted && error == nil else {
+//                    printLog(message: "通知中心 - 用户不同意授权")
+//                    return
+//                }
+//                
+//                // 远程推送 - 需推送服务器
+//                // UIApplication.shared.registerForRemoteNotifications()
+//            }
+//        }
     }
     
     private func registerNotificationCategory() {

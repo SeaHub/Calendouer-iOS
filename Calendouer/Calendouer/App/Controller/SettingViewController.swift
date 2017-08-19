@@ -51,7 +51,7 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = false
         self.titleBarButton.setTitleColor(.white, for: .normal)
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -156,7 +156,7 @@ extension SettingViewController: UITableViewDataSource {
             }
             else if indexPath.row == SettingWeatherCell["FrequencyWeather"]! {
                 self.pushingRateCell = tableView.dequeueReusableCell(withIdentifier: TextSettingTableViewCellId, for: indexPath) as! TextSettingTableViewCell
-                self.pushingRateCell.initialCell(title: "推送频率", target: "3小时")
+                self.pushingRateCell.initialCell(title: "推送频率", target: "2小时")
                 
                 return self.pushingRateCell
             }
